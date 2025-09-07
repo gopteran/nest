@@ -1,10 +1,91 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  <article class="max-w-4xl mx-auto">
+    <!-- Article Header -->
+    <header class="text-center mb-12 pb-8 border-b border-gray-200">
+      <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-6 leading-tight">
+        {{ .Title }}
+      </h1>
+      
+      <!-- Article meta -->
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+        {{- if .Date }}
+          {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+          {{ $dateHuman := .Date | time.Format "January 2, 2006" }}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+          </div>
+        {{- end }}
+        
+        {{- if .ReadingTime }}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>{{ .ReadingTime }} min read</span>
+          </div>
+        {{- end }}
 
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+        {{- if .Section }}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+            </svg>
+            <span class="px-2 py-1 bg-[var(--color-sand)]/20 text-[var(--color-primary)] rounded-[var(--radius-base)] font-medium capitalize">
+              {{ .Section }}
+            </span>
+          </div>
+        {{- end }}
+      </div>
+    </header>
 
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    <!-- Article Content -->
+    <div class="prose prose-lg prose-gray max-w-none mb-12">
+      <div class="text-gray-700 leading-relaxed">
+        {{ .Content }}
+      </div>
+    </div>
+
+    <!-- Tags Section -->
+    {{- if .Params.tags }}
+      <div class="mb-12 p-6 bg-gradient-to-r from-[var(--color-sand)]/10 to-[var(--color-growth)]/10 rounded-[var(--radius-xl)] border border-[var(--color-sand)]/20">
+        <h3 class="text-lg font-semibold text-[var(--color-primary)] mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+          </svg>
+          Tagged in
+        </h3>
+        {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+      </div>
+    {{- end }}
+
+    <!-- Article Navigation -->
+    <nav class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-gray-200">
+      {{- with .PrevInSection }}
+        <a href="{{ .RelPermalink }}" class="flex-1 group p-6 bg-white rounded-[var(--radius-lg)] border border-gray-200 hover:border-[var(--color-secondary)] hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center gap-3 text-[var(--color-primary)] font-semibold mb-2">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            <span class="text-sm">Previous</span>
+          </div>
+          <h4 class="text-gray-900 group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">{{ .Title }}</h4>
+        </a>
+      {{- end }}
+      
+      {{- with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="flex-1 group p-6 bg-white rounded-[var(--radius-lg)] border border-gray-200 hover:border-[var(--color-secondary)] hover:shadow-lg transition-all duration-300 text-right">
+          <div class="flex items-center justify-end gap-3 text-[var(--color-primary)] font-semibold mb-2">
+            <span class="text-sm">Next</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+          <h4 class="text-gray-900 group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">{{ .Title }}</h4>
+        </a>
+      {{- end }}
+    </nav>
+  </article>
 {{ end }}

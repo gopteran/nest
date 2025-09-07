@@ -3,15 +3,35 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body>
-  <header>
-    {{ partial "header.html" . }}
-  </header>
-  <main class="min-h-screen bg-gray-100">
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
+<body class="bg-gradient-to-br from-[var(--color-bg)] to-white text-[var(--color-fg)] font-[var(--font-sans)] antialiased">
+  <div class="flex flex-col min-h-screen relative">
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 opacity-[0.02] pointer-events-none">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--color-primary) 1px, transparent 0); background-size: 20px 20px;"></div>
+    </div>
+    
+    <!-- Header with enhanced design -->
+    <header class="relative bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary)] to-blue-700 text-white shadow-2xl border-b-4 border-[var(--color-secondary)]">
+      <div class="absolute inset-0 bg-black opacity-5"></div>
+      <div class="relative container mx-auto px-6 py-6">
+        {{ partial "header.html" . }}
+      </div>
+    </header>
+
+    <!-- Main content area with enhanced spacing -->
+    <main class="flex-1 relative z-10">
+      <div class="container mx-auto px-6 py-12 max-w-7xl">
+        {{ block "main" . }}{{ end }} 
+      </div>
+    </main>
+
+    <!-- Enhanced footer -->
+    <footer class="relative bg-gradient-to-r from-[var(--color-neutral-dark)] to-gray-900 text-[var(--color-neutral-light)] border-t-4 border-[var(--color-sand)]">
+      <div class="absolute inset-0 bg-black opacity-10"></div>
+      <div class="relative container mx-auto px-6 py-12">
+        {{ partial "footer.html" . }}
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

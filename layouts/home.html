@@ -1,7 +1,111 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+  <!-- Hero Section -->
+  <div class="text-center mb-16">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-growth)] bg-clip-text text-transparent mb-6 leading-tight">
+        Welcome to {{ site.Title }}
+      </h1>
+      <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-sand)] to-[var(--color-growth)] mx-auto mb-8 rounded-full"></div>
+      {{- if .Content }}
+        <div class="prose prose-lg prose-gray max-w-3xl mx-auto text-gray-600 leading-relaxed">
+          {{ .Content }}
+        </div>
+      {{- end }}
+    </div>
+  </div>
+
+  <!-- Featured Content Grid -->
+  {{- if site.RegularPages }}
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-12">
+        <h2 class="text-3xl font-bold text-[var(--color-primary)]">Latest Content</h2>
+        <div class="flex-1 h-px bg-gradient-to-r from-[var(--color-primary)] to-transparent"></div>
+      </div>
+      
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {{ range first 6 site.RegularPages }}
+          <article class="group relative">
+            <!-- Card -->
+            <div class="bg-white rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full flex flex-col">
+              <!-- Category badge -->
+              {{- if .Section }}
+                <div class="inline-flex items-center gap-2 mb-4">
+                  <span class="px-3 py-1 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] text-white text-xs font-semibold rounded-full uppercase tracking-wide">
+                    {{ .Section }}
+                  </span>
+                  {{- if .Date }}
+                    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+                    {{ $dateHuman := .Date | time.Format "Jan 2, 2006" }}
+                    <time datetime="{{ $dateMachine }}" class="text-xs text-gray-500">{{ $dateHuman }}</time>
+                  {{- end }}
+                </div>
+              {{- end }}
+
+              <!-- Content -->
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-[var(--color-primary)] mb-3 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">
+                  {{ .LinkTitle }}
+                </h3>
+                <p class="text-gray-600 leading-relaxed line-clamp-3 mb-4">
+                  {{ .Summary | default "Discover more about this topic..." }}
+                </p>
+              </div>
+
+              <!-- Tags -->
+              {{- with .Params.tags }}
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {{- range first 3 . }}
+                    <span class="px-2 py-1 bg-[var(--color-sand)]/20 text-[var(--color-primary)] text-xs rounded-[var(--radius-base)] font-medium">
+                      {{ . }}
+                    </span>
+                  {{- end }}
+                </div>
+              {{- end }}
+
+              <!-- Read more link -->
+              <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:text-[var(--color-secondary)] transition-colors group/link">
+                <span>Read More</span>
+                <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+
+              <!-- Hover effect overlay -->
+              <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 to-[var(--color-secondary)]/5 rounded-[var(--radius-xl)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+
+      <!-- View all link -->
+      {{- if gt (len site.RegularPages) 6 }}
+        <div class="text-center mt-12">
+          <a href="/posts/" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300">
+            <span>View All Content</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      {{- end }}
+    </section>
+  {{- end }}
+
+  <!-- Call to action section -->
+  <section class="text-center py-16 bg-gradient-to-r from-[var(--color-primary)]/5 via-[var(--color-secondary)]/5 to-[var(--color-growth)]/5 rounded-[var(--radius-xl)] border border-[var(--color-secondary)]/20">
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Ready to Get Started?</h3>
+      <p class="text-gray-600 mb-8 leading-relaxed">
+        Discover innovative solutions and growth opportunities with Gopteran.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/about/" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-secondary)] transition-colors">
+          Learn More
+        </a>
+        <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-white transition-colors">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
 {{ end }}

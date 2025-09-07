@@ -1,7 +1,74 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ end }}
+  <!-- Taxonomy Header -->
+  <header class="text-center mb-16">
+    <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-6 leading-tight">
+      {{ .Title }}
+    </h1>
+    <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-sand)] to-[var(--color-growth)] mx-auto mb-8 rounded-full"></div>
+    {{- if .Content }}
+      <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+        {{ .Content }}
+      </div>
+    {{- end }}
+    {{- if .Pages }}
+      <p class="text-gray-500 mt-6">
+        Browse {{ len .Pages }} {{ if eq (len .Pages) 1 }}item{{ else }}items{{ end }} in this {{ .Data.Singular | lower }}
+      </p>
+    {{- end }}
+  </header>
+
+  <!-- Taxonomy Terms Grid -->
+  {{- if .Pages }}
+    <section>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {{ range .Pages }}
+          <div class="group relative">
+            <a href="{{ .RelPermalink }}" class="block bg-white rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full">
+              <!-- Term count badge -->
+              {{- if .Data.Terms }}
+                <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
+                  {{ len .Data.Terms }}
+                </div>
+              {{- end }}
+
+              <!-- Term icon -->
+              <div class="w-12 h-12 bg-gradient-to-br from-[var(--color-sand)]/20 to-[var(--color-growth)]/20 rounded-[var(--radius-lg)] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                </svg>
+              </div>
+
+              <!-- Term name -->
+              <h2 class="text-lg font-bold text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors mb-2">
+                {{ .LinkTitle }}
+              </h2>
+
+              <!-- Term description -->
+              {{- if .Summary }}
+                <p class="text-sm text-gray-600 line-clamp-2">{{ .Summary }}</p>
+              {{- else }}
+                <p class="text-sm text-gray-500 italic">
+                  Explore content tagged with "{{ .LinkTitle | lower }}"
+                </p>
+              {{- end }}
+
+              <!-- Hover effect overlay -->
+              <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 to-[var(--color-secondary)]/5 rounded-[var(--radius-xl)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            </a>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+  {{- else }}
+    <!-- Empty state -->
+    <div class="text-center py-16">
+      <div class="w-16 h-16 bg-[var(--color-neutral-light)] rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold text-gray-600 mb-2">No {{ .Data.Plural | lower }} yet</h3>
+      <p class="text-gray-500">Check back later for new {{ .Data.Plural | lower }}.</p>
+    </div>
+  {{- end }}
 {{ end }}

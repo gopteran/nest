@@ -3,3 +3,5 @@ public/
 
 # Node modules, always ignore these...
 node_modules/
+assets/css/main.css
+    
