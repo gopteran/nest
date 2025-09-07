@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Define Gopteran theme */
+@theme {
+  --color-primary: #2563EB;   /* Deep Blue */
+  --color-secondary: #38BDF8; /* Sky Blue */
+  --color-sand: #FDE68A;      /* Warm Sand */
+  --color-growth: #22C55E;    /* Leaf Green */
+
+  --color-neutral-light: #F3F4F6; /* Soft Gray */
+  --color-neutral-dark: #1F2937;  /* Charcoal */
+
+  /* You can alias semantic tokens for consistency */
+  --color-bg: var(--color-neutral-light);
+  --color-fg: var(--color-neutral-dark);
+  --color-link: var(--color-primary);
+  --color-accent: var(--color-secondary);
+
+  /* Font choices */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  /* Radius and spacing */
+  --radius-base: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 2rem;
+}

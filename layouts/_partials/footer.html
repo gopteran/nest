@@ -1,0 +1,8 @@
+<p class="copyright text-sm text-center">
+    Copyright 
+    {{/*  "Dynamic" copyright year range  */}}
+    {{if lt (now.Year) 2025}}2025 - {{end}}
+    {{ now.Year }}. 
+    {{ .Site.Title }}.
+    All rights reserved.
+</p>
