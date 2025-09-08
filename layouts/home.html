@@ -47,7 +47,7 @@
                   {{ .LinkTitle }}
                 </h3>
                 <p class="text-[var(--color-fg)]/70 leading-relaxed line-clamp-3 mb-4">
-                  {{ .Summary | default "Discover more about this topic..." }}
+                  {{ .Summary | plainify | default "Discover more about this topic..." }}
                 </p>
               </div>
 
@@ -79,29 +79,39 @@
 
       <!-- View all link -->
       {{- if gt (len site.RegularPages) 6 }}
-        {{- $allContentSection := "" }}
+        {{- $bestSection := "" }}
         {{- $sectionPage := "" }}
-        {{- if site.GetPage "/posts" }}
-          {{- $allContentSection = "/posts/" }}
-          {{- $sectionPage = site.GetPage "/posts" }}
-        {{- else if site.GetPage "/blog" }}
-          {{- $allContentSection = "/blog/" }}
-          {{- $sectionPage = site.GetPage "/blog" }}
-        {{- else if site.GetPage "/articles" }}
-          {{- $allContentSection = "/articles/" }}
-          {{- $sectionPage = site.GetPage "/articles" }}
-        {{- else }}
-          {{- range site.Sections }}
-            {{- if and (not $allContentSection) (gt (len .Pages) 0) }}
-              {{- $allContentSection = .RelPermalink }}
-              {{- $sectionPage = . }}
+        {{- $maxPages := 0 }}
+        
+        {{- /* Find the section with the most content pages */ -}}
+        {{- range site.Sections }}
+          {{- $pageCount := len .RegularPages }}
+          {{- if gt $pageCount $maxPages }}
+            {{- $maxPages = $pageCount }}
+            {{- $bestSection = .RelPermalink }}
+            {{- $sectionPage = . }}
+          {{- end }}
+        {{- end }}
+        
+        {{- /* Fallback: if no sections exist, check for content-related menu items */ -}}
+        {{- if not $bestSection }}
+          {{- with site.Menus.main }}
+            {{- range . }}
+              {{- if in (slice "docs" "documentation" "blog" "posts" "articles" "content") (.Name | lower) }}
+                {{- $menuPage := site.GetPage .URL }}
+                {{- if $menuPage }}
+                  {{- $bestSection = .URL }}
+                  {{- $sectionPage = $menuPage }}
+                  {{- break }}
+                {{- end }}
+              {{- end }}
             {{- end }}
           {{- end }}
         {{- end }}
         
-        {{- if $allContentSection }}
+        {{- if $bestSection }}
           <div class="text-center mt-12">
-            <a href="{{ $allContentSection }}" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300">
+            <a href="{{ $bestSection }}" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300">
               <span>View All {{ if $sectionPage }}{{ $sectionPage.Title }}{{ else }}Content{{ end }}</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
