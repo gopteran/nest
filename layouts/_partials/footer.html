@@ -33,12 +33,17 @@
             Quick Links
         </h4>
         <nav class="grid grid-cols-2 gap-2">
-            <a href="/" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">Home</a>
-            <a href="/about/" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">About</a>
-            <a href="/services/" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">Services</a>
-            <a href="/contact/" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">Contact</a>
-            <a href="/blog/" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">Blog</a>
-            <a href="/privacy/" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">Privacy</a>
+            {{- with site.Menus.footer }}
+                {{- range . }}
+                    <a href="{{ .URL }}" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">{{ .Name }}</a>
+                {{- end }}
+            {{- else }}
+                {{- with site.Menus.main }}
+                    {{- range . }}
+                        <a href="{{ .URL }}" class="text-[var(--color-neutral-light)]/80 hover:text-[var(--color-sand)] transition-colors text-sm py-1">{{ .Name }}</a>
+                    {{- end }}
+                {{- end }}
+            {{- end }}
         </nav>
     </div>
 
@@ -80,10 +85,37 @@
         &copy; {{if lt (now.Year) 2025}}2025 - {{end}}{{ now.Year }} {{ .Site.Title }}. All rights reserved.
     </p>
     <div class="flex items-center gap-6 text-sm">
-        <a href="/privacy/" class="text-[var(--color-neutral-light)]/60 hover:text-[var(--color-sand)] transition-colors">Privacy Policy</a>
-        <span class="text-[var(--color-neutral-light)]/30">•</span>
-        <a href="/terms/" class="text-[var(--color-neutral-light)]/60 hover:text-[var(--color-sand)] transition-colors">Terms of Service</a>
-        <span class="text-[var(--color-neutral-light)]/30">•</span>
-        <span class="text-[var(--color-neutral-light)]/60">Made with ❤️ by Gopteran</span>
+        {{- $pages := slice }}
+        {{- with site.GetPage "/privacy" }}
+            {{- $pages = $pages | append . }}
+        {{- end }}
+        {{- with site.GetPage "/terms" }}
+            {{- $pages = $pages | append . }}
+        {{- end }}
+        {{- if site.GetPage "/legal" }}
+            {{- with site.GetPage "/legal" }}
+                {{- range .Pages }}
+                    {{- $pages = $pages | append . }}
+                {{- end }}
+            {{- end }}
+        {{- end }}
+        
+        {{- range $index, $page := $pages }}
+            {{- if gt $index 0 }}
+                <span class="text-[var(--color-neutral-light)]/30">•</span>
+            {{- end }}
+            <a href="{{ $page.RelPermalink }}" class="text-[var(--color-neutral-light)]/60 hover:text-[var(--color-sand)] transition-colors">{{ $page.Title }}</a>
+        {{- end }}
+        
+        {{- if eq (len $pages) 0 }}
+            <a href="#" class="text-[var(--color-neutral-light)]/60 hover:text-[var(--color-sand)] transition-colors">Privacy Policy</a>
+            <span class="text-[var(--color-neutral-light)]/30">•</span>
+            <a href="#" class="text-[var(--color-neutral-light)]/60 hover:text-[var(--color-sand)] transition-colors">Terms of Service</a>
+            <span class="text-[var(--color-neutral-light)]/30">•</span>
+        {{- else }}
+            <span class="text-[var(--color-neutral-light)]/30">•</span>
+        {{- end }}
+        
+        <span class="text-[var(--color-neutral-light)]/60">Made with ❤️ by {{ site.Title }}</span>
     </div>
 </div>

@@ -79,14 +79,36 @@
 
       <!-- View all link -->
       {{- if gt (len site.RegularPages) 6 }}
-        <div class="text-center mt-12">
-          <a href="/posts/" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300">
-            <span>View All Content</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
+        {{- $allContentSection := "" }}
+        {{- $sectionPage := "" }}
+        {{- if site.GetPage "/posts" }}
+          {{- $allContentSection = "/posts/" }}
+          {{- $sectionPage = site.GetPage "/posts" }}
+        {{- else if site.GetPage "/blog" }}
+          {{- $allContentSection = "/blog/" }}
+          {{- $sectionPage = site.GetPage "/blog" }}
+        {{- else if site.GetPage "/articles" }}
+          {{- $allContentSection = "/articles/" }}
+          {{- $sectionPage = site.GetPage "/articles" }}
+        {{- else }}
+          {{- range site.Sections }}
+            {{- if and (not $allContentSection) (gt (len .Pages) 0) }}
+              {{- $allContentSection = .RelPermalink }}
+              {{- $sectionPage = . }}
+            {{- end }}
+          {{- end }}
+        {{- end }}
+        
+        {{- if $allContentSection }}
+          <div class="text-center mt-12">
+            <a href="{{ $allContentSection }}" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300">
+              <span>View All {{ if $sectionPage }}{{ $sectionPage.Title }}{{ else }}Content{{ end }}</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        {{- end }}
       {{- end }}
     </section>
   {{- end }}
@@ -96,15 +118,38 @@
     <div class="max-w-2xl mx-auto">
       <h3 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Ready to Get Started?</h3>
       <p class="text-[var(--color-fg)]/70 mb-8 leading-relaxed">
-        Discover innovative solutions and growth opportunities with Gopteran.
+        {{- if site.Params.description }}
+          {{ site.Params.description }}
+        {{- else }}
+          Discover innovative solutions and growth opportunities with {{ site.Title }}.
+        {{- end }}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/about/" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-secondary)] transition-colors">
-          Learn More
-        </a>
-        <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-[var(--color-neutral-light)] transition-colors">
-          Get in Touch
-        </a>
+        {{- $aboutPage := site.GetPage "/about" }}
+        {{- $contactPage := site.GetPage "/contact" }}
+        
+        {{- if $aboutPage }}
+          <a href="{{ $aboutPage.RelPermalink }}" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-secondary)] transition-colors">
+            Learn More
+          </a>
+        {{- end }}
+        
+        {{- if $contactPage }}
+          <a href="{{ $contactPage.RelPermalink }}" class="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-[var(--color-neutral-light)] transition-colors">
+            Get in Touch
+          </a>
+        {{- end }}
+        
+        {{- if not $aboutPage }}{{- if not $contactPage }}
+          <!-- Fallback if no specific pages exist - show main menu items -->
+          {{- with site.Menus.main }}
+            {{- range first 2 . }}
+              <a href="{{ .URL }}" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-secondary)] transition-colors">
+                {{ .Name }}
+              </a>
+            {{- end }}
+          {{- end }}
+        {{- end }}{{- end }}
       </div>
     </div>
   </section>
