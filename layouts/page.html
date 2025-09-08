@@ -1,13 +1,13 @@
 {{ define "main" }}
   <article class="max-w-4xl mx-auto">
     <!-- Article Header -->
-    <header class="text-center mb-12 pb-8 border-b border-gray-200">
+    <header class="text-center mb-12 pb-8 border-b border-[var(--color-neutral-light)]">
       <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-6 leading-tight">
         {{ .Title }}
       </h1>
       
       <!-- Article meta -->
-      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--color-fg)]/70">
         {{- if .Date }}
           {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
           {{ $dateHuman := .Date | time.Format "January 2, 2006" }}
@@ -42,8 +42,8 @@
     </header>
 
     <!-- Article Content -->
-    <div class="prose prose-lg prose-gray max-w-none mb-12">
-      <div class="text-gray-700 leading-relaxed">
+    <div class="prose prose-lg max-w-none mb-12">
+      <div class="text-[var(--color-fg)] leading-relaxed">
         {{ .Content }}
       </div>
     </div>
@@ -62,28 +62,28 @@
     {{- end }}
 
     <!-- Article Navigation -->
-    <nav class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-gray-200">
+    <nav class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-[var(--color-neutral-light)]">
       {{- with .PrevInSection }}
-        <a href="{{ .RelPermalink }}" class="flex-1 group p-6 bg-white rounded-[var(--radius-lg)] border border-gray-200 hover:border-[var(--color-secondary)] hover:shadow-lg transition-all duration-300">
+        <a href="{{ .RelPermalink }}" class="flex-1 group p-6 bg-[var(--color-bg)] rounded-[var(--radius-lg)] border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] hover:shadow-lg transition-all duration-300">
           <div class="flex items-center gap-3 text-[var(--color-primary)] font-semibold mb-2">
             <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
             <span class="text-sm">Previous</span>
           </div>
-          <h4 class="text-gray-900 group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">{{ .Title }}</h4>
+          <h4 class="text-[var(--color-fg)] group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">{{ .Title }}</h4>
         </a>
       {{- end }}
       
       {{- with .NextInSection }}
-        <a href="{{ .RelPermalink }}" class="flex-1 group p-6 bg-white rounded-[var(--radius-lg)] border border-gray-200 hover:border-[var(--color-secondary)] hover:shadow-lg transition-all duration-300 text-right">
+        <a href="{{ .RelPermalink }}" class="flex-1 group p-6 bg-[var(--color-bg)] rounded-[var(--radius-lg)] border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] hover:shadow-lg transition-all duration-300 text-right">
           <div class="flex items-center justify-end gap-3 text-[var(--color-primary)] font-semibold mb-2">
             <span class="text-sm">Next</span>
             <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </div>
-          <h4 class="text-gray-900 group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">{{ .Title }}</h4>
+          <h4 class="text-[var(--color-fg)] group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">{{ .Title }}</h4>
         </a>
       {{- end }}
     </nav>

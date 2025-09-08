@@ -2,7 +2,7 @@
   <!-- Term Header -->
   <header class="text-center mb-16">
     <!-- Breadcrumb -->
-    <nav class="text-sm text-gray-500 mb-6">
+    <nav class="text-sm text-[var(--color-fg)]/60 mb-6">
       <div class="flex items-center justify-center gap-2">
         <a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,13 +33,13 @@
     <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-sand)] to-[var(--color-growth)] mx-auto mb-8 rounded-full"></div>
     
     {{- if .Content }}
-      <div class="prose prose-lg max-w-3xl mx-auto text-gray-600 mb-8">
+      <div class="prose prose-lg max-w-3xl mx-auto text-[var(--color-fg)]/70 mb-8">
         {{ .Content }}
       </div>
     {{- end }}
 
     {{- if .Pages }}
-      <div class="flex items-center justify-center gap-4 text-sm text-gray-500">
+      <div class="flex items-center justify-center gap-4 text-sm text-[var(--color-fg)]/60">
         <svg class="w-4 h-4 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
@@ -55,13 +55,13 @@
         {{ range .Pages }}
           <article class="group relative">
             <!-- Card -->
-            <div class="bg-white rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full flex flex-col">
+            <div class="bg-[var(--color-bg)] rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full flex flex-col">
               <!-- Meta info -->
               <div class="flex items-center justify-between mb-4">
                 {{- if .Date }}
                   {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
                   {{ $dateHuman := .Date | time.Format "Jan 2, 2006" }}
-                  <time datetime="{{ $dateMachine }}" class="flex items-center gap-2 text-xs text-gray-500">
+                  <time datetime="{{ $dateMachine }}" class="flex items-center gap-2 text-xs text-[var(--color-fg)]/60">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
@@ -81,7 +81,7 @@
                 <h3 class="text-xl font-bold text-[var(--color-primary)] mb-3 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">
                   {{ .LinkTitle }}
                 </h3>
-                <p class="text-gray-600 leading-relaxed line-clamp-3 mb-4">
+                <p class="text-[var(--color-fg)]/70 leading-relaxed line-clamp-3 mb-4">
                   {{ .Summary | default "Read more about this topic..." }}
                 </p>
               </div>
@@ -103,7 +103,7 @@
                       </span>
                     {{- end }}
                     {{- if gt (len $otherTags) 2 }}
-                      <span class="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-[var(--radius-base)] font-medium">
+                      <span class="px-2 py-1 bg-[var(--color-neutral-light)] text-[var(--color-fg)]/60 text-xs rounded-[var(--radius-base)] font-medium">
                         +{{ sub (len $otherTags) 2 }} more
                       </span>
                     {{- end }}
@@ -129,7 +129,7 @@
       <!-- Back to taxonomy link -->
       {{- with .Data.Taxonomy }}
         <div class="text-center mt-16">
-          <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-3 px-6 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-white transition-colors">
+          <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-3 px-6 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-[var(--color-neutral-light)] transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
@@ -142,12 +142,12 @@
     <!-- Empty state -->
     <div class="text-center py-16">
       <div class="w-16 h-16 bg-[var(--color-neutral-light)] rounded-full flex items-center justify-center mx-auto mb-6">
-        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-8 h-8 text-[var(--color-fg)]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
       </div>
-      <h3 class="text-xl font-semibold text-gray-600 mb-2">No posts found</h3>
-      <p class="text-gray-500">No content has been tagged with "{{ .Title }}" yet.</p>
+      <h3 class="text-xl font-semibold text-[var(--color-fg)]/70 mb-2">No posts found</h3>
+      <p class="text-[var(--color-fg)]/60">No content has been tagged with "{{ .Title }}" yet.</p>
     </div>
   {{- end }}
 {{ end }}

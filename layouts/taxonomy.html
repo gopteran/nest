@@ -6,12 +6,12 @@
     </h1>
     <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-sand)] to-[var(--color-growth)] mx-auto mb-8 rounded-full"></div>
     {{- if .Content }}
-      <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <div class="prose prose-lg max-w-3xl mx-auto text-[var(--color-fg)]/70">
         {{ .Content }}
       </div>
     {{- end }}
     {{- if .Pages }}
-      <p class="text-gray-500 mt-6">
+      <p class="text-[var(--color-fg)]/60 mt-6">
         Browse {{ len .Pages }} {{ if eq (len .Pages) 1 }}item{{ else }}items{{ end }} in this {{ .Data.Singular | lower }}
       </p>
     {{- end }}
@@ -23,10 +23,10 @@
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {{ range .Pages }}
           <div class="group relative">
-            <a href="{{ .RelPermalink }}" class="block bg-white rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-gray-100 hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full">
+            <a href="{{ .RelPermalink }}" class="block bg-[var(--color-bg)] rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full">
               <!-- Term count badge -->
               {{- if .Data.Terms }}
-                <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
+                <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] text-[var(--color-neutral-light)] text-xs font-bold rounded-full flex items-center justify-center shadow-lg">
                   {{ len .Data.Terms }}
                 </div>
               {{- end }}
@@ -45,9 +45,9 @@
 
               <!-- Term description -->
               {{- if .Summary }}
-                <p class="text-sm text-gray-600 line-clamp-2">{{ .Summary }}</p>
+                <p class="text-sm text-[var(--color-fg)]/70 line-clamp-2">{{ .Summary }}</p>
               {{- else }}
-                <p class="text-sm text-gray-500 italic">
+                <p class="text-sm text-[var(--color-fg)]/60 italic">
                   Explore content tagged with "{{ .LinkTitle | lower }}"
                 </p>
               {{- end }}
@@ -63,12 +63,12 @@
     <!-- Empty state -->
     <div class="text-center py-16">
       <div class="w-16 h-16 bg-[var(--color-neutral-light)] rounded-full flex items-center justify-center mx-auto mb-6">
-        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-8 h-8 text-[var(--color-fg)]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
         </svg>
       </div>
-      <h3 class="text-xl font-semibold text-gray-600 mb-2">No {{ .Data.Plural | lower }} yet</h3>
-      <p class="text-gray-500">Check back later for new {{ .Data.Plural | lower }}.</p>
+      <h3 class="text-xl font-semibold text-[var(--color-fg)]/70 mb-2">No {{ .Data.Plural | lower }} yet</h3>
+      <p class="text-[var(--color-fg)]/60">Check back later for new {{ .Data.Plural | lower }}.</p>
     </div>
   {{- end }}
 {{ end }}
