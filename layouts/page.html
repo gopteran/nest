@@ -19,41 +19,64 @@
           </div>
         {{- end }}
         
-        {{/* Git-based last modified date */}}
+        {{/* Git-based last modified date with fallback */}}
+        {{- $lastModified := false }}
         {{- with .GitInfo }}
           {{- if .AuthorDate }}
-            {{ $gitDateMachine := .AuthorDate | time.Format "2006-01-02T15:04:05-07:00" }}
-            {{ $gitDateHuman := .AuthorDate | time.Format "January 2, 2006" }}
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[var(--color-growth)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-              </svg>
-              <time datetime="{{ $gitDateMachine }}" title="Last updated">Updated {{ $gitDateHuman }}</time>
-            </div>
+            {{- $lastModified = .AuthorDate }}
           {{- end }}
         {{- end }}
+        {{- if not $lastModified }}
+          {{- $lastModified = .Lastmod }}
+        {{- end }}
+        {{- if not $lastModified }}
+          {{- $lastModified = .Date }}
+        {{- end }}
         
-        {{/* Git-based author information */}}
+        {{- if and $lastModified (ne $lastModified .Date) }}
+          {{ $lastModMachine := $lastModified | time.Format "2006-01-02T15:04:05-07:00" }}
+          {{ $lastModHuman := $lastModified | time.Format "January 2, 2006" }}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-[var(--color-growth)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            <time datetime="{{ $lastModMachine }}" title="Last updated">Updated {{ $lastModHuman }}</time>
+          </div>
+        {{- end }}
+        
+        {{/* Author information with comprehensive fallback */}}
+        {{- $author := "" }}
+        {{- $authorSource := "unknown" }}
         {{- with .GitInfo }}
           {{- if .AuthorName }}
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-              </svg>
-              <span title="Author from Git">{{ .AuthorName }}</span>
-            </div>
+            {{- $author = .AuthorName }}
+            {{- $authorSource = "git" }}
           {{- end }}
-        {{- else }}
-          {{/* Fallback to front matter or site params */}}
-          {{- $author := .Params.author | default site.Params.author }}
+        {{- end }}
+        {{- if not $author }}
+          {{- $author = .Params.author }}
           {{- if $author }}
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-              </svg>
-              <span>{{ $author }}</span>
-            </div>
+            {{- $authorSource = "frontmatter" }}
           {{- end }}
+        {{- end }}
+        {{- if not $author }}
+          {{- $author = site.Params.author }}
+          {{- if $author }}
+            {{- $authorSource = "site" }}
+          {{- end }}
+        {{- end }}
+        {{- if not $author }}
+          {{- $author = site.Title }}
+          {{- $authorSource = "site-title" }}
+        {{- end }}
+        
+        {{- if $author }}
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <span title="Author ({{ $authorSource }})">{{ $author }}</span>
+          </div>
         {{- end }}
         
         {{- if .ReadingTime }}
