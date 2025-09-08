@@ -18,7 +18,7 @@
       <!-- Stats -->
       <div class="flex items-center justify-between mb-8">
         <div class="flex items-center gap-4">
-          <h2 class="text-2xl font-bold text-[var(--color-primary)]">All {{ .Title }}</h2>
+          <h2 class="text-2xl font-bold text-[var(--color-primary)]">All {{ .Title | lower }}</h2>
           <span class="px-3 py-1 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] text-sm font-semibold rounded-full">
             {{ len .Pages }} {{ if eq (len .Pages) 1 }}item{{ else }}items{{ end }}
           </span>

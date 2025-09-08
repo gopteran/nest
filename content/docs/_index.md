@@ -1,12 +1,13 @@
+---
+title: "Docs"
+date: 2025-09-08
+draft: false
+---
+
+
 # Documentation
 
-Welcome to the Gopteran Nest Documentation.
+Welcome to the Gopteran Documentation.
 
 This section contains all the guides, references, and resources for the Gopteran project.
 
-## Sections
-
-- [Nest Overview](nest/)
-- [Remora CLI](remora/)
-- [Getting Started](getting-started/)
-- [API Reference](api/)
