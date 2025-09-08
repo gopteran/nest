@@ -1,4 +1,10 @@
-# Ventus
+---
+title: "Ventus"
+date: 2025-09-08
+draft: false
+summary: "Ventus is the frontend framework for the Gopteran project"
+---
+
 
 ## Overview
 
@@ -18,7 +24,6 @@ The name “Ventus” comes from the Latin word for “wind”:
 
 - **User-centric design:**  
   Like the wind, Ventus aims to be light, fast, and adaptive, focusing on user experience without adding unnecessary bulk or complexity. This is also why the choice of SvelteKit, a framework known for its minimalism and efficiency.
-
 
 ## Functional role
 
