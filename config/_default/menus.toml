@@ -1,0 +1,206 @@
+# Main Navigation Menu
+[[main]]
+  name = 'Home'
+  pageRef = '/'
+  weight = 10
+  [main.params]
+    icon = 'home'
+    description = 'Return to homepage'
+
+[[main]]
+  name = 'Documentation'
+  pageRef = '/docs'
+  weight = 20
+  [main.params]
+    icon = 'book'
+    description = 'Browse documentation'
+
+[[main]]
+  name = 'Components'
+  pageRef = '/docs'
+  weight = 30
+  [main.params]
+    icon = 'cubes'
+    description = 'Explore Gopteran components'
+
+[[main]]
+  name = 'Tags'
+  pageRef = '/tags'
+  weight = 40
+  [main.params]
+    icon = 'tags'
+    description = 'Browse by tags'
+
+[[main]]
+  name = 'Categories'
+  pageRef = '/categories'
+  weight = 50
+  [main.params]
+    icon = 'folder'
+    description = 'Browse by categories'
+
+# Footer Menu
+[[footer]]
+  name = 'About'
+  pageRef = '/about'
+  weight = 10
+
+[[footer]]
+  name = 'Privacy Policy'
+  pageRef = '/privacy'
+  weight = 20
+
+[[footer]]
+  name = 'Terms of Service'
+  pageRef = '/terms'
+  weight = 30
+
+[[footer]]
+  name = 'Contact'
+  pageRef = '/contact'
+  weight = 40
+
+# Social Menu
+[[social]]
+  name = 'GitHub'
+  url = 'https://github.com/gopteran'
+  weight = 10
+  [social.params]
+    icon = 'github'
+    rel = 'me'
+
+[[social]]
+  name = 'Twitter'
+  url = 'https://twitter.com/gopteran'
+  weight = 20
+  [social.params]
+    icon = 'twitter'
+    rel = 'me'
+
+[[social]]
+  name = 'LinkedIn'
+  url = 'https://linkedin.com/company/gopteran'
+  weight = 30
+  [social.params]
+    icon = 'linkedin'
+    rel = 'me'
+
+[[social]]
+  name = 'Discord'
+  url = 'https://discord.gg/gopteran'
+  weight = 40
+  [social.params]
+    icon = 'discord'
+    rel = 'me'
+
+# Documentation Submenu
+[[docs]]
+  name = 'Getting Started'
+  pageRef = '/docs/getting-started'
+  weight = 10
+  parent = 'Documentation'
+
+[[docs]]
+  name = 'Aerie'
+  pageRef = '/docs/aerie'
+  weight = 20
+  parent = 'Components'
+  [docs.params]
+    description = 'Core component documentation'
+
+[[docs]]
+  name = 'Carina'
+  pageRef = '/docs/carina'
+  weight = 30
+  parent = 'Components'
+  [docs.params]
+    description = 'Navigation component guide'
+
+[[docs]]
+  name = 'Nest'
+  pageRef = '/docs/nest'
+  weight = 40
+  parent = 'Components'
+  [docs.params]
+    description = 'Foundation component docs'
+
+[[docs]]
+  name = 'Remora'
+  pageRef = '/docs/remora'
+  weight = 50
+  parent = 'Components'
+  [docs.params]
+    description = 'Utility component reference'
+
+[[docs]]
+  name = 'Ventus'
+  pageRef = '/docs/ventus'
+  weight = 60
+  parent = 'Components'
+  [docs.params]
+    description = 'Advanced component guide'
+
+[[docs]]
+  name = 'API Reference'
+  pageRef = '/docs/api'
+  weight = 70
+  parent = 'Documentation'
+
+[[docs]]
+  name = 'Examples'
+  pageRef = '/docs/examples'
+  weight = 80
+  parent = 'Documentation'
+
+# Admin Menu (for authenticated users)
+[[admin]]
+  name = 'Dashboard'
+  pageRef = '/admin'
+  weight = 10
+  [admin.params]
+    requiresAuth = true
+
+[[admin]]
+  name = 'Content Management'
+  pageRef = '/admin/content'
+  weight = 20
+  parent = 'Dashboard'
+  [admin.params]
+    requiresAuth = true
+
+[[admin]]
+  name = 'Analytics'
+  pageRef = '/admin/analytics'
+  weight = 30
+  parent = 'Dashboard'
+  [admin.params]
+    requiresAuth = true
+
+# Language Menu
+[[languages]]
+  name = 'English'
+  url = '/'
+  weight = 10
+  [languages.params]
+    lang = 'en'
+
+[[languages]]
+  name = 'Español'
+  url = '/es'
+  weight = 20
+  [languages.params]
+    lang = 'es'
+
+[[languages]]
+  name = 'Français'
+  url = '/fr'
+  weight = 30
+  [languages.params]
+    lang = 'fr'
+
+[[languages]]
+  name = 'Deutsch'
+  url = '/de'
+  weight = 40
+  [languages.params]
+    lang = 'de'

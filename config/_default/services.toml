@@ -1,0 +1,316 @@
+# Services and Integrations Configuration
+# This file contains settings for external services and integrations
+
+[params]
+  # Analytics Services
+  [params.services]
+    [params.services.analytics]
+      # Google Analytics 4
+      [params.services.analytics.google]
+        enable = true
+        measurementId = 'G-ABC123DEF456'
+        anonymizeIP = true
+        respectDoNotTrack = true
+
+      # Google Tag Manager
+      [params.services.analytics.gtm]
+        enable = true
+        containerId = 'GTM-ABC123DEF'
+        auth = 'your-auth-token'
+        preview = 'env-1'
+
+      # Plausible Analytics
+      [params.services.analytics.plausible]
+        enable = false
+        domain = 'gopteran.dev'
+        apiHost = 'https://plausible.io'
+
+      # Fathom Analytics
+      [params.services.analytics.fathom]
+        enable = false
+        siteId = 'your-site-id'
+        domain = 'cdn.usefathom.com'
+
+      # GoatCounter
+      [params.services.analytics.goatcounter]
+        enable = false
+        code = 'your-goatcounter-code'
+
+    # Social Media Services
+    [params.services.social]
+      # Twitter/X
+      [params.services.social.twitter]
+        enable = true
+        username = 'gopteran'
+        apiKey = 'your-twitter-api-key'
+        apiSecret = 'your-twitter-api-secret'
+        accessToken = 'your-access-token'
+        accessSecret = 'your-access-secret'
+
+      # Facebook
+      [params.services.social.facebook]
+        enable = true
+        appId = '1234567890123456'
+        appSecret = 'your-facebook-app-secret'
+        pageId = 'your-facebook-page-id'
+        accessToken = 'your-facebook-access-token'
+
+      # LinkedIn
+      [params.services.social.linkedin]
+        enable = true
+        clientId = 'your-linkedin-client-id'
+        clientSecret = 'your-linkedin-client-secret'
+        companyId = 'your-company-id'
+
+      # Discord
+      [params.services.social.discord]
+        enable = true
+        webhookUrl = 'https://discord.com/api/webhooks/your-webhook-id/your-webhook-token'
+        botToken = 'your-bot-token'
+
+    # Content Management Services
+    [params.services.cms]
+      # Netlify CMS
+      [params.services.cms.netlify]
+        enable = false
+        repo = 'gopteran/nest'
+        branch = 'main'
+        apiRoot = 'https://api.github.com'
+
+      # Forestry
+      [params.services.cms.forestry]
+        enable = false
+        repo = 'gopteran/nest'
+        branch = 'main'
+
+      # Strapi
+      [params.services.cms.strapi]
+        enable = false
+        apiUrl = 'https://cms.gopteran.dev'
+        apiToken = 'your-strapi-api-token'
+
+    # Search Services
+    [params.services.search]
+      # Algolia
+      [params.services.search.algolia]
+        enable = false
+        appId = 'your-algolia-app-id'
+        apiKey = 'your-algolia-api-key'
+        indexName = 'gopteran-docs'
+
+      # Elasticsearch
+      [params.services.search.elasticsearch]
+        enable = false
+        host = 'https://elasticsearch.gopteran.dev'
+        index = 'docs'
+        apiKey = 'your-elasticsearch-api-key'
+
+      # MeiliSearch
+      [params.services.search.meilisearch]
+        enable = false
+        host = 'https://meilisearch.gopteran.dev'
+        apiKey = 'your-meilisearch-api-key'
+        index = 'docs'
+
+    # Email Services
+    [params.services.email]
+      # Mailchimp
+      [params.services.email.mailchimp]
+        enable = true
+        apiKey = 'your-mailchimp-api-key'
+        listId = 'your-audience-id'
+        server = 'us1'
+
+      # ConvertKit
+      [params.services.email.convertkit]
+        enable = false
+        apiKey = 'your-convertkit-api-key'
+        formId = 'your-form-id'
+
+      # Buttondown
+      [params.services.email.buttondown]
+        enable = false
+        apiKey = 'your-buttondown-api-key'
+        newsletterId = 'your-newsletter-id'
+
+      # SendGrid
+      [params.services.email.sendgrid]
+        enable = false
+        apiKey = 'your-sendgrid-api-key'
+        fromEmail = 'noreply@gopteran.dev'
+        fromName = 'Gopteran'
+
+    # Payment Services
+    [params.services.payment]
+      # Stripe
+      [params.services.payment.stripe]
+        enable = false
+        publishableKey = 'pk_live_your-stripe-publishable-key'
+        secretKey = 'sk_live_your-stripe-secret-key'
+        webhookSecret = 'whsec_your-webhook-secret'
+
+      # PayPal
+      [params.services.payment.paypal]
+        enable = false
+        clientId = 'your-paypal-client-id'
+        clientSecret = 'your-paypal-client-secret'
+        environment = 'production'
+
+      # Lemon Squeezy
+      [params.services.payment.lemonsqueezy]
+        enable = false
+        apiKey = 'your-lemonsqueezy-api-key'
+        storeId = 'your-store-id'
+
+    # Cloud Services
+    [params.services.cloud]
+      # AWS
+      [params.services.cloud.aws]
+        enable = true
+        region = 'us-east-1'
+        accessKey = 'your-aws-access-key'
+        secretKey = 'your-aws-secret-key'
+        bucket = 'gopteran-docs'
+
+      # Cloudflare
+      [params.services.cloud.cloudflare]
+        enable = true
+        apiToken = 'your-cloudflare-api-token'
+        zoneId = 'your-zone-id'
+        accountId = 'your-account-id'
+
+      # Vercel
+      [params.services.cloud.vercel]
+        enable = false
+        token = 'your-vercel-token'
+        projectId = 'your-project-id'
+
+      # Netlify
+      [params.services.cloud.netlify]
+        enable = false
+        token = 'your-netlify-token'
+        siteId = 'your-site-id'
+
+    # Monitoring Services
+    [params.services.monitoring]
+      # Sentry
+      [params.services.monitoring.sentry]
+        enable = true
+        dsn = 'https://your-sentry-dsn@sentry.io/project-id'
+        environment = 'production'
+        release = '1.0.0'
+
+      # LogRocket
+      [params.services.monitoring.logrocket]
+        enable = false
+        appId = 'gopteran/logrocket-app'
+
+      # Datadog
+      [params.services.monitoring.datadog]
+        enable = false
+        apiKey = 'your-datadog-api-key'
+        appKey = 'your-datadog-app-key'
+
+    # CDN Services
+    [params.services.cdn]
+      # Cloudflare CDN
+      [params.services.cdn.cloudflare]
+        enable = true
+        zoneId = 'your-zone-id'
+        apiToken = 'your-api-token'
+
+      # Fastly
+      [params.services.cdn.fastly]
+        enable = false
+        serviceId = 'your-service-id'
+        apiKey = 'your-api-key'
+
+      # Bunny CDN
+      [params.services.cdn.bunny]
+        enable = false
+        apiKey = 'your-bunny-api-key'
+        storageZone = 'your-storage-zone'
+
+    # API Services
+    [params.services.api]
+      # GitHub API
+      [params.services.api.github]
+        enable = true
+        token = 'your-github-token'
+        repo = 'gopteran/nest'
+
+      # GitLab API
+      [params.services.api.gitlab]
+        enable = false
+        token = 'your-gitlab-token'
+        projectId = 'your-project-id'
+
+      # Custom APIs
+      [params.services.api.custom]
+        enable = false
+        baseUrl = 'https://api.gopteran.dev'
+        apiKey = 'your-api-key'
+        endpoints = ['/content', '/analytics', '/users']
+
+    # Webhook Services
+    [params.services.webhooks]
+      # Zapier
+      [params.services.webhooks.zapier]
+        enable = false
+        webhookUrl = 'https://hooks.zapier.com/hooks/catch/your-webhook-id/'
+
+      # IFTTT
+      [params.services.webhooks.ifttt]
+        enable = false
+        webhookUrl = 'https://maker.ifttt.com/trigger/your-event/with/key/your-key'
+
+      # Custom Webhooks
+      [params.services.webhooks.custom]
+        enable = true
+        url = 'https://api.gopteran.dev/webhooks/content'
+        secret = 'your-webhook-secret'
+        events = ['publish', 'update', 'delete']
+
+    # Backup Services
+    [params.services.backup]
+      # Backblaze B2
+      [params.services.backup.backblaze]
+        enable = true
+        accountId = 'your-account-id'
+        applicationKey = 'your-application-key'
+        bucket = 'gopteran-backups'
+
+      # Dropbox
+      [params.services.backup.dropbox]
+        enable = false
+        accessToken = 'your-dropbox-access-token'
+        folder = '/gopteran-backups'
+
+      # Google Drive
+      [params.services.backup.googledrive]
+        enable = false
+        credentials = 'path/to/credentials.json'
+        folderId = 'your-folder-id'
+
+    # Notification Services
+    [params.services.notifications]
+      # Slack
+      [params.services.notifications.slack]
+        enable = true
+        webhookUrl = 'https://hooks.slack.com/services/your-webhook-url'
+        channel = '#deployments'
+        username = 'Hugo Deploy'
+
+      # Discord
+      [params.services.notifications.discord]
+        enable = true
+        webhookUrl = 'https://discord.com/api/webhooks/your-webhook-id/your-webhook-token'
+        username = 'Hugo Deploy'
+        avatarUrl = '/img/hugo-avatar.png'
+
+      # Microsoft Teams
+      [params.services.notifications.teams]
+        enable = false
+        webhookUrl = 'https://outlook.office.com/webhook/your-webhook-url'
+        title = 'Hugo Deployment'
+        themeColor = '0076D7'

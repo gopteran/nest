@@ -1,0 +1,222 @@
+baseURL = 'https://gopteran.dev/'
+languageCode = 'en-US'
+title = 'Gopteran - Advanced Documentation Platform'
+
+# Language Settings
+# defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+enableMissingTranslationPlaceholders = true
+
+enableGitInfo = true
+
+# Content Settings
+contentDir = 'content'
+layoutDir = 'layouts'
+staticDir = 'static'
+resourceDir = 'resources'
+publishDir = 'public'
+
+# Build Settings
+[build]
+  writeStats = false
+  noJSConfigInAssets = false
+  useResourceCacheWhen = 'always'
+  [build.buildStats]
+    enable = true
+    [build.buildStats.storages]
+      [build.buildStats.storages."memcache"]
+        enable = true
+      [build.buildStats.storages."filesystem"]
+        enable = true
+
+# Server Settings
+[server]
+  [[server.headers]]
+    for = '/**'
+    [server.headers.values]
+      X-Frame-Options = 'DENY'
+      X-Content-Type-Options = 'nosniff'
+      Referrer-Policy = 'strict-origin-when-cross-origin'
+      Permissions-Policy = 'camera=(), microphone=(), geolocation=()'
+  [[server.headers]]
+    for = '/css/**'
+    [server.headers.values]
+      Cache-Control = 'public, max-age=31536000'
+  [[server.headers]]
+    for = '/js/**'
+    [server.headers.values]
+      Cache-Control = 'public, max-age=31536000'
+  [[server.headers]]
+    for = '/img/**'
+    [server.headers.values]
+      Cache-Control = 'public, max-age=31536000'
+
+# Output Formats
+[outputs]
+  home = ['HTML', 'RSS']
+  page = ['HTML']
+  section = ['HTML', 'RSS']
+  taxonomy = ['HTML', 'RSS']
+  term = ['HTML', 'RSS']
+
+# Output Format Definitions
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = 'application/rss+xml'
+    baseName = 'index'
+    isPlainText = false
+    rel = 'alternate'
+  [outputFormats.JSON]
+    mediatype = 'application/json'
+    baseName = 'index'
+    isPlainText = false
+    rel = 'alternate'
+
+# Media Types
+[mediaTypes]
+  [mediaTypes.'application/rss+xml']
+    suffixes = ['xml']
+  [mediaTypes.'application/json']
+    suffixes = ['json']
+
+# Taxonomies
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+  author = 'authors'
+  series = 'series'
+
+# Related Content
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = false
+  [[related.indices]]
+    name = 'tags'
+    weight = 100
+  [[related.indices]]
+    name = 'categories'
+    weight = 80
+  [[related.indices]]
+    name = 'keywords'
+    weight = 60
+  [[related.indices]]
+    name = 'series'
+    weight = 40
+
+# Image Processing
+[imaging]
+  resampleFilter = 'Lanczos'
+  quality = 85
+  anchor = 'smart'
+  [imaging.exif]
+    includeFields = ''
+    excludeFields = 'GPS|Exif|ExposureTime|Lens'
+
+# Markup Settings
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+      autoHeadingIDType = 'github'
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = false
+    style = 'github'
+    tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
+
+# Minification
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      precision = 0
+    [minify.tdewolff.html]
+      keepComments = false
+      keepConditionalComments = false
+      keepDefaultAttrVals = false
+      keepDocumentTags = false
+      keepEndTags = false
+      keepWhitespace = false
+    [minify.tdewolff.js]
+      precision = 0
+    [minify.tdewolff.json]
+      precision = 0
+    [minify.tdewolff.svg]
+      precision = 0
+    [minify.tdewolff.xml]
+      precision = 0
+
+# Caching
+[caches]
+  [caches.getresource]
+    dir = ':cacheDir/:project'
+    maxAge = '10m'
+  [caches.getjson]
+    dir = ':cacheDir/:project'
+    maxAge = '10m'
+  [caches.images]
+    dir = ':cacheDir/:project'
+    maxAge = '10m'
+  [caches.assets]
+    dir = ':cacheDir/:project'
+    maxAge = '10m'
+  [caches.modules]
+    dir = ':cacheDir/modules'
+    maxAge = '1h'
+
+# Security
+[security]
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+# Deployment
+[deployment]
+  [[deployment.targets]]
+    name = 'production'
+    URL = 's3://gopteran-docs?region=us-east-1'
+    cloudFrontDistributionID = 'E1234567890123'
+  [[deployment.matchers]]
+    pattern = '^.+\\.(js|css|svg|ttf|woff|woff2)$'
+    cacheControl = 'max-age=31536000, no-transform, public'
+    gzip = true
+  [[deployment.matchers]]
+    pattern = '^.+\\.(png|jpg|jpeg|gif|ico|webp)$'
+    cacheControl = 'max-age=31536000, no-transform, public'
+    gzip = false
+  [[deployment.matchers]]
+    pattern = '^.+\\.(html|xml|json)$'
+    cacheControl = 'max-age=300, no-transform, public'
+    gzip = true
+  [[deployment.matchers]]
+    pattern = 'sitemap\\.xml$'
+    cacheControl = 'max-age=3600, no-transform, public'
+    gzip = true

@@ -1,0 +1,71 @@
+# Hugo Modules Configuration
+# This file manages all Hugo modules and their configurations
+
+[hugoVersion]
+  extended = true
+  min = '0.146.0'
+
+# Module Imports - Disabled for now to avoid loading issues
+# [[imports]]
+#   path = 'github.com/gohugoio/hugo-mod-jslibs-dist'
+#   disable = false
+#   [[imports.mounts]]
+#     source = 'dist'
+#     target = 'assets/jslibs'
+
+# [[imports]]
+#   path = 'github.com/gohugoio/hugo-mod-jslibs/alpinejs'
+#   disable = false
+#   [[imports.mounts]]
+#     source = 'dist'
+#     target = 'assets/jslibs/alpinejs'
+
+# Module Parameters
+[params]
+  [params.modules]
+    # JavaScript Libraries
+    alpinejs = '3.14.1'
+    jquery = '3.7.1'
+    lodash = '4.17.21'
+    axios = '1.6.8'
+
+    # CSS Frameworks (if needed)
+    bootstrap = '5.3.3'
+    tailwindcss = '3.4.4'
+# [[replacements]]
+#   old = 'github.com/gohugoio/hugo-mod-jslibs-dist'
+#   new = '../hugo-mod-jslibs-dist'
+
+# Module Configuration
+[module]
+  # Disable proxy for faster builds in development
+  proxy = 'direct'
+
+  # Module mounts for custom assets
+  [[module.mounts]]
+    source = 'node_modules/alpinejs/dist/cdn.min.js'
+    target = 'assets/js/vendor/alpinejs.min.js'
+
+  [[module.mounts]]
+    source = 'node_modules/lunr/lunr.min.js'
+    target = 'assets/js/vendor/lunr.min.js'
+
+  # Static file mounts
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+
+  # Content mounts
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+
+  # Layout mounts
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+
+  # Asset mounts
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'

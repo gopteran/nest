@@ -1,0 +1,64 @@
+# Internationalization Configuration
+# This file contains language and internationalization settings
+
+# Language Configuration
+[languages]
+  [languages.en]
+    languageCode = 'en-US'
+    languageName = 'English'
+    weight = 1
+    title = 'Gopteran - Advanced Documentation Platform'
+
+    [languages.en.params]
+      description = 'Comprehensive documentation and guides for Gopteran platform'
+      keywords = ['documentation', 'technical guides', 'Gopteran', 'API', 'development']
+
+  [languages.es]
+    languageCode = 'es-ES'
+    languageName = 'Español'
+    weight = 2
+    title = 'Gopteran - Plataforma de Documentación Avanzada'
+
+    [languages.es.params]
+      description = 'Documentación completa y guías para la plataforma Gopteran'
+      keywords = ['documentación', 'guías técnicas', 'Gopteran', 'API', 'desarrollo']
+
+  [languages.fr]
+    languageCode = 'fr-FR'
+    languageName = 'Français'
+    weight = 3
+    title = 'Gopteran - Plateforme de Documentation Avancée'
+
+    [languages.fr.params]
+      description = 'Documentation complète et guides pour la plateforme Gopteran'
+      keywords = ['documentation', 'guides techniques', 'Gopteran', 'API', 'développement']
+
+  [languages.de]
+    languageCode = 'de-DE'
+    languageName = 'Deutsch'
+    weight = 4
+    title = 'Gopteran - Erweiterte Dokumentationsplattform'
+
+    [languages.de.params]
+      description = 'Umfassende Dokumentation und Anleitungen für die Gopteran-Plattform'
+      keywords = ['Dokumentation', 'technische Anleitungen', 'Gopteran', 'API', 'Entwicklung']
+
+  [languages.ja]
+    languageCode = 'ja-JP'
+    languageName = '日本語'
+    weight = 5
+    title = 'Gopteran - 高度なドキュメントプラットフォーム'
+
+    [languages.ja.params]
+      description = 'Gopteranプラットフォームの包括的なドキュメントとガイド'
+      keywords = ['ドキュメント', '技術ガイド', 'Gopteran', 'API', '開発']
+
+  [languages.zh]
+    languageCode = 'zh-CN'
+    languageName = '中文'
+    weight = 6
+    title = 'Gopteran - 高级文档平台'
+
+    [languages.zh.params]
+      description = 'Gopteran平台的全面文档和指南'
+      keywords = ['文档', '技术指南', 'Gopteran', 'API', '开发']

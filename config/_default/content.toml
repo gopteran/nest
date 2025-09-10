@@ -1,0 +1,220 @@
+# Content Management Configuration
+# This file contains settings for content organization and management
+
+[params]
+  # Content Organization
+  [params.content]
+    # Content types
+    [params.content.types]
+      docs = 'Documentation'
+      blog = 'Blog Posts'
+      news = 'News & Updates'
+      tutorial = 'Tutorials'
+      guide = 'Guides'
+      api = 'API Reference'
+
+    # Content sections
+    [params.content.sections]
+      docs = '/docs'
+      blog = '/blog'
+      news = '/news'
+      tutorials = '/tutorials'
+      guides = '/guides'
+      api = '/api'
+
+    # Content metadata
+    [params.content.metadata]
+      showAuthor = true
+      showDate = true
+      showReadingTime = true
+      showWordCount = false
+      showLastModified = true
+      showTableOfContents = true
+
+  # Author Management
+  [params.authors]
+    # Default author
+    [params.authors.default]
+      name = 'Gopteran Team'
+      bio = 'The official Gopteran development team'
+      avatar = '/img/team-avatar.jpg'
+      website = 'https://gopteran.dev'
+      email = 'team@gopteran.dev'
+      twitter = '@gopteran'
+      github = 'gopteran'
+      linkedin = 'company/gopteran'
+
+    # Author profiles
+    [params.authors.'john-doe']
+      name = 'John Doe'
+      bio = 'Senior Developer at Gopteran'
+      avatar = '/img/authors/john-doe.jpg'
+      website = 'https://johndoe.dev'
+      email = 'john@gopteran.dev'
+      twitter = '@johndoe'
+      github = 'johndoe'
+      linkedin = 'johndoe'
+
+  # Series Management
+  [params.series]
+    enable = true
+    [params.series.docs]
+      title = 'Documentation Series'
+      description = 'Comprehensive guides and tutorials'
+      weight = 10
+
+    [params.series.tutorials]
+      title = 'Tutorial Series'
+      description = 'Step-by-step learning guides'
+      weight = 20
+
+    [params.series.api]
+      title = 'API Reference Series'
+      description = 'Complete API documentation'
+      weight = 30
+
+  # Content Relationships
+  [params.relationships]
+    # Related content settings
+    enableRelatedContent = true
+    relatedContentCount = 6
+
+    # Content linking
+    [params.relationships.linking]
+      enableAutoLinking = true
+      linkInternalContent = true
+      linkExternalContent = false
+
+    # Cross-references
+    [params.relationships.crossRef]
+      enable = true
+      style = 'full' # short, full, or false
+
+  # Content Versioning
+  [params.versioning]
+    enable = true
+    [params.versioning.docs]
+      current = 'v2.1.0'
+      versions = ['v2.1.0', 'v2.0.0', 'v1.5.0', 'v1.0.0']
+
+    [params.versioning.api]
+      current = 'v3.0'
+      versions = ['v3.0', 'v2.5', 'v2.0', 'v1.0']
+
+  # Content Moderation
+  [params.moderation]
+    enable = true
+    [params.moderation.comments]
+      enable = true
+      provider = 'disqus' # disqus, commento, utterances, etc.
+      shortname = 'gopteran'
+      repo = 'gopteran/gopteran-docs'
+
+    [params.moderation.reviews]
+      enable = true
+      requireApproval = false
+      allowAnonymous = false
+
+  # Content Search
+  [params.search]
+    enable = true
+    provider = 'lunr' # lunr, algolia, elasticsearch
+    indexURL = '/search-index.json'
+
+    # Search settings
+    [params.search.settings]
+      minQueryLength = 3
+      maxResults = 20
+      highlightResults = true
+      fuzzySearch = true
+
+    # Algolia settings (if using Algolia)
+    [params.search.algolia]
+      appId = 'your-app-id'
+      apiKey = 'your-search-only-api-key'
+      indexName = 'gopteran-docs'
+
+  # Content Analytics
+  [params.contentAnalytics]
+    enable = true
+    [params.contentAnalytics.pageviews]
+      enable = true
+      provider = 'plausible' # plausible, fathom, goatcounter
+
+    [params.contentAnalytics.engagement]
+      enable = true
+      trackScrollDepth = true
+      trackTimeOnPage = true
+      trackClicks = true
+
+  # Content Scheduling
+  [params.scheduling]
+    enable = true
+    [params.scheduling.posts]
+      enable = true
+      timezone = 'UTC'
+      defaultPublishTime = '09:00'
+
+    [params.scheduling.automation]
+      enable = false
+      socialMedia = true
+      email = true
+
+  # Content Templates
+  [params.templates]
+    enable = true
+    [params.templates.docs]
+      archetype = 'docs'
+      layout = 'docs'
+      type = 'page'
+
+    [params.templates.blog]
+      archetype = 'blog'
+      layout = 'single'
+      type = 'page'
+
+    [params.templates.api]
+      archetype = 'api'
+      layout = 'api'
+      type = 'page'
+
+  # Content Validation
+  [params.validation]
+    enable = true
+    [params.validation.frontmatter]
+      requireTitle = true
+      requireDescription = true
+      requireDate = true
+      requireAuthor = false
+
+    [params.validation.content]
+      requireH1 = true
+      maxHeadingDepth = 4
+      requireAltText = true
+      checkLinks = true
+
+  # Content Archiving
+  [params.archiving]
+    enable = true
+    [params.archiving.posts]
+      enable = true
+      archiveAfter = '1y'
+      moveToArchive = true
+
+    [params.archiving.categories]
+      enable = true
+      archiveEmptyCategories = true
+
+  # Content Export
+  [params.export]
+    enable = true
+    [params.export.formats]
+      pdf = true
+      epub = true
+      docx = false
+      markdown = true
+
+    [params.export.settings]
+      includeImages = true
+      includeCSS = true
+      customCSS = '/css/export.css'

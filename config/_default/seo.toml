@@ -1,0 +1,217 @@
+# Comprehensive SEO Configuration
+# This file contains all SEO-related settings for optimal search engine optimization
+
+# Basic SEO Settings
+[seo]
+  # Site-wide SEO defaults
+  title = "Gopteran Nest"
+  description = "Comprehensive documentation and guides for Gopteran platform. Learn about Aerie, Carina, Nest, Remora, and Ventus components with detailed technical documentation."
+  keywords = ["documentation", "technical guides", "Gopteran", "Aerie", "Carina", "Nest", "Remora", "Ventus", "platform", "API", "development"]
+  author = "Gopteran Team"
+  robots = "index, follow"
+  googlebot = "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+
+  # Images and Media
+  defaultImage = "/img/gopteran.png"
+  defaultImageAlt = "Gopteran platform logo and branding"
+  logo = "/img/gopteran.png"
+  favicon = "/favicon.ico"
+
+  # Site Verification
+  googleSiteVerification = "google-site-verification=abc123def456ghi789jkl012mno345pqr678stu901vwx"
+  bingSiteVerification = "bing-site-verification=DEF456GHI789JKL012MNO345PQR678STU901VWX"
+  yandexSiteVerification = "yandex-verification=1234567890abcdef"
+  baiduSiteVerification = "baidu-site-verification=abcdef1234567890"
+
+# Social Media Settings
+[social]
+  # Twitter/X
+  twitterHandle = "@gopteran"
+  twitterCard = "summary_large_image"
+  twitterSite = "@gopteran"
+  twitterCreator = "@gopteran"
+
+  # Facebook/Open Graph
+  facebookAppId = "1234567890123456"
+  facebookAdmins = "1234567890123456"
+  openGraphType = "website"
+
+  # LinkedIn
+  linkedinHandle = "company/gopteran"
+
+  # Instagram
+  instagramHandle = "gopteran_official"
+
+  # YouTube
+  youtubeChannel = "UCgopteran_official"
+
+# Schema.org Structured Data
+[schema]
+  # Organization Schema
+  [schema.organization]
+    type = "Organization"
+    name = "Gopteran"
+    url = "https://gopteran.dev"
+    logo = "/img/gopteran.png"
+    description = "Advanced documentation platform providing comprehensive technical guides and API documentation"
+    foundingDate = "2024-01-01"
+    contactPoint = [
+      { type = "customer service", telephone = "+1-555-GOPTERAN", contactType = "technical support" },
+      { type = "customer service", email = "support@gopteran.dev", contactType = "technical support" }
+    ]
+    sameAs = [
+      "https://twitter.com/gopteran",
+      "https://facebook.com/gopteran",
+      "https://linkedin.com/company/gopteran",
+      "https://github.com/gopteran"
+    ]
+
+  # Website Schema
+  [schema.website]
+    type = "WebSite"
+    name = "Gopteran Documentation"
+    url = "https://gopteran.dev"
+    description = "Comprehensive documentation and guides for Gopteran platform"
+    inLanguage = "en-US"
+    potentialAction = [
+      { type = "SearchAction", target = "https://gopteran.dev/search?q={search_term_string}", query-input = "required name=search_term_string" }
+    ]
+
+  # Breadcrumb Schema
+  enableBreadcrumbs = true
+
+  # Article Schema
+  [schema.article]
+    enable = true
+    authorType = "Organization"
+    publisherType = "Organization"
+
+# Analytics and Tracking
+[analytics]
+  # Google Analytics
+  googleAnalytics = "G-ABC123DEF456"
+  googleTagManager = "GTM-ABC123DEF"
+
+  # Other Analytics
+  facebookPixel = "1234567890123456"
+  linkedinInsight = "123456789"
+  twitterPixel = "abcd1"
+
+  # Privacy Settings
+  [analytics.privacy]
+    anonymizeIP = true
+    respectDoNotTrack = true
+    disableOnDev = true
+
+# Search Console and Webmaster Tools
+[searchConsole]
+  googleSearchConsole = "google-site-verification=abc123def456ghi789jkl012mno345pqr678stu901vwx"
+  bingWebmasterTools = "bing-site-verification=DEF456GHI789JKL012MNO345PQR678STU901VWX"
+  yandexWebmaster = "yandex-verification=1234567890abcdef"
+
+# Performance and Technical SEO
+[performance]
+  # Core Web Vitals
+  enableCoreWebVitals = true
+
+  # Preloading
+  preloadFonts = ["/fonts/inter.woff2", "/fonts/jetbrains-mono.woff2"]
+  preloadCriticalCSS = true
+
+  # Caching
+  enableBrowserCaching = true
+  cacheVersion = "1.2.3"
+
+  # Compression
+  enableGzip = true
+  enableBrotli = true
+
+# Content Optimization
+[content]
+  # Reading Time
+  showReadingTime = true
+  wordsPerMinute = 225
+
+  # Table of Contents
+  enableTOC = true
+  tocMinHeaders = 2
+  tocMaxDepth = 4
+
+  # Related Content
+  showRelatedPosts = true
+  relatedPostsCount = 6
+
+  # Content Sharing
+  enableSocialSharing = true
+  sharingButtons = ["twitter", "facebook", "linkedin", "reddit", "email"]
+
+# Internationalization (i18n)
+[internationalization]
+  # Default Language
+  defaultLang = "en"
+  defaultLangCode = "en-US"
+
+  # Alternate Languages
+  alternateLangs = ["es", "fr", "de", "ja", "zh"]
+
+  # Hreflang
+  enableHreflang = true
+
+  # Language Switcher
+  showLanguageSwitcher = true
+
+# Advanced SEO Features
+[advanced]
+  # Rich Snippets
+  enableRichSnippets = true
+  enableFAQSchema = true
+  enableHowToSchema = true
+  enableRecipeSchema = false
+
+  # Local SEO
+  enableLocalSEO = false
+  [advanced.local]
+    businessName = "Gopteran Inc."
+    address = "123 Tech Street, San Francisco, CA 94105"
+    phone = "+1-555-GOPTERAN"
+    geoLatitude = "37.7749"
+    geoLongitude = "-122.4194"
+
+  # E-commerce SEO
+  enableEcommerceSEO = false
+  [advanced.ecommerce]
+    currency = "USD"
+    enableProductSchema = true
+    enableReviewSchema = true
+
+  # Video SEO
+  enableVideoSEO = true
+  [advanced.video]
+    enableVideoSchema = true
+    defaultVideoThumbnail = "/img/video-thumbnail.jpg"
+
+# Monitoring and Reporting
+[monitoring]
+  # SEO Monitoring
+  enableSEOMonitoring = true
+  monitorKeywords = ["Gopteran", "documentation", "API", "Aerie", "Carina", "Nest", "Remora", "Ventus", "technical guides", "platform"]
+
+  # Error Monitoring
+  enableErrorTracking = true
+  track404Errors = true
+
+  # Performance Monitoring
+  enablePerformanceTracking = true
+
+# Custom Meta Tags
+[customMeta]
+  enable = true
+  additionalMeta = [
+    { name = "theme-color", content = "#1f2937" },
+    { name = "msapplication-TileColor", content = "#1f2937" },
+    { name = "apple-mobile-web-app-capable", content = "yes" },
+    { name = "apple-mobile-web-app-status-bar-style", content = "default" },
+    { name = "viewport", content = "width=device-width, initial-scale=1.0" },
+    { name = "format-detection", content = "telephone=no" },
+    { name = "msapplication-config", content = "/browserconfig.xml" }
+  ]

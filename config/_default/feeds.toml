@@ -1,0 +1,158 @@
+# Feed Configuration
+# This file contains RSS/Atom feed and syndication settings
+
+[params]
+  # Feed Settings
+  [params.feed]
+    # Enable feeds
+    enable = true
+
+    # Feed author information
+    [params.feed.author]
+      name = 'Gopteran Team'
+      email = 'team@gopteran.dev'
+
+    # Feed metadata
+    copyright = '© 2024 Gopteran. All rights reserved.'
+    language = 'en-us'
+    managingEditor = 'editor@gopteran.dev'
+    webMaster = 'webmaster@gopteran.dev'
+
+    # Feed categories
+    categories = ['Technology', 'Documentation', 'Development']
+
+    # Feed image
+    [params.feed.image]
+      url = '/img/gopteran.png'
+      title = 'Gopteran Logo'
+      link = 'https://gopteran.dev'
+
+    # TTL (Time To Live) in minutes
+    ttl = 60
+
+    # Number of items per feed
+    limit = 20
+
+  # Feed Templates Configuration
+  [params.feedTemplates]
+    # Custom feed templates
+    rss = 'feed/rss.xml'
+    atom = 'feed/atom.xml'
+    json = 'feed/json.json'
+
+  # Syndication Settings
+  [params.syndication]
+    # Enable content syndication
+    enable = true
+
+    # Syndication targets
+    [params.syndication.targets]
+      devto = false
+      medium = false
+      linkedin = true
+      twitter = true
+
+    # Auto-syndication settings
+    [params.syndication.auto]
+      enable = false
+      delay = '24h'
+      tags = ['announcement', 'release']
+
+  # Podcast Feed Configuration (if needed)
+  [params.podcast]
+    enable = false
+    [params.podcast.feed]
+      title = 'Gopteran Podcast'
+      description = 'Audio content from the Gopteran team'
+      language = 'en-us'
+      category = 'Technology'
+      explicit = false
+      author = 'Gopteran Team'
+      email = 'podcast@gopteran.dev'
+      image = '/img/podcast-cover.jpg'
+
+  # Newsletter Integration
+  [params.newsletter]
+    enable = true
+    provider = 'mailchimp' # mailchimp, convertkit, buttondown, etc.
+    listId = 'your-list-id'
+    apiKey = 'your-api-key'
+    doubleOptIn = true
+
+    # Newsletter signup form
+    [params.newsletter.form]
+      title = 'Stay Updated'
+      description = 'Get the latest updates and releases'
+      buttonText = 'Subscribe'
+      placeholder = 'Enter your email'
+
+  # Social Media Auto-Posting
+  [params.socialPosting]
+    enable = false
+    [params.socialPosting.twitter]
+      enable = true
+      apiKey = 'your-twitter-api-key'
+      apiSecret = 'your-twitter-api-secret'
+      accessToken = 'your-access-token'
+      accessSecret = 'your-access-secret'
+
+    [params.socialPosting.linkedin]
+      enable = true
+      clientId = 'your-linkedin-client-id'
+      clientSecret = 'your-linkedin-client-secret'
+
+  # Webhook Configuration
+  [params.webhooks]
+    enable = true
+    [params.webhooks.newContent]
+      url = 'https://api.gopteran.dev/webhooks/content'
+      secret = 'your-webhook-secret'
+      events = ['publish', 'update', 'delete']
+
+    [params.webhooks.feedUpdate]
+      url = 'https://api.gopteran.dev/webhooks/feed'
+      secret = 'your-webhook-secret'
+      events = ['new_post', 'updated_post']
+
+  # Content Distribution
+  [params.distribution]
+    enable = true
+    [params.distribution.medium]
+      enable = false
+      token = 'your-medium-token'
+      publicationId = 'your-publication-id'
+
+    [params.distribution.devto]
+      enable = false
+      apiKey = 'your-devto-api-key'
+
+    [params.distribution.hashnode]
+      enable = false
+      token = 'your-hashnode-token'
+      publicationId = 'your-publication-id'
+
+# Output Formats Configuration
+[outputFormats]
+  # RSS Feed Configuration
+  [outputFormats.RSS]
+    mediatype = 'application/rss+xml'
+    baseName = 'feed'
+    isPlainText = false
+    rel = 'alternate'
+    isHTML = false
+
+  # Atom Feed Configuration
+  [outputFormats.Atom]
+    mediatype = 'application/atom+xml'
+    baseName = 'atom'
+    isPlainText = false
+    rel = 'alternate'
+    isHTML = false
+
+  # JSON Feed Configuration
+  [outputFormats.JSONFeed]
+    mediatype = 'application/feed+json'
+    baseName = 'feed'
+    isPlainText = false
+    rel = 'alternate'
+    isHTML = false

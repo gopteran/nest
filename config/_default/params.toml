@@ -1,0 +1,19 @@
+[author]
+  name = "Your Name"
+  email = "your.email@example.com"
+
+[description]
+  text = "A brief description of your site"
+
+[keywords]
+    keywords = ["keyword1", "keyword2", "keyword3"]
+
+[services]
+  [services.googleAnalytics]
+    id = "GA_MEASUREMENT_ID"
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+    useSessionStorage = false

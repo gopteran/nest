@@ -1,0 +1,60 @@
+User-agent: *
+{{ if site.Params.seo.robots }}
+Allow: /
+{{ else }}
+Disallow: /
+{{ end }}
+
+# Block access to admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_partials/
+Disallow: /_includes/
+
+# Allow access to CSS, JS, and images
+Allow: /css/
+Allow: /js/
+Allow: /img/
+Allow: /fonts/
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: {{ .Site.BaseURL }}/sitemap.xml
+
+# Additional sitemaps for different content types
+{{ if site.Params.content.enableTOC }}
+Sitemap: {{ .Site.BaseURL }}/sitemap-pages.xml
+{{ end }}
+{{ if site.Params.advanced.enableVideoSEO }}
+Sitemap: {{ .Site.BaseURL }}/sitemap-videos.xml
+{{ end }}
+{{ if site.Params.advanced.enableEcommerceSEO }}
+Sitemap: {{ .Site.BaseURL }}/sitemap-products.xml
+{{ end }}
+
+# Specific rules for different user agents
+User-agent: Googlebot
+{{ if site.Params.seo.googlebot }}
+{{ site.Params.seo.googlebot }}
+{{ else }}
+Allow: /
+{{ end }}
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots
+User-agent: BadBot
+Disallow: /
+
+User-agent: AhrefsBot
+{{ if site.Params.monitoring.enableSEOMonitoring }}
+Allow: /
+{{ else }}
+Disallow: /
+{{ end }}

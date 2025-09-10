@@ -1,19 +1,202 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{{ if .IsHome }}{{ site.Params.description | default site.Title }}{{ else }}{{ .Summary | default .Title }} | {{ site.Title }}{{ end }}">
-<meta name="author" content="{{ site.Params.author | default site.Title }}">
+
+<!-- Basic SEO Meta Tags -->
+<meta name="description" content="{{ if .IsHome }}{{ site.Params.seo.description | default site.Title }}{{ else }}{{ .Summary | default .Title }} | {{ site.Title }}{{ end }}">
+<meta name="author" content="{{ site.Params.seo.author | default site.Title }}">
+{{ if site.Params.seo.keywords }}<meta name="keywords" content="{{ delimit site.Params.seo.keywords `, ` }}">{{ end }}
+{{ if site.Params.seo.robots }}<meta name="robots" content="{{ site.Params.seo.robots }}">{{ end }}
+{{ if site.Params.seo.googlebot }}<meta name="googlebot" content="{{ site.Params.seo.googlebot }}">{{ end }}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- Site Verification -->
+{{ if site.Params.seo.googleSiteVerification }}<meta name="google-site-verification" content="{{ site.Params.seo.googleSiteVerification }}">{{ end }}
+{{ if site.Params.seo.bingSiteVerification }}<meta name="msvalidate.01" content="{{ site.Params.seo.bingSiteVerification }}">{{ end }}
+{{ if site.Params.seo.yandexSiteVerification }}<meta name="yandex-verification" content="{{ site.Params.seo.yandexSiteVerification }}">{{ end }}
+{{ if site.Params.seo.baiduSiteVerification }}<meta name="baidu-site-verification" content="{{ site.Params.seo.baiduSiteVerification }}">{{ end }}
+
+<!-- Theme and App Meta Tags -->
+{{ if site.Params.seo.favicon }}<link rel="icon" type="image/x-icon" href="{{ site.Params.seo.favicon | absURL }}">{{ end }}
+{{ range site.Params.customMeta.additionalMeta }}
+<meta name="{{ .name }}" content="{{ .content }}">
+{{ end }}
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:type" content="{{ if .IsHome }}{{ site.Params.social.openGraphType | default `website` }}{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
-<meta property="og:description" content="{{ if .IsHome }}{{ site.Params.description | default site.Title }}{{ else }}{{ .Summary | default .Title }}{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Params.seo.title | default site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
+<meta property="og:description" content="{{ if .IsHome }}{{ site.Params.seo.description | default site.Title }}{{ else }}{{ .Summary | default .Title }}{{ end }}">
+{{ if site.Params.seo.defaultImage }}<meta property="og:image" content="{{ site.Params.seo.defaultImage | absURL }}">{{ end }}
+{{ if site.Params.seo.defaultImageAlt }}<meta property="og:image:alt" content="{{ site.Params.seo.defaultImageAlt }}">{{ end }}
+<meta property="og:site_name" content="{{ site.Title }}">
+{{ if site.Params.social.facebookAppId }}<meta property="fb:app_id" content="{{ site.Params.social.facebookAppId }}">{{ end }}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:card" content="{{ site.Params.social.twitterCard | default `summary_large_image` }}">
 <meta property="twitter:url" content="{{ .Permalink }}">
-<meta property="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
-<meta property="twitter:description" content="{{ if .IsHome }}{{ site.Params.description | default site.Title }}{{ else }}{{ .Summary | default .Title }}{{ end }}">
+<meta property="twitter:title" content="{{ if .IsHome }}{{ site.Params.seo.title | default site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
+<meta property="twitter:description" content="{{ if .IsHome }}{{ site.Params.seo.description | default site.Title }}{{ else }}{{ .Summary | default .Title }}{{ end }}">
+{{ if site.Params.seo.defaultImage }}<meta property="twitter:image" content="{{ site.Params.seo.defaultImage | absURL }}">{{ end }}
+{{ if site.Params.seo.defaultImageAlt }}<meta property="twitter:image:alt" content="{{ site.Params.seo.defaultImageAlt }}">{{ end }}
+{{ if site.Params.social.twitterSite }}<meta property="twitter:site" content="{{ site.Params.social.twitterSite }}">{{ end }}
+{{ if site.Params.social.twitterCreator }}<meta property="twitter:creator" content="{{ site.Params.social.twitterCreator }}">{{ end }}
+
+<!-- Preload Critical Resources -->
+{{ if site.Params.performance.preloadCriticalCSS }}
+<link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+{{ end }}
+{{ range site.Params.performance.preloadFonts }}
+<link rel="preload" href="{{ . | absURL }}" as="font" type="font/woff2" crossorigin>
+{{ end }}
+
+<!-- Structured Data (JSON-LD) -->
+{{ if site.Params.schema.enableRichSnippets }}
+<!-- Organization Schema -->
+{{ if site.Params.schema.organization }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ site.Params.schema.organization.type }}",
+  "name": "{{ site.Params.schema.organization.name }}",
+  "url": "{{ site.Params.schema.organization.url }}",
+  {{ if site.Params.schema.organization.logo }}"logo": "{{ site.Params.schema.organization.logo | absURL }}",{{ end }}
+  {{ if site.Params.schema.organization.description }}"description": "{{ site.Params.schema.organization.description }}",{{ end }}
+  {{ if site.Params.schema.organization.foundingDate }}"foundingDate": "{{ site.Params.schema.organization.foundingDate }}",{{ end }}
+  {{ if site.Params.schema.organization.contactPoint }}"contactPoint": {{ site.Params.schema.organization.contactPoint | jsonify }},{{ end }}
+  {{ if site.Params.schema.organization.sameAs }}"sameAs": {{ site.Params.schema.organization.sameAs | jsonify }}{{ end }}
+}
+</script>
+{{ end }}
+
+<!-- Website Schema -->
+{{ if site.Params.schema.website }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ site.Params.schema.website.type }}",
+  "name": "{{ site.Params.schema.website.name }}",
+  "url": "{{ site.Params.schema.website.url }}",
+  {{ if site.Params.schema.website.description }}"description": "{{ site.Params.schema.website.description }}",{{ end }}
+  {{ if site.Params.schema.website.inLanguage }}"inLanguage": "{{ site.Params.schema.website.inLanguage }}",{{ end }}
+  {{ if site.Params.schema.website.potentialAction }}"potentialAction": {{ site.Params.schema.website.potentialAction | jsonify }}{{ end }}
+}
+</script>
+{{ end }}
+
+<!-- Article/BlogPost Schema -->
+{{ if and (not .IsHome) site.Params.schema.article.enable }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ .Title }}",
+  "description": "{{ .Summary | default .Title }}",
+  "image": [
+    {{ if site.Params.seo.defaultImage }}"{{ site.Params.seo.defaultImage | absURL }}"{{ end }}
+  ],
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "author": {
+    "@type": "{{ site.Params.schema.article.authorType }}",
+    {{ if site.Params.seo.author }}"name": "{{ site.Params.seo.author }}"{{ end }}
+  },
+  "publisher": {
+    "@type": "{{ site.Params.schema.article.publisherType }}",
+    "name": "{{ site.Title }}",
+    {{ if site.Params.seo.logo }}"logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.Params.seo.logo | absURL }}"
+    }{{ end }}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  {{ if .Keywords }}"keywords": "{{ delimit .Keywords `, ` }}",{{ end }}
+  "articleSection": "{{ .Section }}"
+}
+</script>
+{{ end }}
+
+<!-- Breadcrumb Schema -->
+{{ if and site.Params.schema.enableBreadcrumbs (not .IsHome) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.BaseURL }}"
+    }{{ range $index, $element := .Ancestors.Reverse }}
+    ,{
+      "@type": "ListItem",
+      "position": {{ add $index 2 }},
+      "name": "{{ $element.Title }}",
+      "item": "{{ $element.Permalink }}"
+    }{{ end }}
+    ,{
+      "@type": "ListItem",
+      "position": {{ add (.Ancestors | len) 2 }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}
+{{ end }}
+
+<!-- Analytics and Tracking -->
+{{ if site.Params.analytics.googleAnalytics }}
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.analytics.googleAnalytics }}"></script>
+{{ if site.Params.analytics.privacy.anonymizeIP }}
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '{{ site.Params.analytics.googleAnalytics }}', {'anonymize_ip': true});
+</script>
+{{ else }}
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '{{ site.Params.analytics.googleAnalytics }}');
+</script>
+{{ end }}
+{{ end }}
+
+{{ if site.Params.analytics.googleTagManager }}
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','{{ site.Params.analytics.googleTagManager }}');</script>
+{{ end }}
+
+{{ if site.Params.analytics.facebookPixel }}
+<!-- Facebook Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '{{ site.Params.analytics.facebookPixel }}');
+  fbq('track', 'PageView');
+</script>
+{{ end }}
 
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 
