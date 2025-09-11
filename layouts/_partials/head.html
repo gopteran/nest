@@ -18,7 +18,59 @@
 {{ if site.Params.seo.baiduSiteVerification }}<meta name="baidu-site-verification" content="{{ site.Params.seo.baiduSiteVerification }}">{{ end }}
 
 <!-- Theme and App Meta Tags -->
-{{ if site.Params.seo.favicon }}<link rel="icon" type="image/x-icon" href="{{ site.Params.seo.favicon | absURL }}">{{ end }}
+<!-- Favicon and Icons -->
+{{ if site.Params.seo.favicon }}
+  {{ $favicon := resources.Get site.Params.seo.favicon }}
+  {{ if $favicon }}
+    <link rel="icon" type="image/x-icon" href="{{ $favicon.Permalink }}">
+  {{ end }}
+{{ end }}
+
+<!-- PNG Favicons -->
+{{ if site.Params.seo.favicon16 }}
+  {{ $favicon16 := resources.Get site.Params.seo.favicon16 }}
+  {{ if $favicon16 }}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $favicon16.Permalink }}">
+  {{ end }}
+{{ end }}
+
+{{ if site.Params.seo.favicon32 }}
+  {{ $favicon32 := resources.Get site.Params.seo.favicon32 }}
+  {{ if $favicon32 }}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon32.Permalink }}">
+  {{ end }}
+{{ end }}
+
+<!-- Apple Touch Icon -->
+{{ if site.Params.seo.appleTouchIcon }}
+  {{ $appleTouchIcon := resources.Get site.Params.seo.appleTouchIcon }}
+  {{ if $appleTouchIcon }}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon.Permalink }}">
+  {{ end }}
+{{ end }}
+
+<!-- Android/Chrome Icons -->
+{{ if site.Params.seo.androidIcon192 }}
+  {{ $android192 := resources.Get site.Params.seo.androidIcon192 }}
+  {{ if $android192 }}
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ $android192.Permalink }}">
+  {{ end }}
+{{ end }}
+
+{{ if site.Params.seo.androidIcon512 }}
+  {{ $android512 := resources.Get site.Params.seo.androidIcon512 }}
+  {{ if $android512 }}
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ $android512.Permalink }}">
+  {{ end }}
+{{ end }}
+
+<!-- Web App Manifest -->
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" content="#1f2937">
+<meta name="msapplication-TileColor" content="#1f2937">
+
 {{ range site.Params.customMeta.additionalMeta }}
 <meta name="{{ .name }}" content="{{ .content }}">
 {{ end }}

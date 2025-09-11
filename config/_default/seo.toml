@@ -12,10 +12,17 @@
   googlebot = "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
 
   # Images and Media
+  # Note: All icon paths are relative to the assets/ directory
+  # Missing files will be gracefully skipped (no 404 errors)
   defaultImage = "/img/gopteran.png"
   defaultImageAlt = "Gopteran platform logo and branding"
   logo = "/img/gopteran.png"
-  favicon = "/favicon.ico"
+  favicon = "favicon.ico"
+  favicon16 = "favicon-16x16.png"
+  favicon32 = "favicon-32x32.png"
+  appleTouchIcon = "apple-touch-icon.png"
+  androidIcon192 = "android-chrome-192x192.png"
+  androidIcon512 = "android-chrome-512x512.png"
 
   # Site Verification
   googleSiteVerification = "google-site-verification=abc123def456ghi789jkl012mno345pqr678stu901vwx"

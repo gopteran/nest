@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            {{ if .Site.Params.logo }}
+                {{ $logo := resources.Get .Site.Params.logo }}
+                {{ if $logo }}
+                    <square150x150logo src="{{ $logo.Permalink }}"/>
+                {{ end }}
+            {{ end }}
+            <TileColor>#1f2937</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>

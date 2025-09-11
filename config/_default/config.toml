@@ -2,6 +2,11 @@ baseURL = 'https://gopteran.dev/'
 languageCode = 'en-US'
 title = 'Gopteran - Nest'
 
+# Site Parameters
+[params]
+  logo = 'img/gopteran.png'
+  tagline = 'Innovation & Growth'
+
 # Language Settings
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
