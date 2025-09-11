@@ -1,11 +1,12 @@
 baseURL = 'https://gopteran.dev/'
 languageCode = 'en-US'
-title = 'Gopteran - Advanced Documentation Platform'
+title = 'Gopteran - Nest'
 
 # Language Settings
-# defaultContentLanguage = 'en'
+defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = true
+disableLanguages = ['es', 'fr', 'de', 'ja', 'zh']
 
 enableGitInfo = true
 

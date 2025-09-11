@@ -4,9 +4,9 @@
 # Basic SEO Settings
 [seo]
   # Site-wide SEO defaults
-  title = "Gopteran Nest"
-  description = "Comprehensive documentation and guides for Gopteran platform. Learn about Aerie, Carina, Nest, Remora, and Ventus components with detailed technical documentation."
-  keywords = ["documentation", "technical guides", "Gopteran", "Aerie", "Carina", "Nest", "Remora", "Ventus", "platform", "API", "development"]
+  title = "Gopteran - Nest"
+  description = "The official Gopteran documentation hub for components, APIs, and guides."
+  keywords = ["Gopteran", "Nest", "docs", "documentation", "guides", "components", "Aerie", "Carina", "Remora", "Ventus", "API", "developer"]
   author = "Gopteran Team"
   robots = "index, follow"
   googlebot = "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
