@@ -35,8 +35,8 @@ packages:
   "@jridgewell/sourcemap-codec@1.5.5":
     resolution: { integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og== }
 
-  "@jridgewell/trace-mapping@0.3.30":
-    resolution: { integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q== }
+  "@jridgewell/trace-mapping@0.3.31":
+    resolution: { integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw== }
 
   "@parcel/watcher-android-arm64@2.5.1":
     resolution: { integrity: sha512-KF8+j9nNbUN8vzOFDpRMsaKBHZ/mcjEjMToVMJOhTozkDonQFFrRcfdLWn6yWKCmJKmdVxSgHiYvTCef4/qcBA== }
@@ -222,8 +222,8 @@ packages:
     engines: { node: ">=0.10" }
     hasBin: true
 
-  detect-libc@2.0.4:
-    resolution: { integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA== }
+  detect-libc@2.1.1:
+    resolution: { integrity: sha512-ecqj/sy1jcK1uWrwpR67UhYrIFQ+5WlGxth34WquCbamhFA6hkkwiu37o6J5xCHdo1oixJRfVRw+ywV+Hq/0Aw== }
     engines: { node: ">=8" }
 
   enhanced-resolve@5.18.3:
@@ -252,8 +252,8 @@ packages:
     resolution: { integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng== }
     engines: { node: ">=0.12.0" }
 
-  jiti@2.5.1:
-    resolution: { integrity: sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w== }
+  jiti@2.6.1:
+    resolution: { integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ== }
     hasBin: true
 
   lightningcss-darwin-arm64@1.30.1:
@@ -320,8 +320,8 @@ packages:
     resolution: { integrity: sha512-xi6IyHML+c9+Q3W0S4fCQJOym42pyurFiJUHEcEyHS0CeKzia4yZDEsLlqOFykxOdHpNy0NmvVO31vcSqAxJCg== }
     engines: { node: ">= 12.0.0" }
 
-  magic-string@0.30.18:
-    resolution: { integrity: sha512-yi8swmWbO17qHhwIBNeeZxTceJMeBvWJaId6dyvTSOwTipqeHhMhOrz6513r1sOKnpvQ7zkhlG8tPrpilwTxHQ== }
+  magic-string@0.30.19:
+    resolution: { integrity: sha512-2N21sPY9Ws53PZvsEpVtNuSW+ScYbQdp4b9qUaL+9QkHUrGFKo56Lg9Emg5s9V/qrtNBmiR01sYhUOwu3H+VOw== }
 
   micromatch@4.0.8:
     resolution: { integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA== }
@@ -331,14 +331,9 @@ packages:
     resolution: { integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw== }
     engines: { node: ">=16 || 14 >=14.17" }
 
-  minizlib@3.0.2:
-    resolution: { integrity: sha512-oG62iEk+CYt5Xj2YqI5Xi9xWUeZhDI8jjQmC5oThVH5JGCTgIjr7ciJDzC7MBzYd//WvR1OTmP5Q38Q8ShQtVA== }
+  minizlib@3.1.0:
+    resolution: { integrity: sha512-KZxYo1BUkWD2TVFLr0MQoM8vUUigWD3LlD83a/75BqC+4qE0Hb1Vo5v1FgcfaNXvfXzr+5EhQ6ing/CaBijTlw== }
     engines: { node: ">= 18" }
-
-  mkdirp@3.0.1:
-    resolution: { integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg== }
-    engines: { node: ">=10" }
-    hasBin: true
 
   mri@1.2.0:
     resolution: { integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA== }
@@ -365,8 +360,8 @@ packages:
     resolution: { integrity: sha512-ZL6DDuAlRlLGghwcfmSn9sK3Hr6ArtyudlSAiCqQ6IfE+b+HHbydbYDIG15IfS5do+7XQQBdBiubF/cV2dnDzg== }
     engines: { node: ">=6" }
 
-  tar@7.4.3:
-    resolution: { integrity: sha512-5S7Va8hKfV7W5U6g3aYxXmlPoZVAwUMy9AOKyF2fVuZa2UD3qZjg578OrLRt8PcNN1PleVaL/5/yYATNL0ICUw== }
+  tar@7.5.1:
+    resolution: { integrity: sha512-nlGpxf+hv0v7GkWBK2V9spgactGOp0qvfWRxUMjqHyzrt3SgwE48DIv/FhqPHJYLHpgW1opq3nERbz5Anq7n1g== }
     engines: { node: ">=18" }
 
   to-regex-range@5.0.1:
@@ -385,18 +380,18 @@ snapshots:
   "@jridgewell/gen-mapping@0.3.13":
     dependencies:
       "@jridgewell/sourcemap-codec": 1.5.5
-      "@jridgewell/trace-mapping": 0.3.30
+      "@jridgewell/trace-mapping": 0.3.31
 
   "@jridgewell/remapping@2.3.5":
     dependencies:
       "@jridgewell/gen-mapping": 0.3.13
-      "@jridgewell/trace-mapping": 0.3.30
+      "@jridgewell/trace-mapping": 0.3.31
 
   "@jridgewell/resolve-uri@3.1.2": {}
 
   "@jridgewell/sourcemap-codec@1.5.5": {}
 
-  "@jridgewell/trace-mapping@0.3.30":
+  "@jridgewell/trace-mapping@0.3.31":
     dependencies:
       "@jridgewell/resolve-uri": 3.1.2
       "@jridgewell/sourcemap-codec": 1.5.5
@@ -475,9 +470,9 @@ snapshots:
     dependencies:
       "@jridgewell/remapping": 2.3.5
       enhanced-resolve: 5.18.3
-      jiti: 2.5.1
+      jiti: 2.6.1
       lightningcss: 1.30.1
-      magic-string: 0.30.18
+      magic-string: 0.30.19
       source-map-js: 1.2.1
       tailwindcss: 4.1.13
 
@@ -519,8 +514,8 @@ snapshots:
 
   "@tailwindcss/oxide@4.1.13":
     dependencies:
-      detect-libc: 2.0.4
-      tar: 7.4.3
+      detect-libc: 2.1.1
+      tar: 7.5.1
     optionalDependencies:
       "@tailwindcss/oxide-android-arm64": 4.1.13
       "@tailwindcss/oxide-darwin-arm64": 4.1.13
@@ -543,7 +538,7 @@ snapshots:
 
   detect-libc@1.0.3: {}
 
-  detect-libc@2.0.4: {}
+  detect-libc@2.1.1: {}
 
   enhanced-resolve@5.18.3:
     dependencies:
@@ -566,7 +561,7 @@ snapshots:
 
   is-number@7.0.0: {}
 
-  jiti@2.5.1: {}
+  jiti@2.6.1: {}
 
   lightningcss-darwin-arm64@1.30.1:
     optional: true
@@ -600,7 +595,7 @@ snapshots:
 
   lightningcss@1.30.1:
     dependencies:
-      detect-libc: 2.0.4
+      detect-libc: 2.1.1
     optionalDependencies:
       lightningcss-darwin-arm64: 1.30.1
       lightningcss-darwin-x64: 1.30.1
@@ -613,7 +608,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.30.1
       lightningcss-win32-x64-msvc: 1.30.1
 
-  magic-string@0.30.18:
+  magic-string@0.30.19:
     dependencies:
       "@jridgewell/sourcemap-codec": 1.5.5
 
@@ -624,11 +619,9 @@ snapshots:
 
   minipass@7.1.2: {}
 
-  minizlib@3.0.2:
+  minizlib@3.1.0:
     dependencies:
       minipass: 7.1.2
-
-  mkdirp@3.0.1: {}
 
   mri@1.2.0: {}
 
@@ -644,13 +637,12 @@ snapshots:
 
   tapable@2.2.3: {}
 
-  tar@7.4.3:
+  tar@7.5.1:
     dependencies:
       "@isaacs/fs-minipass": 4.0.1
       chownr: 3.0.0
       minipass: 7.1.2
-      minizlib: 3.0.2
-      mkdirp: 3.0.1
+      minizlib: 3.1.0
       yallist: 5.0.0
 
   to-regex-range@5.0.1:

@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "gopteran",
   "license": "ISC",
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.17.1",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.13",
     "flexsearch": "^0.8.212",
