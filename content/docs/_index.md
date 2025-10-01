@@ -2,9 +2,8 @@
 title: "Docs"
 date: 2025-09-08
 draft: false
+summary: "Documentation for all Gopteran project components"
 ---
-
-# Documentation
 
 Welcome to the Gopteran Documentation.
 

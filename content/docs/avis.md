@@ -1,4 +1,9 @@
-# Avis
+---
+title: "Avis"
+date: 2025-09-08
+draft: false
+summary: "Avis is the Discord bot for the Gopteran project"
+---
 
 ## Overview
 
@@ -17,13 +22,13 @@ Just as birds have long served as messengers, connecting distant places with spe
 
 The name “Avis” is Latin for “bird,” embodying the qualities of communication, agility, and responsiveness:
 
-- **Biological inspiration:**  
+- **Biological inspiration:**
   Birds are natural messengers, connecting distant locations, signaling important events, and enabling rapid information flow.
 
-- **Architectural analogy:**  
+- **Architectural analogy:**
   Similarly, Avis serves as a messenger inside Discord, delivering messages, responding to commands, and ensuring the community stays informed and coordinated.
 
-- **Automation & assistance:**  
+- **Automation & assistance:**
   Like a bird that carries messages without tiring, Avis automates repetitive tasks, freeing teams to focus on strategic work.
 
 ## Functional role
