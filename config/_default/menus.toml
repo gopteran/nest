@@ -15,13 +15,6 @@
     icon = 'book'
     description = 'Browse documentation'
 
-[[main]]
-  name = 'Components'
-  pageRef = '/docs'
-  weight = 30
-  [main.params]
-    icon = 'cubes'
-    description = 'Explore Gopteran components'
 
 [[main]]
   name = 'Tags'

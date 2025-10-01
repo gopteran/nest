@@ -5,7 +5,6 @@ draft: false
 summary: "Carina is the backend core for the Gopteran project"
 ---
 
-
 ## Overview
 
 Carina is the backend core of the Gopteran project — the authoritative command center that manages authentication, resource lifecycle, and API orchestration.
@@ -27,12 +26,12 @@ The name “Carina” is inspired by the keel bone of a bird’s sternum:
 
 ## Functional role
 
-- **Authentication & Authorization:** Securely manages users, roles, and access control.  
-- **Resource Management:** Orchestrates creation, updating, and deletion of servers and related assets.  
-- **API Gateway:** Offers a consistent and extensible API for clients and integrations.  
-- **Communication Broker:** Dispatches commands to agents and processes responses.  
-- **Data Persistence:** Maintains reliable storage of configuration, logs, and audit data.  
-- **Event & Notification Handling:** Supports real-time updates and alerts for connected clients.  
+- **Authentication & Authorization:** Securely manages users, roles, and access control.
+- **Resource Management:** Orchestrates creation, updating, and deletion of servers and related assets.
+- **API Gateway:** Offers a consistent and extensible API for clients and integrations.
+- **Communication Broker:** Dispatches commands to agents and processes responses.
+- **Data Persistence:** Maintains reliable storage of configuration, logs, and audit data.
+- **Event & Notification Handling:** Supports real-time updates and alerts for connected clients.
 - **Security Enforcement:** Enforces validation and security best practices to protect system integrity.
 
 ## Design philosophy

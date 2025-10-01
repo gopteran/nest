@@ -1,68 +1,19 @@
-{{- /*
-Renders a menu for the given menu ID.
-
-@context {page} page The current page.
-@context {string} menuID The menu ID.
-@context {bool} mobile Whether this is a mobile menu.
-
-@example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-*/}}
-
-{{- $page := .page }}
-{{- $menuID := .menuID }}
-{{- $mobile := .mobile }}
-
-{{- with index site.Menus $menuID }}
-  <nav aria-label="Main navigation">
+{{- /* Renders a menu for the given menu ID. @context {page} page The current page. @context {string} menuID The menu ID. @context {bool} mobile Whether this is a mobile menu. @example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }} */}} {{- $page := .page }} {{- $menuID := .menuID }} {{- $mobile := .mobile }} {{- with index site.Menus $menuID }}
+<nav aria-label="Main navigation">
     <ul class="{{- if $mobile }}flex flex-col gap-3{{- else }}flex gap-8 items-center{{- end }}">
-      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" . "mobile" $mobile) }}
+        {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" . "mobile" $mobile) }}
     </ul>
-  </nav>
-{{- end }}
-
-{{- define "_partials/inline/menu/walk.html" }}
-  {{- $page := .page }}
-  {{- $mobile := .mobile }}
-  {{- range .menuEntries }}
-    {{- $attrs := dict "href" .URL }}
-    {{- $isActive := false }}
-    {{- if $page.IsMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
-      {{- $isActive = true }}
-    {{- else if $page.HasMenuCurrent .Menu .}}
-      {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
-      {{- $isActive = true }}
+</nav>
+{{- end }} {{- define "_partials/inline/menu/walk.html" }} {{- $page := .page }} {{- $mobile := .mobile }} {{- range .menuEntries }} {{- $attrs := dict "href" .URL }} {{- $isActive := false }} {{- if $page.IsMenuCurrent .Menu . }} {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }} {{- $isActive = true }} {{- else if $page.HasMenuCurrent .Menu .}} {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }} {{- $isActive = true }} {{- end }} {{- $name := .Name }} {{- with .Identifier }} {{- with T . }} {{- $name = . }} {{- end }} {{- end }}
+<li>
+ <a class="{{- if $mobile }}block px-4 py-3 rounded-[var(--radius-base)] text-[var(--color-neutral-light)] hover:bg-[var(--color-neutral-light)]/10 active:bg-[var(--color-neutral-light)]/20 transition-all duration-200 font-medium border border-transparent{{- if $isActive }} bg-[var(--color-neutral-light)]/20 border-[var(--color-sand)]{{- end }}{{- else }}relative px-4 py-2 rounded-[var(--radius-lg)] transition-colors duration-300 font-semibold text-[var(--color-neutral-light)] hover:text-[var(--color-sand)] hover:bg-[var(--color-neutral-light)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-sand)] focus:ring-offset-2 focus:ring-offset-[var(--color-primary)] group{{- if $isActive }} bg-[var(--color-neutral-light)]/20 text-[var(--color-sand)]{{- end }}{{- end }}"
+    {{- range $k, $v :=$attrs }} {{- with $v }} {{- printf " %s=%q" $k $v | safeHTMLAttr }} {{- end }} {{- end -}}>
+    {{ $name }}
+  </a>
+    {{- with .Children }}
+    <ul class="{{- if $mobile }}ml-4 mt-2 space-y-2{{- else }}absolute top-full left-0 bg-[var(--color-bg)] shadow-xl rounded-[var(--radius-base)] border border-[var(--color-neutral-light)] py-2 min-w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200{{- end }}">
+        {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" . "mobile" $mobile) }}
+    </ul>
     {{- end }}
-    {{- $name := .Name }}
-    {{- with .Identifier }}
-      {{- with T . }}
-        {{- $name = . }}
-      {{- end }}
-    {{- end }}
-    <li>
-      <a
-        class="{{- if $mobile }}block px-4 py-3 rounded-[var(--radius-base)] text-[var(--color-neutral-light)] hover:bg-[var(--color-neutral-light)]/10 active:bg-[var(--color-neutral-light)]/20 transition-all duration-200 font-medium border border-transparent{{- if $isActive }} bg-[var(--color-neutral-light)]/20 border-[var(--color-sand)]{{- end }}{{- else }}relative px-4 py-2 rounded-[var(--radius-lg)] transition-colors duration-300 font-semibold text-[var(--color-neutral-light)] hover:text-[var(--color-sand)] hover:bg-[var(--color-neutral-light)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-sand)] focus:ring-offset-2 focus:ring-offset-[var(--color-primary)] group{{- if $isActive }} bg-[var(--color-neutral-light)]/20 text-[var(--color-sand)]{{- end }}{{- end }}"
-        {{- range $k, $v := $attrs }}
-          {{- with $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end -}}
-      >
-        {{- if not $mobile }}
-          <span class="relative z-10">{{ $name }}</span>
-          {{/*  {{- if $isActive }}
-            <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-sand)]/20 to-[var(--color-secondary)]/20 "></div>
-          {{- end }}  */}}
-          <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[var(--color-sand)] transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
-        {{- else }}
-          {{ $name }}
-        {{- end }}
-      </a>
-      {{- with .Children }}
-        <ul class="{{- if $mobile }}ml-4 mt-2 space-y-2{{- else }}absolute top-full left-0 bg-[var(--color-bg)] shadow-xl rounded-[var(--radius-base)] border border-[var(--color-neutral-light)] py-2 min-w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200{{- end }}">
-          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" . "mobile" $mobile) }}
-        </ul>
-      {{- end }}
-    </li>
-  {{- end }}
-{{- end }}
+</li>
+{{- end }} {{- end }}

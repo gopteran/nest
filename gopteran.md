@@ -11,8 +11,8 @@ The name “Nest” symbolizes a safe, central place where everything essential 
 
 ## Purpose
 
-- Serve as the authoritative source for all Gopteran documentation  
-- Support users and contributors with clear guides, tutorials, and references  
+- Serve as the authoritative source for all Gopteran documentation
+- Support users and contributors with clear guides, tutorials, and references
 - Act as the content base for the official Gopteran documentation website
 
 ## Philosophy
@@ -22,7 +22,6 @@ In an ecosystem defined by flight and precision, the nest is the origin — the 
 ---
 
 Choosing “Nest” highlights that documentation is not just support material — it’s the heart of the project’s growth and sustainability.
-
 ```
 
 ### `README.md` for **remora**
@@ -41,10 +40,10 @@ It acts as the operational "claw" deep inside the infrastructure, ensuring that 
 The name “Remora” was chosen deliberately to capture the essence of this tool’s role and architecture:
 
 - **Biological inspiration:**  
-  The remora is a fish known for attaching itself to larger marine animals like sharks or turtles in a symbiotic relationship. It hitches a ride, benefits from the host's movement, and sometimes provides cleaning services — all without burdening the host.  
+  The remora is a fish known for attaching itself to larger marine animals like sharks or turtles in a symbiotic relationship. It hitches a ride, benefits from the host's movement, and sometimes provides cleaning services — all without burdening the host.
 
 - **Architectural analogy:**  
-  Similarly, the Remora CLI agent is designed to "attach" to the host server, running close to the core services without interfering with their stability. It’s a helper process that stays out of the way but is indispensable for smooth operation.  
+  Similarly, the Remora CLI agent is designed to "attach" to the host server, running close to the core services without interfering with their stability. It’s a helper process that stays out of the way but is indispensable for smooth operation.
 
 - **Minimal footprint and dependency:**  
   Just like the remora fish does not overly tax its host, the Remora agent is lightweight, efficient, and purpose-built to maintain system integrity and security without overcomplication.
@@ -63,7 +62,6 @@ Remora embodies the principle of symbiosis — it enhances the system’s functi
 ---
 
 This naming and design philosophy ensures that Remora is not just a tool, but a conceptual pillar in the Gopteran ecosystem — a trusted ally "in the trenches," working seamlessly beneath the surface.
-
 ```
 
 ---
@@ -92,13 +90,12 @@ The name “Ventus” comes from the Latin word for “wind”:
 - **User-centric design:**  
   Like the wind, Ventus aims to be light, fast, and adaptive, focusing on user experience without adding unnecessary bulk or complexity. This is also why the choice of SvelteKit, a framework known for its minimalism and efficiency.
 
-
 ## Functional role
 
-- **User Interface:** Provides a rich, interactive GUI for managing servers, services, and user accounts.  
-- **Real-time Updates:** Integrates with backend APIs to deliver live status, notifications, and logs.  
-- **Accessibility & Responsiveness:** Designed for usability across devices and screen sizes.  
-- **Extensibility:** Built on SvelteKit to support future enhancements, modular features, and theming.  
+- **User Interface:** Provides a rich, interactive GUI for managing servers, services, and user accounts.
+- **Real-time Updates:** Integrates with backend APIs to deliver live status, notifications, and logs.
+- **Accessibility & Responsiveness:** Designed for usability across devices and screen sizes.
+- **Extensibility:** Built on SvelteKit to support future enhancements, modular features, and theming.
 - **Secure Communication:** Interfaces securely with Carina and Remora to maintain system integrity.
 
 ## Design philosophy
@@ -108,7 +105,6 @@ Ventus embodies agility, clarity, and flow — it is the vibrant, user-facing br
 ---
 
 Ventus isn’t just a frontend — it’s the vital breeze that brings life and motion to the Gopteran experience, making complex operations feel effortless and natural.
-
 ```
 
 ---
@@ -139,12 +135,12 @@ The name “Carina” is inspired by the keel bone of a bird’s sternum:
 
 ## Functional role
 
-- **Authentication & Authorization:** Securely manages users, roles, and access control.  
-- **Resource Management:** Orchestrates creation, updating, and deletion of servers and related assets.  
-- **API Gateway:** Offers a consistent and extensible API for clients and integrations.  
-- **Communication Broker:** Dispatches commands to agents and processes responses.  
-- **Data Persistence:** Maintains reliable storage of configuration, logs, and audit data.  
-- **Event & Notification Handling:** Supports real-time updates and alerts for connected clients.  
+- **Authentication & Authorization:** Securely manages users, roles, and access control.
+- **Resource Management:** Orchestrates creation, updating, and deletion of servers and related assets.
+- **API Gateway:** Offers a consistent and extensible API for clients and integrations.
+- **Communication Broker:** Dispatches commands to agents and processes responses.
+- **Data Persistence:** Maintains reliable storage of configuration, logs, and audit data.
+- **Event & Notification Handling:** Supports real-time updates and alerts for connected clients.
 - **Security Enforcement:** Enforces validation and security best practices to protect system integrity.
 
 ## Design philosophy
@@ -154,7 +150,6 @@ Carina embodies strength, structure, and control — it is the reliable backbone
 ---
 
 This name and design concept make Carina not only a backend service but a vital pillar of the Gopteran ecosystem — the steadfast keel that keeps the project flying true.
-
 ```
 
 ---
@@ -172,8 +167,8 @@ The name “Aerie” refers to the nest or dwelling of a bird of prey, typically
 
 ## Purpose
 
-- Provide an all-in-one control panel solution for users who want a seamless, integrated experience  
-- Combine the responsive frontend and the robust backend into a unified application  
+- Provide an all-in-one control panel solution for users who want a seamless, integrated experience
+- Combine the responsive frontend and the robust backend into a unified application
 - Enable quick deployment and easy management without the need for separate frontend/backend setups
 
 ## Philosophy
@@ -183,7 +178,6 @@ Just as an aerie offers a high, secure vantage point for birds to watch over the
 ---
 
 By naming this repository “Aerie,” we emphasize the control panel’s role as a strategic and commanding interface — a place from which users can take flight and maintain dominance over their infrastructure.
-
 ```
 
 ---

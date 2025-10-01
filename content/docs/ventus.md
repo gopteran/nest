@@ -5,7 +5,6 @@ draft: false
 summary: "Ventus is the frontend framework for the Gopteran project"
 ---
 
-
 ## Overview
 
 Ventus is the frontend repository for the Gopteran project — a sleek, modern interface built with SvelteKit designed to provide users with a fast, responsive, and intuitive experience.
@@ -27,10 +26,10 @@ The name “Ventus” comes from the Latin word for “wind”:
 
 ## Functional role
 
-- **User Interface:** Provides a rich, interactive GUI for managing servers, services, and user accounts.  
-- **Real-time Updates:** Integrates with backend APIs to deliver live status, notifications, and logs.  
-- **Accessibility & Responsiveness:** Designed for usability across devices and screen sizes.  
-- **Extensibility:** Built on SvelteKit to support future enhancements, modular features, and theming.  
+- **User Interface:** Provides a rich, interactive GUI for managing servers, services, and user accounts.
+- **Real-time Updates:** Integrates with backend APIs to deliver live status, notifications, and logs.
+- **Accessibility & Responsiveness:** Designed for usability across devices and screen sizes.
+- **Extensibility:** Built on SvelteKit to support future enhancements, modular features, and theming.
 - **Secure Communication:** Interfaces securely with Carina and Remora to maintain system integrity.
 
 ## Design philosophy

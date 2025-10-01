@@ -5,7 +5,6 @@ draft: false
 summary: "Nest is the documentation repository for the Gopteran project"
 ---
 
-
 ## Overview
 
 Nest is the documentation repository for the Gopteran project — the foundational hub where all knowledge, guides, and resources converge to support development and usage.
@@ -14,8 +13,8 @@ The name “Nest” symbolizes a safe, central place where everything essential 
 
 ## Purpose
 
-- Serve as the authoritative source for all Gopteran documentation  
-- Support users and contributors with clear guides, tutorials, and references  
+- Serve as the authoritative source for all Gopteran documentation
+- Support users and contributors with clear guides, tutorials, and references
 - Act as the content base for the official Gopteran documentation website
 
 ## Philosophy

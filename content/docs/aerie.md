@@ -5,7 +5,6 @@ draft: false
 summary: "Aerie is the fullstack control panel for the Gopteran project"
 ---
 
-
 ## Overview
 
 Aerie is the fullstack control panel for the Gopteran project — an integrated, ready-to-use management interface combining frontend and backend functionality.
@@ -14,8 +13,8 @@ The name “Aerie” refers to the nest or dwelling of a bird of prey, typically
 
 ## Purpose
 
-- Provide an all-in-one control panel solution for users who want a seamless, integrated experience  
-- Combine the responsive frontend and the robust backend into a unified application  
+- Provide an all-in-one control panel solution for users who want a seamless, integrated experience
+- Combine the responsive frontend and the robust backend into a unified application
 - Enable quick deployment and easy management without the need for separate frontend/backend setups
 
 ## Philosophy
