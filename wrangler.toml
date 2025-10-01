@@ -2,7 +2,7 @@ name = "nest"
 compatibility_date = "2025-10-01"
 
 [build]
-command = "npm run build"
+command = "npm run deploy"
 
 
 [assets]
