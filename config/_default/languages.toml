@@ -12,52 +12,54 @@
     description = 'The official Gopteran documentation hub'
     keywords = ['Gopteran', 'Nest', 'docs', 'documentation', 'guides', 'components', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', 'developer']
 
-[es]
-  languageCode = 'es-ES'
-  languageName = 'Español'
-  weight = 2
-  title = 'Gopteran - Nest'
 
-  [es.params]
-    description = 'Centro oficial de documentación de Gopteran'
-    keywords = ['Gopteran', 'Nest', 'documentación', 'guías', 'componentes', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', 'desarrollador']
-
-[fr]
-  languageCode = 'fr-FR'
-  languageName = 'Français'
-  weight = 3
-  title = 'Gopteran - Nest'
-
-  [fr.params]
-    description = 'Centre de documentation officiel de Gopteran'
-    keywords = ['Gopteran', 'Nest', 'documentation', 'guides', 'composants', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', 'développeur']
-
-[de]
-  languageCode = 'de-DE'
-  languageName = 'Deutsch'
-  weight = 4
-  title = 'Gopteran - Nest'
-
-  [de.params]
-    description = 'Offizielles Gopteran-Dokumentationszentrum'
-    keywords = ['Gopteran', 'Nest', 'Dokumentation', 'Anleitungen', 'Komponenten', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', 'Entwickler']
-
-[ja]
-  languageCode = 'ja-JP'
-  languageName = '日本語'
-  weight = 5
-  title = 'Gopteran - Nest'
-
-  [ja.params]
-    description = 'Gopteranの公式ドキュメントハブ'
-    keywords = ['Gopteran', 'Nest', 'ドキュメント', 'ガイド', 'コンポーネント', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', '開発者']
-
-[zh]
-  languageCode = 'zh-CN'
-  languageName = '中文'
-  weight = 6
-  title = 'Gopteran - Nest'
-
-  [zh.params]
-    description = 'Gopteran 官方文档中心'
-    keywords = ['Gopteran', 'Nest', '文档', '指南', '组件', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', '开发者']
+# [es]
+#   languageCode = 'es-ES'
+#   languageName = 'Español'
+#   weight = 2
+#   title = 'Gopteran - Nest'
+#
+#   [es.params]
+#     description = 'Centro oficial de documentación de Gopteran'
+#     keywords = ['Gopteran', 'Nest', 'documentación', 'guías', 'componentes', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', 'desarrollador']
+#
+# [fr]
+#   languageCode = 'fr-FR'
+#   languageName = 'Français'
+#   weight = 3
+#   title = 'Gopteran - Nest'
+#
+#   [fr.params]
+#     description = 'Centre de documentation officiel de Gopteran'
+#     keywords = ['Gopteran', 'Nest', 'documentation', 'guides', 'composants', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', 'développeur']
+#
+# [de]
+#   languageCode = 'de-DE'
+#   languageName = 'Deutsch'
+#   weight = 4
+#   title = 'Gopteran - Nest'
+#
+#   [de.params]
+#     description = 'Offizielles Gopteran-Dokumentationszentrum'
+#     keywords = ['Gopteran', 'Nest', 'Dokumentation', 'Anleitungen', 'Komponenten', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', 'Entwickler']
+#
+# [ja]
+#   languageCode = 'ja-JP'
+#   languageName = '日本語'
+#   weight = 5
+#   title = 'Gopteran - Nest'
+#
+#   [ja.params]
+#     description = 'Gopteranの公式ドキュメントハブ'
+#     keywords = ['Gopteran', 'Nest', 'ドキュメント', 'ガイド', 'コンポーネント', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', '開発者']
+#
+# [zh]
+#   languageCode = 'zh-CN'
+#   languageName = '中文'
+#   weight = 6
+#   title = 'Gopteran - Nest'
+#
+#   [zh.params]
+#     description = 'Gopteran 官方文档中心'
+#     keywords = ['Gopteran', 'Nest', '文档', '指南', '组件', 'Aerie', 'Carina', 'Remora', 'Ventus', 'API', '开发者']
+#

@@ -8,9 +8,10 @@
 [keywords]
     keywords = ["gopteran", "documentation", "infrastructure", "devops", "automation", "control panel", "cli"]
 
-[services]
-  [services.googleAnalytics]
-    id = "GA_MEASUREMENT_ID"
+[analytics]
+  googleAnalytics = "GA_MEASUREMENT_ID"
+  googleTagManager = ""
+  facebookPixel = ""
 
 [privacy]
   [privacy.googleAnalytics]
