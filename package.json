@@ -8,7 +8,7 @@
     "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify --watch",
     "build": "hugo --gc --minify",
     "build:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify",
-    "deploy": "pnpm run build:css && pnpm run build && echo 'Locating all files' && (tree public/ || echo 'tree command not found') && ls public/img/"
+    "deploy": "pnpm run build:css && pnpm run build"
   },
   "keywords": [],
   "author": "gopteran",

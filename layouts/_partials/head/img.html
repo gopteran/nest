@@ -1,9 +1,1 @@
-{{- with resources.Get "img/gopteran.png" }}
-  {{- if hugo.IsDevelopment }}
-    <link rel="icon" href="{{ .RelPermalink }}">
-  {{- else }}
-    {{- with . | minify | fingerprint }}
-      <link rel="icon" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
-  {{- end }}
-{{- end }}
+<link rel="icon" href="{{ "img/gopteran.png" | relURL }}">

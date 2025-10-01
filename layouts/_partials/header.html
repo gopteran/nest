@@ -4,15 +4,7 @@
 		<!-- Improved logo with better styling -->
 		<div class="w-12 h-12 rounded-[var(--radius-lg)] shadow-lg flex items-center justify-center transform transition-transform group-hover:rotate-3">
 			{{ if .Site.Params.logo }}
-				{{ $logo := resources.Get .Site.Params.logo }}
-				{{ if $logo }}
-					<img src="{{ $logo.Permalink }}" alt="Logo" class="w-8 h-8 object-contain">
-				{{ else }}
-					<!-- Fallback: Show site title as text if logo is missing -->
-					<div class="w-8 h-8 bg-[var(--color-sand)] rounded flex items-center justify-center text-[var(--color-neutral-dark)] font-bold text-sm">
-						{{ substr site.Title 0 1 }}
-					</div>
-				{{ end }}
+				<img src="{{ .Site.Params.logo | relURL }}" alt="Logo" class="w-8 h-8 object-contain">
 			{{ else }}
 				<!-- Fallback: Show site title as text if no logo configured -->
 				<div class="w-8 h-8 bg-[var(--color-sand)] rounded flex items-center justify-center text-[var(--color-neutral-dark)] font-bold text-sm">
