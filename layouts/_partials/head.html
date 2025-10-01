@@ -39,8 +39,14 @@
 <link rel="icon" type="image/png" sizes="512x512" href="{{ site.Params.favicon.android512 }}" />
 {{ end }}
 
+<!-- Safari Pinned Tab -->
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2563eb" />
+
 <!-- Web App Manifest -->
 {{ if site.Params.seo.manifest }}<link rel="manifest" href="{{ site.Params.seo.manifest | absURL }}" />{{ else }}<link rel="manifest" href="/site.webmanifest" />{{ end }}
+
+<!-- Browser Config for Windows Tiles -->
+<meta name="msapplication-config" content="/browserconfig.xml" />
 
 <!-- Theme Color for Mobile Browsers -->
 {{ if site.Params.seo.themeColor }}<meta name="theme-color" content="{{ site.Params.seo.themeColor }}" />{{ else }}<meta name="theme-color" content="#2563eb" />{{ end }} {{ if site.Params.seo.tileColor }}<meta name="msapplication-TileColor" content="{{ site.Params.seo.tileColor }}" />{{ else }}<meta name="msapplication-TileColor" content="#2563eb" />{{ end }} {{ range site.Params.customMeta.additionalMeta }}

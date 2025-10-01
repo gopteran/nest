@@ -8,7 +8,7 @@
                     <square150x150logo src="{{ $logo.Permalink }}"/>
                 {{ end }}
             {{ end }}
-            <TileColor>#1f2937</TileColor>
+            <TileColor>#2563eb</TileColor>
         </tile>
     </msapplication>
 </browserconfig>

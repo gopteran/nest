@@ -44,6 +44,7 @@
   apple = "/apple-touch-icon.png"
   android192 = "/android-chrome-192x192.png"
   android512 = "/android-chrome-512x512.png"
+  safari = "/safari-pinned-tab.svg"
 
 [footer]
   description = "Gopteran provides infrastructure management tools designed for flight and precision. From control panels to CLI agents, we help you manage your systems with clarity and control."
