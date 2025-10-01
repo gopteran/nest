@@ -128,11 +128,11 @@
       "image": [
         {{ if site.Params.seo.defaultImage }}"{{ site.Params.seo.defaultImage | absURL }}"{{ end }}
       ],
-      "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+      "datePublished": "{{ (and .GitInfo .GitInfo.AuthorDate | default .Date).Format "2006-01-02T15:04:05Z07:00" }}",
       "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
       "author": {
         "@type": "{{ site.Params.schema.article.authorType }}",
-        {{ if site.Params.seo.author }}"name": "{{ site.Params.seo.author }}"{{ end }}
+        {{ with (and .GitInfo .GitInfo.AuthorName) }}"name": "{{ . }}"{{ else with .Params.author }}"name": "{{ . }}"{{ else with site.Params.seo.author }}"name": "{{ . }}"{{ end }}
       },
       "publisher": {
         "@type": "{{ site.Params.schema.article.publisherType }}",

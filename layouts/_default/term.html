@@ -52,7 +52,7 @@
             <div class="bg-[var(--color-bg)] rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full flex flex-col">
                 <!-- Meta info -->
                 <div class="flex items-center justify-between mb-4">
-                    {{- if .Date }} {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{ $dateHuman := .Date | time.Format "Jan 2, 2006" }}
+                    {{- if .Date }} {{ $dateMachine := (and .GitInfo .GitInfo.AuthorDate | default .Date) | time.Format "2006-01-02T15:04:05-07:00" }} {{ $dateHuman := (and .GitInfo .GitInfo.AuthorDate | default .Date) | time.Format "Jan 2, 2006" }}
                     <time datetime="{{ $dateMachine }}" class="flex items-center gap-2 text-xs text-[var(--color-fg)]/60">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>

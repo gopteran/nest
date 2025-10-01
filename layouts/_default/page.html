@@ -11,7 +11,7 @@
                 <svg class="w-4 h-4 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                <time datetime="{{ (and .GitInfo .GitInfo.AuthorDate | default .Date).Format "2006-01-02" }}">{{ (and .GitInfo .GitInfo.AuthorDate | default .Date).Format "January 2, 2006" }}</time>
             </div>
             {{- end }}
             {{- if .Lastmod }}
@@ -22,7 +22,7 @@
                 <time datetime="{{ .Lastmod.Format "2006-01-02" }}" title="Last updated">Updated {{ .Lastmod.Format "January 2, 2006" }}</time>
             </div>
             {{- end }}
-            {{- $author := .Params.author | default site.Params.author.name }}
+            {{- $author := (and .GitInfo .GitInfo.AuthorName) | default .Params.author | default site.Params.author.name }}
             {{- if $author }}
             <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

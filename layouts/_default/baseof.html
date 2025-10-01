@@ -4,10 +4,8 @@
         {{ partial "head.html" . }}
     </head>
     <body class="bg-gradient-to-br from-[var(--color-bg)] to-[var(--color-neutral-light)] text-[var(--color-fg)] font-[var(--font-sans)] antialiased">
-        <!-- Skip to main content link for accessibility -->
-        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[var(--color-primary)] text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]">Skip to main content</a>
 
-        <div class="flex flex-col min-h-screen relative">
+        <div class="flex flex-col relative">
             <!-- Background Pattern -->
             <div class="fixed inset-0 opacity-[0.02] pointer-events-none">
                 <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--color-primary) 1px, transparent 0); background-size: 20px 20px"></div>
@@ -20,7 +18,7 @@
             </header>
 
             <!-- Main content area with enhanced spacing -->
-            <main id="main-content" class="flex-1 relative z-10">
+            <main id="main-content" class="flex-1 min-h-screen relative z-10">
                 <div class="container mx-auto px-6 py-12 max-w-7xl">{{ block "main" . }}{{ end }}</div>
             </main>
 
