@@ -24,6 +24,13 @@
   androidIcon192 = "android-chrome-192x192.png"
   androidIcon512 = "android-chrome-512x512.png"
 
+  # Web App Manifest
+  manifest = "/site.webmanifest"
+
+  # Theme Colors
+  themeColor = "#2563eb"
+  tileColor = "#2563eb"
+
   # Site Verification
   googleSiteVerification = "google-site-verification=abc123def456ghi789jkl012mno345pqr678stu901vwx"
   bingSiteVerification = "bing-site-verification=DEF456GHI789JKL012MNO345PQR678STU901VWX"
@@ -124,6 +131,7 @@
   # Preloading
   preloadFonts = ["/fonts/inter.woff2", "/fonts/jetbrains-mono.woff2"]
   preloadCriticalCSS = true
+  criticalCSSPath = "/css/main.css"
 
   # Caching
   enableBrowserCaching = true
@@ -214,8 +222,8 @@
 [customMeta]
   enable = true
   additionalMeta = [
-    { name = "theme-color", content = "#1f2937" },
-    { name = "msapplication-TileColor", content = "#1f2937" },
+    { name = "theme-color", content = "#2563eb" },
+    { name = "msapplication-TileColor", content = "#2563eb" },
     { name = "apple-mobile-web-app-capable", content = "yes" },
     { name = "apple-mobile-web-app-status-bar-style", content = "default" },
     { name = "viewport", content = "width=device-width, initial-scale=1.0" },

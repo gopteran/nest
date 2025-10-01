@@ -31,7 +31,7 @@
     </div>
 
     <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-sand)] to-[var(--color-growth)] mx-auto mb-8 rounded-full"></div>
-    
+
     {{- if .Content }}
       <div class="prose prose-lg max-w-3xl mx-auto text-[var(--color-fg)]/70 mb-8">
         {{ .Content }}
@@ -68,7 +68,7 @@
                     {{ $dateHuman }}
                   </time>
                 {{- end }}
-                
+
                 {{- if .Section }}
                   <span class="px-2 py-1 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] text-xs rounded-[var(--radius-base)] font-medium capitalize">
                     {{ .Section }}
@@ -82,7 +82,7 @@
                   {{ .LinkTitle }}
                 </h3>
                 <p class="text-[var(--color-fg)]/70 leading-relaxed line-clamp-3 mb-4">
-                  {{ .Summary | default "Read more about this topic..." }}
+                  {{ .Summary | default site.Params.ui.defaultSummary }}
                 </p>
               </div>
 

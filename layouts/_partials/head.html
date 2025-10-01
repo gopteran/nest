@@ -65,11 +65,11 @@
 {{ end }}
 
 <!-- Web App Manifest -->
-<link rel="manifest" href="/site.webmanifest">
+{{ if site.Params.seo.manifest }}<link rel="manifest" href="{{ site.Params.seo.manifest | absURL }}">{{ else }}<link rel="manifest" href="/site.webmanifest">{{ end }}
 
 <!-- Theme Color for Mobile Browsers -->
-<meta name="theme-color" content="#1f2937">
-<meta name="msapplication-TileColor" content="#1f2937">
+{{ if site.Params.seo.themeColor }}<meta name="theme-color" content="{{ site.Params.seo.themeColor }}">{{ else }}<meta name="theme-color" content="#2563eb">{{ end }}
+{{ if site.Params.seo.tileColor }}<meta name="msapplication-TileColor" content="{{ site.Params.seo.tileColor }}">{{ else }}<meta name="msapplication-TileColor" content="#2563eb">{{ end }}
 
 {{ range site.Params.customMeta.additionalMeta }}
 <meta name="{{ .name }}" content="{{ .content }}">
@@ -97,8 +97,9 @@
 
 <!-- Preload Critical Resources -->
 {{ if site.Params.performance.preloadCriticalCSS }}
-<link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+{{ $cssPath := site.Params.performance.criticalCSSPath | default "/css/main.css" }}
+<link rel="preload" href="{{ $cssPath }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ $cssPath }}"></noscript>
 {{ end }}
 {{ range site.Params.performance.preloadFonts }}
 <link rel="preload" href="{{ . | absURL }}" as="font" type="font/woff2" crossorigin>
@@ -252,9 +253,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-
 <!-- Styles -->
 {{ partialCached "head/css.html" . }}
 
@@ -269,7 +267,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;

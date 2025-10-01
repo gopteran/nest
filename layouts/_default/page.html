@@ -5,7 +5,7 @@
       <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-6 leading-tight">
         {{ .Title }}
       </h1>
-      
+
       <!-- Article meta -->
       <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--color-fg)]/70">
         {{- if .Date }}
@@ -18,7 +18,7 @@
             <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
           </div>
         {{- end }}
-        
+
         {{/* Git-based last modified date with fallback */}}
         {{- $lastModified := false }}
         {{- with .GitInfo }}
@@ -32,7 +32,7 @@
         {{- if not $lastModified }}
           {{- $lastModified = .Date }}
         {{- end }}
-        
+
         {{- if and $lastModified (ne $lastModified .Date) }}
           {{ $lastModMachine := $lastModified | time.Format "2006-01-02T15:04:05-07:00" }}
           {{ $lastModHuman := $lastModified | time.Format "January 2, 2006" }}
@@ -40,10 +40,10 @@
             <svg class="w-4 h-4 text-[var(--color-growth)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
             </svg>
-            <time datetime="{{ $lastModMachine }}" title="Last updated">Updated {{ $lastModHuman }}</time>
+            <time datetime="{{ $lastModMachine }}" title="Last updated">{{ site.Params.ui.dateUpdated }} {{ $lastModHuman }}</time>
           </div>
         {{- end }}
-        
+
         {{/* Author information with comprehensive fallback */}}
         {{- $author := "" }}
         {{- $authorSource := "unknown" }}
@@ -69,7 +69,7 @@
           {{- $author = site.Title }}
           {{- $authorSource = "site-title" }}
         {{- end }}
-        
+
         {{- if $author }}
           <div class="flex items-center gap-2">
             <svg class="w-4 h-4 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@
             <span title="Author ({{ $authorSource }})">{{ $author }}</span>
           </div>
         {{- end }}
-        
+
         {{- if .ReadingTime }}
           <div class="flex items-center gap-2">
             <svg class="w-4 h-4 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,7 +134,7 @@
           <h4 class="text-[var(--color-fg)] group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">{{ .Title }}</h4>
         </a>
       {{- end }}
-      
+
       {{- with .NextInSection }}
         <a href="{{ .RelPermalink }}" class="flex-1 group p-6 bg-[var(--color-bg)] rounded-[var(--radius-lg)] border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] hover:shadow-lg transition-all duration-300 text-right">
           <div class="flex items-center justify-end gap-3 text-[var(--color-primary)] font-semibold mb-2">
