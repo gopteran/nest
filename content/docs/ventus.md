@@ -1,6 +1,7 @@
 ---
 title: "Ventus"
 date: 2025-09-08
+lastmod: 2025-10-01
 draft: false
 summary: "Ventus is the frontend framework for the Gopteran project"
 ---

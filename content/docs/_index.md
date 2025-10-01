@@ -1,6 +1,7 @@
 ---
 title: "Docs"
 date: 2025-09-08
+lastmod: 2025-10-01
 draft: false
 summary: "Documentation for all Gopteran project components"
 ---

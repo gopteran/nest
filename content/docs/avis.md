@@ -1,6 +1,7 @@
 ---
 title: "Avis"
 date: 2025-09-08
+lastmod: 2025-10-01
 draft: false
 summary: "Avis is the Discord bot for the Gopteran project"
 ---

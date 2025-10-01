@@ -1,6 +1,7 @@
 ---
 title: "Home"
 date: 2025-09-08
+lastmod: 2025-10-01
 draft: false
 summary: "Welcome to the Gopteran documentation hub - your central resource for infrastructure management tools designed for flight and precision"
 ---

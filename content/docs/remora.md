@@ -1,6 +1,7 @@
 ---
 title: "Remora"
 date: 2025-09-08
+lastmod: 2025-10-01
 draft: false
 summary: "Remora is the daemon/CLI agent for the Gopteran project"
 ---

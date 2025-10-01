@@ -1,6 +1,7 @@
 ---
 title: "Carina"
 date: 2025-09-08
+lastmod: 2025-10-01
 draft: false
 summary: "Carina is the backend core for the Gopteran project"
 ---
