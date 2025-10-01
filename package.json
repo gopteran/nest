@@ -6,7 +6,7 @@
   "scripts": {
     "dev": " hugo server --enableGitInfo --noHTTPCache --disableFastRender",
     "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify --watch",
-    "build": "hugo --gc --minify",
+    "build": "hugo --gc --minify --enableGitInfo",
     "build:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify",
     "deploy": "pnpm run build:css && pnpm run build",
     "format": "npx prettier --write ."
