@@ -1,0 +1,12 @@
+name = "nest"
+compatibility_date = "2025-10-01"
+
+[build]
+command = "npm run build"
+
+
+[assets]
+directory = "public"
+
+# The 'not_found_handling' option serves custom 404 pages; ensure Wrangler >=3.15.0 is used.
+not_found_handling = "404-page"
