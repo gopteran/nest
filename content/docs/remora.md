@@ -1,7 +1,6 @@
 ---
 title: "Remora"
 date: 2025-09-08
-lastmod: 2025-10-01
 draft: false
 summary: "Remora is the daemon/CLI agent for the Gopteran project"
 ---
@@ -16,13 +15,13 @@ It acts as the operational "claw" deep inside the infrastructure, ensuring that 
 
 The name “Remora” was chosen deliberately to capture the essence of this tool’s role and architecture:
 
-- **Biological inspiration:**  
+- **Biological inspiration:**
   The remora is a fish known for attaching itself to larger marine animals like sharks or turtles in a symbiotic relationship. It hitches a ride, benefits from the host's movement, and sometimes provides cleaning services — all without burdening the host.
 
-- **Architectural analogy:**  
+- **Architectural analogy:**
   Similarly, the Remora CLI agent is designed to "attach" to the host server, running close to the core services without interfering with their stability. It’s a helper process that stays out of the way but is indispensable for smooth operation.
 
-- **Minimal footprint and dependency:**  
+- **Minimal footprint and dependency:**
   Just like the remora fish does not overly tax its host, the Remora agent is lightweight, efficient, and purpose-built to maintain system integrity and security without overcomplication.
 
 ## Functional role

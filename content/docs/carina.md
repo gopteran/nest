@@ -1,7 +1,6 @@
 ---
 title: "Carina"
 date: 2025-09-08
-lastmod: 2025-10-01
 draft: false
 summary: "Carina is the backend core for the Gopteran project"
 ---
@@ -16,13 +15,13 @@ It serves as the structural backbone, providing a robust and secure API that emp
 
 The name “Carina” is inspired by the keel bone of a bird’s sternum:
 
-- **Biological inspiration:**  
+- **Biological inspiration:**
   The carina is the central keel bone in birds that anchors the powerful flight muscles necessary for sustained flight. It provides essential structural support and coordination for complex wing movements.
 
-- **Architectural analogy:**  
+- **Architectural analogy:**
   Similarly, Carina acts as the backbone of the Gopteran system — the foundational core that holds everything together and coordinates all critical operations. Without it, the entire ecosystem would lose structure and power.
 
-- **Central authority:**  
+- **Central authority:**
   Just as the keel bone is central to flight, Carina is the central control plane, making authoritative decisions about user permissions, resource states, and command dispatching.
 
 ## Functional role

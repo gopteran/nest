@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+###
+### This script builds the static site and prepares it for deployment.
+###
+
+# Ensure full git history is available for Hugo's .GitInfo
+git fetch --unshallow || true
+git fetch --tags || true
+
+# Build the site
+pnpm run build:css
+pnpm run build

@@ -1,7 +1,6 @@
 ---
 title: "Ventus"
 date: 2025-09-08
-lastmod: 2025-10-01
 draft: false
 summary: "Ventus is the frontend framework for the Gopteran project"
 ---
@@ -16,13 +15,13 @@ It serves as the “wind beneath the wings” of the Gopteran ecosystem, deliver
 
 The name “Ventus” comes from the Latin word for “wind”:
 
-- **Biological inspiration:**  
+- **Biological inspiration:**
   Wind is an invisible but essential force for flight, enabling movement, lift, and navigation. It carries energy, connects environments, and is ever-present yet often unnoticed.
 
-- **Architectural analogy:**  
+- **Architectural analogy:**
   Ventus acts as the dynamic interface that carries user commands and feedback between the human operator and the backend infrastructure, making the experience effortless and fluid.
 
-- **User-centric design:**  
+- **User-centric design:**
   Like the wind, Ventus aims to be light, fast, and adaptive, focusing on user experience without adding unnecessary bulk or complexity. This is also why the choice of SvelteKit, a framework known for its minimalism and efficiency.
 
 ## Functional role

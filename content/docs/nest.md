@@ -1,7 +1,6 @@
 ---
 title: "Nest"
 date: 2025-09-08
-lastmod: 2025-10-01
 draft: false
 summary: "Nest is the documentation repository for the Gopteran project"
 ---
