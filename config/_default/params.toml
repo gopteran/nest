@@ -8,6 +8,24 @@
 [keywords]
     keywords = ["gopteran", "documentation", "infrastructure", "devops", "automation", "control panel", "cli"]
 
+[seo]
+  title = "Gopteran"
+  description = "Official documentation for the Gopteran project - infrastructure management tools designed for flight and precision"
+  author = "Gopteran"
+  keywords = ["gopteran", "documentation", "infrastructure", "devops", "automation", "control panel", "cli"]
+  robots = "index, follow"
+  googlebot = "index, follow"
+  googleSiteVerification = ""
+  bingSiteVerification = ""
+  yandexSiteVerification = ""
+  baiduSiteVerification = ""
+  manifest = "/site.webmanifest"
+  themeColor = "#2563eb"
+  tileColor = "#2563eb"
+  defaultImage = "/img/gopteran.png"
+  defaultImageAlt = "Gopteran logo"
+  logo = "/img/gopteran.png"
+
 [analytics]
   googleAnalytics = "GA_MEASUREMENT_ID"
   googleTagManager = ""

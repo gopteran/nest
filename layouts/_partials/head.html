@@ -14,28 +14,30 @@
 
 <!-- Theme and App Meta Tags -->
 <!-- Favicon and Icons -->
-{{ if site.Params.seo.favicon }} {{ $favicon := resources.Get site.Params.seo.favicon }} {{ if $favicon }}
-<link rel="icon" type="image/x-icon" href="{{ $favicon.Permalink }}" />
-{{ end }} {{ end }}
+{{ if site.Params.favicon.ico }}
+<link rel="icon" type="image/x-icon" href="{{ site.Params.favicon.ico }}" />
+{{ end }}
 
 <!-- PNG Favicons -->
-{{ if site.Params.seo.favicon16 }} {{ $favicon16 := resources.Get site.Params.seo.favicon16 }} {{ if $favicon16 }}
-<link rel="icon" type="image/png" sizes="16x16" href="{{ $favicon16.Permalink }}" />
-{{ end }} {{ end }} {{ if site.Params.seo.favicon32 }} {{ $favicon32 := resources.Get site.Params.seo.favicon32 }} {{ if $favicon32 }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon32.Permalink }}" />
-{{ end }} {{ end }}
+{{ if site.Params.favicon.png16 }}
+<link rel="icon" type="image/png" sizes="16x16" href="{{ site.Params.favicon.png16 }}" />
+{{ end }}
+{{ if site.Params.favicon.png32 }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ site.Params.favicon.png32 }}" />
+{{ end }}
 
 <!-- Apple Touch Icon -->
-{{ if site.Params.seo.appleTouchIcon }} {{ $appleTouchIcon := resources.Get site.Params.seo.appleTouchIcon }} {{ if $appleTouchIcon }}
-<link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon.Permalink }}" />
-{{ end }} {{ end }}
+{{ if site.Params.favicon.apple }}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ site.Params.favicon.apple }}" />
+{{ end }}
 
 <!-- Android/Chrome Icons -->
-{{ if site.Params.seo.androidIcon192 }} {{ $android192 := resources.Get site.Params.seo.androidIcon192 }} {{ if $android192 }}
-<link rel="icon" type="image/png" sizes="192x192" href="{{ $android192.Permalink }}" />
-{{ end }} {{ end }} {{ if site.Params.seo.androidIcon512 }} {{ $android512 := resources.Get site.Params.seo.androidIcon512 }} {{ if $android512 }}
-<link rel="icon" type="image/png" sizes="512x512" href="{{ $android512.Permalink }}" />
-{{ end }} {{ end }}
+{{ if site.Params.favicon.android192 }}
+<link rel="icon" type="image/png" sizes="192x192" href="{{ site.Params.favicon.android192 }}" />
+{{ end }}
+{{ if site.Params.favicon.android512 }}
+<link rel="icon" type="image/png" sizes="512x512" href="{{ site.Params.favicon.android512 }}" />
+{{ end }}
 
 <!-- Web App Manifest -->
 {{ if site.Params.seo.manifest }}<link rel="manifest" href="{{ site.Params.seo.manifest | absURL }}" />{{ else }}<link rel="manifest" href="/site.webmanifest" />{{ end }}
