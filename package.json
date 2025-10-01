@@ -1,7 +1,7 @@
 {
-  "name": "nest-self",
+  "name": "nest",
   "version": "1.0.0",
-  "description": "",
+  "description": "Documentation repository for the Gopteran project",
   "main": "index.js",
   "scripts": {
     "dev": " hugo server --enableGitInfo --noHTTPCache --disableFastRender",
