@@ -1,5 +1,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Preconnect to external domains for performance -->
+{{ if site.Params.analytics.googleAnalytics }}<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />{{ end }}
+{{ if site.Params.analytics.googleTagManager }}<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />{{ end }}
+{{ if site.Params.analytics.facebookPixel }}<link rel="preconnect" href="https://connect.facebook.net" crossorigin />{{ end }}
 
 <!-- Basic SEO Meta Tags -->
 <meta name="description" content="{{ if .IsHome }}{{ site.Params.seo.description | default site.Title }}{{ else }}{{ .Summary | default .Title }} | {{ site.Title }}{{ end }}" />

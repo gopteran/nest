@@ -77,3 +77,8 @@
 
   # Other UI strings
   latestFirst = "Latest first"
+
+[performance]
+  preloadCriticalCSS = true
+  criticalCSSPath = "/css/main.css"
+  preloadFonts = []

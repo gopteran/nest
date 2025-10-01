@@ -1,7 +1,8 @@
 ---
-title: 'Home'
-date: 2023-01-01T08:00:00-07:00
+title: "Home"
+date: 2025-09-08
 draft: false
+summary: "Welcome to the Gopteran documentation hub - your central resource for infrastructure management tools designed for flight and precision"
 ---
 
 Nest is the documentation repository for the Gopteran project
