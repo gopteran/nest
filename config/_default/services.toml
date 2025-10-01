@@ -7,14 +7,14 @@
     [params.services.analytics]
       # Google Analytics 4
       [params.services.analytics.google]
-        enable = true
+        enable = false
         measurementId = 'G-ABC123DEF456'
         anonymizeIP = true
         respectDoNotTrack = true
 
       # Google Tag Manager
       [params.services.analytics.gtm]
-        enable = true
+        enable = false
         containerId = 'GTM-ABC123DEF'
         auth = 'your-auth-token'
         preview = 'env-1'
@@ -40,7 +40,7 @@
     [params.services.social]
       # Twitter/X
       [params.services.social.twitter]
-        enable = true
+        enable = false
         username = 'gopteran'
         apiKey = 'your-twitter-api-key'
         apiSecret = 'your-twitter-api-secret'
@@ -49,7 +49,7 @@
 
       # Facebook
       [params.services.social.facebook]
-        enable = true
+        enable = false
         appId = '1234567890123456'
         appSecret = 'your-facebook-app-secret'
         pageId = 'your-facebook-page-id'
@@ -57,14 +57,14 @@
 
       # LinkedIn
       [params.services.social.linkedin]
-        enable = true
+        enable = false
         clientId = 'your-linkedin-client-id'
         clientSecret = 'your-linkedin-client-secret'
         companyId = 'your-company-id'
 
       # Discord
       [params.services.social.discord]
-        enable = true
+        enable = false
         webhookUrl = 'https://discord.com/api/webhooks/your-webhook-id/your-webhook-token'
         botToken = 'your-bot-token'
 
@@ -116,7 +116,7 @@
     [params.services.email]
       # Mailchimp
       [params.services.email.mailchimp]
-        enable = true
+        enable = false
         apiKey = 'your-mailchimp-api-key'
         listId = 'your-audience-id'
         server = 'us1'
@@ -166,7 +166,7 @@
     [params.services.cloud]
       # AWS
       [params.services.cloud.aws]
-        enable = true
+        enable = false
         region = 'us-east-1'
         accessKey = 'your-aws-access-key'
         secretKey = 'your-aws-secret-key'
@@ -174,10 +174,10 @@
 
       # Cloudflare
       [params.services.cloud.cloudflare]
-        enable = true
-        apiToken = 'your-cloudflare-api-token'
-        zoneId = 'your-zone-id'
-        accountId = 'your-account-id'
+        enable = false
+        apiToken = '{{ getenv "HUGO_CLOUDFLARE_API_TOKEN" }}'
+        zoneId = '{{ getenv "HUGO_CLOUDFLARE_ZONE_ID" }}'
+        accountId = '{{ getenv "HUGO_CLOUDFLARE_ACCOUNT_ID" }}'
 
       # Vercel
       [params.services.cloud.vercel]
@@ -195,7 +195,7 @@
     [params.services.monitoring]
       # Sentry
       [params.services.monitoring.sentry]
-        enable = true
+        enable = false
         dsn = 'https://your-sentry-dsn@sentry.io/project-id'
         environment = 'production'
         release = '1.0.0'
@@ -215,9 +215,9 @@
     [params.services.cdn]
       # Cloudflare CDN
       [params.services.cdn.cloudflare]
-        enable = true
-        zoneId = 'your-zone-id'
-        apiToken = 'your-api-token'
+        enable = false
+        zoneId = '{{ getenv "HUGO_CLOUDFLARE_ZONE_ID" }}'
+        apiToken = '{{ getenv "HUGO_CLOUDFLARE_API_TOKEN" }}'
 
       # Fastly
       [params.services.cdn.fastly]
@@ -235,7 +235,7 @@
     [params.services.api]
       # GitHub API
       [params.services.api.github]
-        enable = true
+        enable = false
         token = 'your-github-token'
         repo = 'gopteran/nest'
 
@@ -266,7 +266,7 @@
 
       # Custom Webhooks
       [params.services.webhooks.custom]
-        enable = true
+        enable = false
         url = 'https://api.gopteran.dev/webhooks/content'
         secret = 'your-webhook-secret'
         events = ['publish', 'update', 'delete']
@@ -275,7 +275,7 @@
     [params.services.backup]
       # Backblaze B2
       [params.services.backup.backblaze]
-        enable = true
+        enable = false
         accountId = 'your-account-id'
         applicationKey = 'your-application-key'
         bucket = 'gopteran-backups'
@@ -296,14 +296,14 @@
     [params.services.notifications]
       # Slack
       [params.services.notifications.slack]
-        enable = true
+        enable = false
         webhookUrl = 'https://hooks.slack.com/services/your-webhook-url'
         channel = '#deployments'
         username = 'Hugo Deploy'
 
       # Discord
       [params.services.notifications.discord]
-        enable = true
+        enable = false
         webhookUrl = 'https://discord.com/api/webhooks/your-webhook-id/your-webhook-token'
         username = 'Hugo Deploy'
         avatarUrl = '/img/hugo-avatar.png'

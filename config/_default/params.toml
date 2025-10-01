@@ -1,12 +1,12 @@
 [author]
-  name = "Your Name"
-  email = "your.email@example.com"
+  name = "Gopteran"
+  email = "hello@gopteran.com"
 
 [description]
-  text = "A brief description of your site"
+  text = "Official documentation for the Gopteran project - infrastructure management tools designed for flight and precision"
 
 [keywords]
-    keywords = ["keyword1", "keyword2", "keyword3"]
+    keywords = ["gopteran", "documentation", "infrastructure", "devops", "automation", "control panel", "cli"]
 
 [services]
   [services.googleAnalytics]
@@ -27,14 +27,14 @@
   android512 = "/android-chrome-512x512.png"
 
 [footer]
-  description = "Driving innovation and sustainable growth through cutting-edge solutions and strategic partnerships."
+  description = "Gopteran provides infrastructure management tools designed for flight and precision. From control panels to CLI agents, we help you manage your systems with clarity and control."
   copyright = "All rights reserved."
   madeWith = "Made with ❤️ by"
 
 [contact]
-  address = "Your Business Address\nCity, State 12345"
+  address = "Digital Infrastructure\nWorldwide"
   email = "hello@gopteran.com"
-  phone = "+1 (234) 567-890"
+  phone = ""
 
 [ui]
   # Home page strings
@@ -45,7 +45,7 @@
 
   # Call to action
   ctaHeading = "Ready to Get Started?"
-  ctaDescription = "Discover innovative solutions and growth opportunities with {{ site.Title }}."
+  ctaDescription = "Explore the Gopteran ecosystem and discover tools designed for flight and precision in infrastructure management."
   learnMoreText = "Learn More"
   getInTouchText = "Get in Touch"
 

@@ -22,6 +22,7 @@ This site includes a comprehensive SEO configuration system optimized for techni
 - `layouts/_default/sitemap.xml` - Enhanced XML sitemap with rich snippets
 
 ### Quick Setup
+
 1. Update domain-specific settings in `config/_default/seo.toml`
 2. Add your actual tracking IDs and verification codes
 3. Configure social media handles and app IDs
@@ -39,8 +40,8 @@ The name “Nest” symbolizes a safe, central place where everything essential 
 
 ## Purpose
 
-- Serve as the authoritative source for all Gopteran documentation  
-- Support users and contributors with clear guides, tutorials, and references  
+- Serve as the authoritative source for all Gopteran documentation
+- Support users and contributors with clear guides, tutorials, and references
 - Act as the content base for the official Gopteran documentation website
 
 ## Philosophy
