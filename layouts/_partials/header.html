@@ -2,12 +2,12 @@
     <!-- Enhanced Logo/Brand -->
     <a href="/" class="flex items-center gap-3 group transition-all duration-300 hover:scale-105">
         <!-- Improved logo with better styling -->
-        <div class="w-12 h-12 rounded-[var(--radius-lg)] shadow-lg flex items-center justify-center transform transition-transform group-hover:rotate-3">
+        <div class="w-16 h-16 rounded-[var(--radius-lg)] shadow-lg flex items-center justify-center transform transition-transform group-hover:rotate-3">
             {{ if .Site.Params.logo }}
-            <img src="{{ .Site.Params.logo | relURL }}" alt="Logo" class="w-8 h-8 object-contain" />
+            <img src="{{ .Site.Params.logo | relURL }}" alt="Logo" class="object-contain" />
             {{ else }}
             <!-- Fallback: Show site title as text if no logo configured -->
-            <div class="w-8 h-8 bg-[var(--color-sand)] rounded flex items-center justify-center text-[var(--color-neutral-dark)] font-bold text-sm">{{ substr site.Title 0 1 }}</div>
+            <div class="w-12 h-12 bg-[var(--color-sand)] rounded flex items-center justify-center text-[var(--color-neutral-dark)] font-bold text-sm">{{ substr site.Title 0 1 }}</div>
             {{ end }}
         </div>
         <div class="flex flex-col">
