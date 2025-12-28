@@ -3,6 +3,8 @@ title: "Remora"
 date: 2025-09-08
 draft: false
 summary: "Remora is the daemon/CLI agent for the Gopteran project"
+tags: ["cli", "agent", "daemon", "orchestration"]
+categories: ["Components"]
 ---
 
 ## Overview

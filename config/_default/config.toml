@@ -58,7 +58,7 @@ publishDir = 'public'
 
 # Output Formats
 [outputs]
-  home = ['HTML', 'RSS']
+  home = ['HTML', 'RSS', 'JSON']
   page = ['HTML']
   section = ['HTML', 'RSS']
   taxonomy = ['HTML', 'RSS']
@@ -73,7 +73,7 @@ publishDir = 'public'
     rel = 'alternate'
   [outputFormats.JSON]
     mediatype = 'application/json'
-    baseName = 'index'
+    baseName = 'searchindex'
     isPlainText = false
     rel = 'alternate'
 
@@ -164,7 +164,7 @@ publishDir = 'public'
       precision = 0
     [minify.tdewolff.html]
       keepComments = false
-      keepConditionalComments = false
+      keepSpecialComments = false
       keepDefaultAttrVals = false
       keepDocumentTags = false
       keepEndTags = false

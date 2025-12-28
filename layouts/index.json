@@ -1,0 +1,16 @@
+{{- $pages := where site.Pages "Type" "in" (slice "docs" "page") }}
+{{- $pages = where $pages "Params.searchHidden" "!=" true }}
+{{- $pages = where $pages "Draft" "!=" true }}
+[
+{{- range $index, $page := $pages }}
+  {
+    "id": "{{ $index }}",
+    "title": {{ $page.Title | jsonify }},
+    "summary": {{ ($page.Summary | plainify | htmlUnescape) | jsonify }},
+    "content": {{ ($page.Content | plainify | htmlUnescape) | jsonify }},
+    "tags": {{ $page.Params.tags | jsonify }},
+    "date": "{{ $page.Date.Format "2006-01-02" }}",
+    "permalink": "{{ $page.RelPermalink }}"
+  }{{ if not (eq $index (sub (len $pages) 1)) }},{{ end }}
+{{- end }}
+]

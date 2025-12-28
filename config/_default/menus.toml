@@ -15,11 +15,10 @@
     icon = 'book'
     description = 'Browse documentation'
 
-
 [[main]]
   name = 'Tags'
   pageRef = '/tags'
-  weight = 40
+  weight = 30
   [main.params]
     icon = 'tags'
     description = 'Browse by tags'
@@ -27,10 +26,18 @@
 [[main]]
   name = 'Categories'
   pageRef = '/categories'
-  weight = 50
+  weight = 40
   [main.params]
     icon = 'folder'
     description = 'Browse by categories'
+
+[[main]]
+  name = 'Search'
+  pageRef = '/search'
+  weight = 50
+  [main.params]
+    icon = 'search'
+    description = 'Search documentation'
 
 # Footer Menu
 [[footer]]

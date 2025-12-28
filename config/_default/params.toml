@@ -78,6 +78,11 @@
   # Other UI strings
   latestFirst = "Latest first"
 
+[search]
+  enable = true
+  searchLimit = 10
+  basePath = "/"
+
 [performance]
   preloadCriticalCSS = true
   criticalCSSPath = "/css/main.css"

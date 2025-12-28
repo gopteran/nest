@@ -3,6 +3,8 @@ title: "Ventus"
 date: 2025-09-08
 draft: false
 summary: "Ventus is the frontend framework for the Gopteran project"
+tags: ["frontend", "sveltekit", "ui", "interface"]
+categories: ["Components"]
 ---
 
 ## Overview

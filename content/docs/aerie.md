@@ -3,6 +3,8 @@ title: "Aerie"
 date: 2025-09-08
 draft: false
 summary: "Aerie is the fullstack control panel for the Gopteran project"
+tags: ["control-panel", "frontend", "backend", "management"]
+categories: ["Components"]
 ---
 
 ## Overview
