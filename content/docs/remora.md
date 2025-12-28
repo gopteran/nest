@@ -5,6 +5,7 @@ draft: false
 summary: "Remora is the daemon/CLI agent for the Gopteran project"
 tags: ["cli", "agent", "daemon", "orchestration"]
 categories: ["Components"]
+github_repo: "https://github.com/gopteran/remora"
 ---
 
 ## Overview

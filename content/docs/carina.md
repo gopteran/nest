@@ -5,6 +5,7 @@ draft: false
 summary: "Carina is the backend core for the Gopteran project"
 tags: ["backend", "api", "authentication", "core"]
 categories: ["Components"]
+github_repo: "https://github.com/gopteran/carina"
 ---
 
 ## Overview

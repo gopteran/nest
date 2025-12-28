@@ -5,6 +5,7 @@ draft: false
 summary: "Avis is the Discord bot for the Gopteran project"
 tags: ["discord", "bot", "automation", "community"]
 categories: ["Components"]
+github_repo: "https://github.com/gopteran/avis"
 ---
 
 ## Overview

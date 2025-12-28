@@ -5,6 +5,7 @@ draft: false
 summary: "Nest is the documentation repository for the Gopteran project"
 tags: ["documentation", "guide", "reference"]
 categories: ["Documentation"]
+github_repo: "https://github.com/gopteran/nest"
 ---
 
 ## Overview

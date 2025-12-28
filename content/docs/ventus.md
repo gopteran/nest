@@ -5,6 +5,7 @@ draft: false
 summary: "Ventus is the frontend framework for the Gopteran project"
 tags: ["frontend", "sveltekit", "ui", "interface"]
 categories: ["Components"]
+github_repo: "https://github.com/gopteran/ventus"
 ---
 
 ## Overview

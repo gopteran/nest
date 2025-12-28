@@ -5,6 +5,7 @@ draft: false
 summary: "Aerie is the fullstack control panel for the Gopteran project"
 tags: ["control-panel", "frontend", "backend", "management"]
 categories: ["Components"]
+github_repo: "https://github.com/gopteran/aerie"
 ---
 
 ## Overview
