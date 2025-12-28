@@ -58,16 +58,16 @@
 
 [ui]
   # Home page strings
-  latestContentHeading = "Latest Content"
+  latestContentHeading = "Latest Documentation"
   readMoreText = "Read More"
   viewAllText = "View All"
   defaultSummary = "Discover more about this topic..."
 
   # Call to action
-  ctaHeading = "Ready to Get Started?"
-  ctaDescription = "Explore the Gopteran ecosystem and discover tools designed for flight and precision in infrastructure management."
-  learnMoreText = "Learn More"
-  getInTouchText = "Get in Touch"
+  ctaHeading = "Ready to Take Flight?"
+  ctaDescription = "Join thousands of developers who trust Gopteran for their infrastructure management needs. Start building something amazing today."
+  learnMoreText = "Get Started"
+  getInTouchText = "View Documentation"
 
   # Date labels
   datePublished = "Published"

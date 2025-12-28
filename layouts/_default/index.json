@@ -1,0 +1,17 @@
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+{{- $pages = $pages | union (where site.RegularPages "Section" "docs") -}}
+[
+{{- range $index, $page := $pages -}}
+  {{- if gt $index 0 }},{{ end }}
+  {
+    "title": {{ $page.Title | jsonify }},
+    "content": {{ $page.Plain | jsonify }},
+    "summary": {{ $page.Summary | plainify | jsonify }},
+    "permalink": {{ $page.Permalink | jsonify }},
+    "section": {{ $page.Section | jsonify }},
+    "tags": {{ delimit $page.Params.tags ", " | jsonify }},
+    "categories": {{ delimit $page.Params.categories ", " | jsonify }},
+    "date": {{ $page.Date.Format "2006-01-02" | jsonify }}
+  }
+{{- end -}}
+]

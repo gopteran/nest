@@ -1,80 +1,217 @@
 {{ define "main" }}
-<div class="max-w-4xl mx-auto">
+<div class="max-w-6xl mx-auto">
     <!-- Search Header -->
-    <header class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-6">Search Documentation</h1>
-        <p class="text-lg text-[var(--color-fg)]/70">Find what you're looking for in the Gopteran documentation</p>
+    <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-6">{{ .Title }}</h1>
+        <p class="text-lg text-[var(--color-fg)]/70 max-w-2xl mx-auto">{{ .Summary }}</p>
     </header>
 
-    <!-- Search Form -->
+    <!-- Search Interface -->
     <div class="mb-12">
-        <form data-search-form class="relative">
-            <div class="relative">
-                <input
-                    type="search"
-                    data-search-text
-                    placeholder="Search posts, docs, guides..."
-                    class="w-full px-6 py-4 bg-[var(--color-bg)] border-2 border-[var(--color-primary)] rounded-[var(--radius-lg)] text-[var(--color-fg)] placeholder-[var(--color-fg)]/50 focus:outline-none focus:border-[var(--color-secondary)] transition-colors"
-                />
-                <button
-                    type="submit"
-                    class="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors"
-                >
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </button>
+        <div class="relative max-w-2xl mx-auto">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-[var(--color-fg)]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
             </div>
-        </form>
-
-        <!-- Loading state -->
-        <div data-search-loading class="text-center py-8">
-            <div class="inline-block">
-                <div class="w-8 h-8 border-4 border-[var(--color-primary)] border-t-[var(--color-secondary)] rounded-full animate-spin"></div>
-            </div>
-            <p class="mt-4 text-[var(--color-fg)]/60">Loading search index...</p>
+            <input
+                type="search"
+                id="search-input"
+                placeholder="Search documentation..."
+                class="w-full pl-12 pr-4 py-4 text-lg border-2 border-[var(--color-neutral-light)] rounded-[var(--radius-xl)] focus:border-[var(--color-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]/20 transition-all bg-[var(--color-bg)]"
+                autocomplete="off"
+            />
         </div>
 
-        <!-- Search input (hidden initially) -->
-        <div data-search-input class="hidden"></div>
+        <!-- Search Results -->
+        <div id="search-results" class="mt-8 space-y-4"></div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden mt-8 text-center">
+            <div class="bg-[var(--color-sand)]/10 border border-[var(--color-sand)]/20 rounded-[var(--radius-lg)] p-8">
+                <svg class="w-16 h-16 text-[var(--color-sand)] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.175-5.5-2.709M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                </svg>
+                <h3 class="text-lg font-semibold text-[var(--color-primary)] mb-2">No results found</h3>
+                <p class="text-[var(--color-fg)]/70">Try different keywords or browse our popular sections below.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Results Container -->
-    <section>
-        <div data-search-results class="grid gap-6 md:grid-cols-2">
-            <!-- Results will be populated here -->
-        </div>
+    <!-- Content -->
+    <div class="prose prose-lg max-w-none">
+        {{ .Content }}
+    </div>
 
-        <!-- No results message -->
-        <div class="text-center py-12 text-[var(--color-fg)]/60">
-            <p class="text-lg">Start searching to see results</p>
-        </div>
-    </section>
-
-    <!-- Result Template -->
-    <template>
-        <article class="group relative">
-            <div class="bg-[var(--color-bg)] rounded-[var(--radius-lg)] shadow-lg hover:shadow-2xl transition-all duration-500 p-6 border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] h-full flex flex-col">
-                <h3 class="text-xl font-bold text-[var(--color-primary)] mb-3 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">
-                    <a class="hover:underline"></a>
-                </h3>
-                <p class="text-[var(--color-fg)]/70 leading-relaxed line-clamp-3 mb-4 flex-1">
-                    <span class="content"></span>
-                </p>
-                <div class="flex items-center justify-between">
-                    <time class="text-xs text-[var(--color-fg)]/60"></time>
-                    <a class="text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors text-sm font-semibold">
-                        Read More →
-                    </a>
+    <!-- Popular Sections -->
+    <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/docs/getting-started" class="group p-6 bg-[var(--color-bg)] rounded-[var(--radius-lg)] border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] hover:shadow-lg transition-all">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[var(--color-growth)]/20 rounded-[var(--radius-base)] flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[var(--color-growth)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
                 </div>
+                <h3 class="font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">Getting Started</h3>
             </div>
-        </article>
-    </template>
+            <p class="text-sm text-[var(--color-fg)]/70">Quick start guide and installation instructions</p>
+        </a>
+
+        <a href="/docs/api" class="group p-6 bg-[var(--color-bg)] rounded-[var(--radius-lg)] border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] hover:shadow-lg transition-all">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[var(--color-secondary)]/20 rounded-[var(--radius-base)] flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">API Reference</h3>
+            </div>
+            <p class="text-sm text-[var(--color-fg)]/70">Complete API documentation and examples</p>
+        </a>
+
+        <a href="/docs/examples" class="group p-6 bg-[var(--color-bg)] rounded-[var(--radius-lg)] border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] hover:shadow-lg transition-all">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[var(--color-sand)]/20 rounded-[var(--radius-base)] flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">Examples</h3>
+            </div>
+            <p class="text-sm text-[var(--color-fg)]/70">Real-world examples and tutorials</p>
+        </a>
+    </div>
 </div>
 
-<!-- Set up global parameters for search script -->
+<!-- Search JavaScript -->
 <script>
-    window.hugoSearchLimit = {{ site.Params.search.searchLimit | default 10 }};
-    window.hugoBasePath = '{{ site.Params.search.basePath | default "/" }}';
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const noResults = document.getElementById('no-results');
+
+    let searchIndex = null;
+    let searchData = null;
+
+    // Load search index
+    fetch('/index.json')
+        .then(response => response.json())
+        .then(data => {
+            searchData = data;
+            // Initialize FlexSearch if available
+            if (typeof FlexSearch !== 'undefined') {
+                searchIndex = new FlexSearch.Index({
+                    tokenize: "forward",
+                    resolution: 9
+                });
+
+                data.forEach((item, index) => {
+                    searchIndex.add(index, `${item.title} ${item.content} ${item.tags || ''}`);
+                });
+            }
+        })
+        .catch(error => console.error('Failed to load search index:', error));
+
+    // Search function
+    function performSearch(query) {
+        if (!query.trim() || !searchData) {
+            searchResults.innerHTML = '';
+            noResults.classList.add('hidden');
+            return;
+        }
+
+        let results = [];
+
+        if (searchIndex) {
+            // Use FlexSearch if available
+            const indices = searchIndex.search(query, { limit: 10 });
+            results = indices.map(index => searchData[index]);
+        } else {
+            // Fallback to simple text search
+            const queryLower = query.toLowerCase();
+            results = searchData.filter(item =>
+                item.title.toLowerCase().includes(queryLower) ||
+                item.content.toLowerCase().includes(queryLower) ||
+                (item.tags && item.tags.toLowerCase().includes(queryLower))
+            ).slice(0, 10);
+        }
+
+        displayResults(results, query);
+    }
+
+    // Display search results
+    function displayResults(results, query) {
+        if (results.length === 0) {
+            searchResults.innerHTML = '';
+            noResults.classList.remove('hidden');
+            return;
+        }
+
+        noResults.classList.add('hidden');
+
+        const resultsHTML = results.map(result => {
+            const excerpt = getExcerpt(result.content, query);
+            return `
+                <div class="bg-[var(--color-bg)] border border-[var(--color-neutral-light)] rounded-[var(--radius-lg)] p-6 hover:border-[var(--color-secondary)] hover:shadow-lg transition-all">
+                    <h3 class="text-lg font-semibold mb-2">
+                        <a href="${result.permalink}" class="text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors">
+                            ${highlightText(result.title, query)}
+                        </a>
+                    </h3>
+                    <p class="text-[var(--color-fg)]/70 mb-3">${highlightText(excerpt, query)}</p>
+                    <div class="flex items-center gap-4 text-sm text-[var(--color-fg)]/50">
+                        <span>${result.section || 'Documentation'}</span>
+                        ${result.tags ? `<span>Tags: ${result.tags}</span>` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        searchResults.innerHTML = resultsHTML;
+    }
+
+    // Get excerpt around search term
+    function getExcerpt(content, query, length = 200) {
+        const queryIndex = content.toLowerCase().indexOf(query.toLowerCase());
+        if (queryIndex === -1) {
+            return content.substring(0, length) + (content.length > length ? '...' : '');
+        }
+
+        const start = Math.max(0, queryIndex - length / 2);
+        const end = Math.min(content.length, start + length);
+        const excerpt = content.substring(start, end);
+
+        return (start > 0 ? '...' : '') + excerpt + (end < content.length ? '...' : '');
+    }
+
+    // Highlight search terms
+    function highlightText(text, query) {
+        if (!query.trim()) return text;
+
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<mark class="bg-[var(--color-sand)]/30 text-[var(--color-primary)] px-1 rounded">$1</mark>');
+    }
+
+    // Search input handler
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch(this.value);
+        }, 300);
+    });
+
+    // Handle URL search parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('q');
+    if (searchQuery) {
+        searchInput.value = searchQuery;
+        // Wait for search data to load
+        setTimeout(() => performSearch(searchQuery), 500);
+    }
+
+    // Focus search input
+    searchInput.focus();
+});
 </script>
 {{ end }}

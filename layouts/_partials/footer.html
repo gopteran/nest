@@ -81,7 +81,7 @@
 
 <!-- Bottom section -->
 <div class="mt-12 pt-8 border-t border-[var(--color-neutral-light)]/10 flex flex-col md:flex-row items-center justify-between gap-4">
-    <p class="text-sm text-[var(--color-neutral-light)]/60 text-center md:text-left">&copy; {{if lt (now.Year) 2025}}2025 - {{end}}{{ now.Year }} {{ .Site.Title }}. {{ site.Params.footer.copyright }}</p>
+    <p class="text-sm text-[var(--color-neutral-light)]/60 text-center md:text-left">&copy; {{ if lt now.Year 2025 }}2025 - {{ end }}{{ now.Year }} {{ .Site.Title }}. {{ site.Params.footer.copyright }}</p>
     <div class="flex items-center gap-6 text-sm">
         {{- $pages := slice }} {{- with site.GetPage "/privacy" }} {{- $pages = $pages | append . }} {{- end }} {{- with site.GetPage "/terms" }} {{- $pages = $pages | append . }} {{- end }} {{- if site.GetPage "/legal" }} {{- with site.GetPage "/legal" }} {{- range .Pages }} {{- $pages = $pages | append . }} {{- end }} {{- end }} {{- end }} {{- range $index, $page := $pages }} {{- if gt $index 0 }}
         <span class="text-[var(--color-neutral-light)]/30">•</span>

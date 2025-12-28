@@ -1,44 +1,66 @@
 {{ define "main" }}
-<div class="text-center space-y-8">
-    <!-- Error Icon -->
-    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-[var(--color-sand)] to-[var(--color-secondary)] shadow-2xl mb-8">
-        <svg class="w-12 h-12 text-[var(--color-neutral-light)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-.98-5.5-2.5m.5-4H7a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5"></path>
-        </svg>
-    </div>
+<div class="max-w-4xl mx-auto">
+    <div class="min-h-[60vh] flex items-center justify-center">
+        <div class="text-center px-6">
+        <!-- 404 Illustration -->
+        <div class="mb-8">
+            <div class="relative">
+                <!-- Large 404 text -->
+                <h1 class="text-9xl md:text-[12rem] font-bold bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-growth)] bg-clip-text text-transparent leading-none">404</h1>
 
-    <!-- Error Code -->
-    <div class="space-y-4">
-        <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">404</h1>
-        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--color-neutral-dark)]">Page Not Found</h2>
-        <p class="text-lg text-[var(--color-fg)]/70 max-w-2xl mx-auto leading-relaxed">Oops! The page you're looking for seems to have wandered off. Don't worry, it happens to the best of us. Let's get you back on track.</p>
-    </div>
+                <!-- Flying bird animation -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <svg class="w-16 h-16 text-[var(--color-sand)] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
 
-    <!-- Action Buttons -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-        <a href="{{ .Site.Home.RelPermalink }}" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-lg)] shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
-            <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            Back to Home
-        </a>
+        <!-- Error message -->
+        <div class="mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-primary)] mb-4">Page Not Found</h2>
+            <p class="text-lg text-[var(--color-fg)]/70 leading-relaxed mb-6">
+                Looks like this page has taken flight and can't be found. Don't worry, we'll help you get back on course.
+            </p>
+        </div>
 
-        <a href="javascript:history.back()" class="inline-flex items-center gap-3 px-8 py-4 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-[var(--color-neutral-light)] transition-all duration-300 group">
-            <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-            Go Back
-        </a>
-    </div>
+        <!-- Action buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <a href="/" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300 group">
+                <svg class="w-5 h-5 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                Go Home
+            </a>
 
-    <!-- Additional Help -->
-    <div class="pt-12 border-t border-[var(--color-neutral-light)]/20">
-        <p class="text-sm text-[var(--color-fg)]/60 mb-4">Still can't find what you're looking for?</p>
-        <div class="flex flex-wrap justify-center gap-6 text-sm">
-            <a href="/docs" class="text-[var(--color-primary)] hover:text-[var(--color-secondary)] font-medium transition-colors"> 📚 Browse Documentation </a>
-            <a href="/search" class="text-[var(--color-primary)] hover:text-[var(--color-secondary)] font-medium transition-colors"> 🔍 Search Site </a>
-            <a href="/contact" class="text-[var(--color-primary)] hover:text-[var(--color-secondary)] font-medium transition-colors"> 💬 Contact Support </a>
+            <a href="/docs" class="inline-flex items-center gap-3 px-8 py-4 bg-transparent text-[var(--color-primary)] font-semibold rounded-[var(--radius-xl)] border-2 border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--color-neutral-light)] transition-all duration-300 group">
+                <svg class="w-5 h-5 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+                Browse Docs
+            </a>
+        </div>
+
+        <!-- Search suggestion -->
+        <div class="bg-[var(--color-sand)]/10 border border-[var(--color-sand)]/20 rounded-[var(--radius-lg)] p-6">
+            <h3 class="text-lg font-semibold text-[var(--color-primary)] mb-3">Looking for something specific?</h3>
+            <p class="text-[var(--color-fg)]/70 mb-4">Try searching our documentation or browse popular sections:</p>
+
+            <div class="flex flex-wrap gap-3 justify-center">
+                <a href="/docs/getting-started" class="px-4 py-2 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-[var(--radius-base)] hover:bg-[var(--color-primary)]/20 transition-colors text-sm font-medium">Getting Started</a>
+                <a href="/docs/api" class="px-4 py-2 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] rounded-[var(--radius-base)] hover:bg-[var(--color-secondary)]/20 transition-colors text-sm font-medium">API Reference</a>
+                <a href="/docs/examples" class="px-4 py-2 bg-[var(--color-growth)]/10 text-[var(--color-growth)] rounded-[var(--radius-base)] hover:bg-[var(--color-growth)]/20 transition-colors text-sm font-medium">Examples</a>
+                <a href="/search" class="px-4 py-2 bg-[var(--color-sand)]/10 text-[var(--color-sand)] rounded-[var(--radius-base)] hover:bg-[var(--color-sand)]/20 transition-colors text-sm font-medium">Search</a>
+            </div>
         </div>
     </div>
+</div>
+
+<!-- Background decoration -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+    <div class="absolute top-20 left-10 w-32 h-32 bg-[var(--color-primary)]/5 rounded-full blur-xl"></div>
+    <div class="absolute bottom-20 right-10 w-40 h-40 bg-[var(--color-secondary)]/5 rounded-full blur-xl"></div>
+    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-[var(--color-growth)]/5 rounded-full blur-xl"></div>
 </div>
 {{ end }}

@@ -1,11 +1,11 @@
-{{- /* For a given taxonomy, renders a list of terms assigned to the page. @context {page} page The current page. @context {string} taxonomy The taxonomy. @example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} */}} {{- $page := .page }} {{- $taxonomy := .taxonomy }} {{- with $page.GetTerms $taxonomy }} {{- $label := (index . 0).Parent.LinkTitle }}
-<div class="flex flex-wrap gap-3">
+{{- /* Renders terms for the given taxonomy. @context {page} page The current page. @context {string} taxonomy The taxonomy. @example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }} */}} {{- $page := .page }} {{- $taxonomy := .taxonomy }} {{- with $page.GetTerms $taxonomy }}
+<div class="flex flex-wrap gap-2">
     {{- range . }}
-    <a href="{{ .RelPermalink }}" class="group inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[var(--color-sand)]/20 to-[var(--color-growth)]/20 hover:from-[var(--color-secondary)] hover:to-[var(--color-primary)] text-[var(--color-primary)] hover:text-[var(--color-neutral-light)] rounded-[var(--radius-lg)] text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 border border-[var(--color-sand)]/30 hover:border-transparent">
-        <svg class="w-3 h-3 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-[var(--color-secondary)]/10 to-[var(--color-primary)]/10 hover:from-[var(--color-secondary)]/20 hover:to-[var(--color-primary)]/20 text-[var(--color-primary)] hover:text-[var(--color-secondary)] rounded-full text-sm font-medium transition-all duration-200 border border-[var(--color-primary)]/20 hover:border-[var(--color-secondary)]/30">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
         </svg>
-        <span>{{ .LinkTitle }}</span>
+        {{ .LinkTitle }}
     </a>
     {{- end }}
 </div>

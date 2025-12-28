@@ -4,14 +4,21 @@
   "description": "Documentation repository for the Gopteran project",
   "main": "index.js",
   "scripts": {
-    "dev": " hugo server --enableGitInfo --noHTTPCache --disableFastRender",
+    "dev": "hugo server --enableGitInfo --noHTTPCache --disableFastRender",
     "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify --watch",
     "build": "hugo --gc --minify --enableGitInfo",
-    "build:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify",
-    "deploy": "sh build",
-    "format": "npx prettier --write ."
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify",
+    "deploy": "pnpm run build",
+    "format": "prettier --write .",
+    "preview": "hugo server --environment production --disableFastRender",
+    "clean": "hugo --gc && rm -rf public resources"
   },
-  "keywords": [],
+  "keywords": [
+    "gopteran",
+    "documentation",
+    "hugo",
+    "tailwindcss"
+  ],
   "author": "gopteran",
   "license": "ISC",
   "packageManager": "pnpm@10.17.1",
@@ -19,5 +26,8 @@
     "@tailwindcss/cli": "^4.1.13",
     "flexsearch": "^0.8.212",
     "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4"
   }
 }

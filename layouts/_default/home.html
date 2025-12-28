@@ -1,102 +1,109 @@
 {{ define "main" }}
-<!-- Hero Section -->
-<div class="text-center mb-16">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-growth)] bg-clip-text text-transparent mb-6 leading-tight">{{ site.Title }}</h1>
-        <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-sand)] to-[var(--color-growth)] mx-auto mb-8 rounded-full"></div>
-        {{- if .Content }}
-        <div class="prose prose-lg max-w-3xl mx-auto text-[var(--color-fg)] leading-relaxed">{{ .Content }}</div>
-        {{- end }}
-    </div>
-</div>
-
-<!-- Featured Content Grid -->
-{{- if site.RegularPages }}
-<section class="mb-16">
-    <div class="flex items-center gap-4 mb-12">
-        <h2 class="text-3xl font-bold text-[var(--color-primary)]">{{ site.Params.ui.latestContentHeading }}</h2>
-        <div class="flex-1 h-px bg-gradient-to-r from-[var(--color-primary)] to-transparent"></div>
-    </div>
-
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {{ range first 6 site.RegularPages }}
-        <article class="group relative">
-            <!-- Card -->
-            <div class="bg-[var(--color-bg)] rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full flex flex-col">
-                <!-- Category badge -->
-                {{- if .Section }}
-                <div class="inline-flex items-center gap-2 mb-4">
-                    <span class="px-3 py-1 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] text-[var(--color-neutral-light)] text-xs font-semibold rounded-full uppercase tracking-wide"> {{ .Section }} </span>
-                    {{- if .Date }}
-                    <time datetime="{{ (and .GitInfo .GitInfo.AuthorDate | default .Date).Format "2006-01-02" }}" class="text-xs text-[var(--color-fg)]/60">{{ (and .GitInfo .GitInfo.AuthorDate | default .Date).Format "Jan 2, 2006" }}</time>
-                    {{- end }}
-                </div>
-                {{- end }}
-
-                <!-- Content -->
-                <div class="flex-1">
-                    <h3 class="text-xl font-bold text-[var(--color-primary)] mb-3 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">{{ .LinkTitle }}</h3>
-                    <p class="text-[var(--color-fg)]/70 leading-relaxed line-clamp-3 mb-4">{{ .Summary | plainify | default site.Params.ui.defaultSummary }}</p>
-                </div>
-
-                <!-- Author info -->
-                {{- $author := (and .GitInfo .GitInfo.AuthorName) | default .Params.author | default site.Params.author.name }}
-                {{- if $author }}
-                <div class="flex items-center gap-2 mb-3 text-xs text-[var(--color-fg)]/60">
-                    <svg class="w-3 h-3 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                    </svg>
-                    <span>{{ $author }}</span>
-                </div>
-                {{- end }}
-
-                <!-- Tags -->
-                {{- with .Params.tags }}
-                <div class="flex flex-wrap gap-2 mb-4">
-                    {{- range first 3 . }}
-                    <span class="px-2 py-1 bg-[var(--color-sand)]/20 text-[var(--color-primary)] text-xs rounded-[var(--radius-base)] font-medium"> {{ . }} </span>
-                    {{- end }}
-                </div>
-                {{- end }}
-
-                <!-- Read more link -->
-                <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:text-[var(--color-secondary)] transition-colors group/link">
-                    <span>{{ site.Params.ui.readMoreText }}</span>
-                    <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
-
-                <!-- Hover effect overlay -->
-                <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 to-[var(--color-secondary)]/5 rounded-[var(--radius-xl)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-            </div>
-        </article>
-        {{ end }}
-    </div>
-
-    <!-- View all link -->
-    {{- if gt (len site.RegularPages) 6 }}
-    <div class="text-center mt-12">
-        <a href="/docs" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300">
-            <span>{{ site.Params.ui.viewAllText }} Documentation</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-        </a>
-    </div>
-    {{- end }}
-</section>
-{{- end }}
-
-<!-- Call to action section -->
-<section class="text-center py-16 bg-gradient-to-r from-[var(--color-primary)]/5 via-[var(--color-secondary)]/5 to-[var(--color-growth)]/5 rounded-[var(--radius-xl)] border border-[var(--color-secondary)]/20">
-    <div class="max-w-2xl mx-auto">
-        <h3 class="text-3xl font-bold text-[var(--color-primary)] mb-4">{{ site.Params.ui.ctaHeading }}</h3>
-        <p class="text-[var(--color-fg)]/70 mb-8 leading-relaxed">{{ site.Params.ui.ctaDescription }}</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/docs" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-secondary)] transition-colors"> {{ site.Params.ui.learnMoreText }} </a>
-            <a href="mailto:{{ site.Params.contact.email }}" class="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-[var(--color-neutral-light)] transition-colors"> {{ site.Params.ui.getInTouchText }} </a>
+<div class="max-w-7xl mx-auto">
+    <!-- Hero Section -->
+    <div class="text-center mb-16">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-growth)] bg-clip-text text-transparent mb-6 leading-tight">{{ site.Title }}</h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-sand)] to-[var(--color-growth)] mx-auto mb-8 rounded-full"></div>
+            {{- if .Content }}
+            <div class="prose prose-lg max-w-3xl mx-auto text-[var(--color-fg)] leading-relaxed">{{ .Content }}</div>
+            {{- end }}
         </div>
     </div>
-</section>
+
+    <!-- Featured Content Grid -->
+    {{- if site.RegularPages }}
+    <section class="mb-16">
+        <div class="flex items-center gap-4 mb-12">
+            <h2 class="text-3xl font-bold text-[var(--color-primary)]">{{ site.Params.ui.latestContentHeading }}</h2>
+            <div class="flex-1 h-px bg-gradient-to-r from-[var(--color-primary)] to-transparent"></div>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {{ range first 6 site.RegularPages }}
+            <article class="group relative">
+                <!-- Card -->
+                <div class="bg-[var(--color-bg)] rounded-[var(--radius-xl)] shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-[var(--color-neutral-light)] hover:border-[var(--color-secondary)] transform hover:-translate-y-2 h-full flex flex-col">
+                    <!-- Category badge -->
+                    {{- if .Section }}
+                    <div class="inline-flex items-center gap-2 mb-4">
+                        <span class="px-3 py-1 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] text-[var(--color-neutral-light)] text-xs font-semibold rounded-full uppercase tracking-wide"> {{ .Section }} </span>
+                        {{- if or .Date .GitInfo }}
+                        <div class="flex items-center gap-2 text-xs text-[var(--color-fg)]/60">
+                            <svg class="w-3 h-3 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            {{ partial "date.html" (dict "page" . "format" "Jan 2, 2006" "type" "published") }}
+                        </div>
+                        {{- end }}
+                    </div>
+                    {{- end }}
+
+                    <!-- Content -->
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-[var(--color-primary)] mb-3 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">{{ .LinkTitle }}</h3>
+                        <p class="text-[var(--color-fg)]/70 leading-relaxed line-clamp-3 mb-4">{{ .Summary | plainify | default site.Params.ui.defaultSummary }}</p>
+                    </div>
+
+                    <!-- Author info -->
+                    {{- $author := (and .GitInfo .GitInfo.AuthorName) | default .Params.author | default site.Params.author.name }}
+                    {{- if $author }}
+                    <div class="flex items-center gap-2 mb-3 text-xs text-[var(--color-fg)]/60">
+                        <svg class="w-3 h-3 text-[var(--color-sand)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <span>{{ $author }}</span>
+                    </div>
+                    {{- end }}
+
+                    <!-- Tags -->
+                    {{- with .Params.tags }}
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {{- range first 3 . }}
+                        <span class="px-2 py-1 bg-[var(--color-sand)]/20 text-[var(--color-primary)] text-xs rounded-[var(--radius-base)] font-medium"> {{ . }} </span>
+                        {{- end }}
+                    </div>
+                    {{- end }}
+
+                    <!-- Read more link -->
+                    <a href="{{ .RelPermalink }}" class="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:text-[var(--color-secondary)] transition-colors group/link">
+                        <span>{{ site.Params.ui.readMoreText }}</span>
+                        <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+
+                    <!-- Hover effect overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 to-[var(--color-secondary)]/5 rounded-[var(--radius-xl)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+
+        <!-- View all link -->
+        {{- if gt (len site.RegularPages) 6 }}
+        <div class="text-center mt-12">
+            <a href="/docs" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-xl)] hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <span>{{ site.Params.ui.viewAllText }} Documentation</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </div>
+        {{- end }}
+    </section>
+    {{- end }}
+
+    <!-- Call to action section -->
+    <section class="text-center py-16 bg-gradient-to-r from-[var(--color-primary)]/5 via-[var(--color-secondary)]/5 to-[var(--color-growth)]/5 rounded-[var(--radius-xl)] border border-[var(--color-secondary)]/20">
+        <div class="max-w-2xl mx-auto">
+            <h3 class="text-3xl font-bold text-[var(--color-primary)] mb-4">{{ site.Params.ui.ctaHeading }}</h3>
+            <p class="text-[var(--color-fg)]/70 mb-8 leading-relaxed">{{ site.Params.ui.ctaDescription }}</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/docs" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-[var(--color-neutral-light)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-secondary)] transition-colors"> {{ site.Params.ui.learnMoreText }} </a>
+                <a href="mailto:{{ site.Params.contact.email }}" class="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold rounded-[var(--radius-lg)] hover:bg-[var(--color-primary)] hover:text-[var(--color-neutral-light)] transition-colors"> {{ site.Params.ui.getInTouchText }} </a>
+            </div>
+        </div>
+    </section>
+</div>
 {{ end }}

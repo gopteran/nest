@@ -20,7 +20,7 @@
     <nav class="hidden md:block">{{ partial "menu.html" (dict "menuID" "main" "page" .) }}</nav>
 
     <!-- Mobile menu button -->
-    <button class="md:hidden w-10 h-10 flex items-center justify-center rounded-[var(--radius-base)] bg-[var(--color-neutral-light)]/10 hover:bg-[var(--color-neutral-light)]/20 transition-colors" onclick="toggleMobileMenu()">
+    <button class="md:hidden w-10 h-10 flex items-center justify-center rounded-[var(--radius-base)] bg-[var(--color-neutral-light)]/10 hover:bg-[var(--color-neutral-light)]/20 transition-colors" onclick="toggleMobileMenu()" data-mobile-menu-toggle aria-expanded="false" aria-label="Toggle mobile menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
