@@ -8,7 +8,7 @@
     "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify --watch",
     "build": "hugo --gc --minify --enableGitInfo",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/main.css --minify",
-    "deploy": "pnpm run build",
+    "deploy": "pnpm run build:css && pnpm run build",
     "format": "prettier --write .",
     "preview": "hugo server --environment production --disableFastRender",
     "clean": "hugo --gc && rm -rf public resources"
