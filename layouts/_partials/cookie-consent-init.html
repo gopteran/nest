@@ -1,0 +1,16 @@
+<!-- Cookie Consent Configuration and Initialization -->
+{{ if .Site.Data.cookieConsent }}
+<script>
+    // Pass Hugo configuration to JavaScript
+    window.cookieConsentConfig = {{ .Site.Data.cookieConsent | jsonify }};
+</script>
+
+<!-- Load Cookie Consent CSS -->
+<link rel="stylesheet" href="{{ .Site.Data.cookieConsent.library.css_url }}" />
+<noscript>
+    <link rel="stylesheet" href="{{ .Site.Data.cookieConsent.library.fallback_css }}" />
+</noscript>
+
+<!-- Load Cookie Consent JavaScript -->
+<script src="{{ relURL "/js/cookie-consent.js" }}" defer></script>
+{{ end }}

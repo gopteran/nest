@@ -1,0 +1,127 @@
+# Cookie Consent Configuration
+# This file defines the cookie consent system configuration for the Gopteran documentation site
+
+consent:
+  revision: 1
+  cookie_name: "gopteran_cookie_consent"
+  expires_days: 365
+  domain: "gopteran.dev"
+  same_site: "Lax"
+  mode: "opt-in"
+  auto_show: true
+
+categories:
+  necessary:
+    name: "Necessary Cookies"
+    description: "Essential cookies required for basic site functionality and security. These cannot be disabled."
+    enabled: true
+    readonly: true
+    auto_clear: false
+    cookies:
+      - name: "gopteran_cookie_consent"
+        description: "Stores your cookie preferences and consent choices"
+        duration: "1 year"
+        purpose: "Remember your consent choices across sessions"
+      - name: "hugo_session"
+        description: "Session identifier for site functionality"
+        duration: "Session"
+        purpose: "Maintain site state during your visit"
+
+  analytics:
+    name: "Analytics Cookies"
+    description: "Help us understand how visitors use our site to improve the documentation experience."
+    enabled: false
+    readonly: false
+    auto_clear: true
+    cookies:
+      - name: "_ga"
+        description: "Google Analytics main tracking cookie"
+        duration: "2 years"
+        purpose: "Track site usage patterns and popular content"
+      - name: "_ga_*"
+        description: "Google Analytics property-specific cookies"
+        duration: "2 years"
+        purpose: "Collect analytics data for this specific site"
+      - name: "_gid"
+        description: "Google Analytics session identifier"
+        duration: "24 hours"
+        purpose: "Distinguish users and sessions for analytics"
+
+  functional:
+    name: "Functional Cookies"
+    description: "Enable enhanced functionality and personalization features like theme preferences."
+    enabled: false
+    readonly: false
+    auto_clear: true
+    cookies:
+      - name: "theme_preference"
+        description: "Remembers your preferred site theme (light/dark mode)"
+        duration: "1 year"
+        purpose: "Maintain your preferred site appearance"
+      - name: "search_preferences"
+        description: "Stores your search and filter preferences"
+        duration: "6 months"
+        purpose: "Remember your preferred search settings"
+      - name: "language_preference"
+        description: "Stores your preferred language setting"
+        duration: "1 year"
+        purpose: "Display content in your preferred language"
+
+ui:
+  consent_modal:
+    title: "We use cookies"
+    description: "This website uses cookies to ensure you get the best experience. We use necessary cookies for site functionality, and optional cookies for analytics and enhanced features."
+    primary_button: "Accept all"
+    secondary_button: "Reject all"
+    settings_button: "Manage preferences"
+    footer_text: "You can change your preferences at any time by clicking the cookie settings link in the footer."
+
+  preferences_modal:
+    title: "Cookie Preferences"
+    description: "Choose which cookies you want to accept. You can change these settings at any time. Necessary cookies are always enabled as they're essential for the website to function properly."
+    save_button: "Save preferences"
+    accept_all_button: "Accept all"
+    reject_all_button: "Reject all"
+    close_button: "Close"
+    sections:
+      - title: "Cookie Usage"
+        description: "We use cookies to enhance your browsing experience, provide personalized content, and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies."
+      - title: "Strictly Necessary Cookies"
+        description: "These cookies are essential for the website to function and cannot be switched off. They are usually only set in response to actions made by you which amount to a request for services."
+        linked_category: "necessary"
+      - title: "Analytics Cookies"
+        description: "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously."
+        linked_category: "analytics"
+      - title: "Functional Cookies"
+        description: "These cookies enable the website to provide enhanced functionality and personalization, such as remembering your preferences."
+        linked_category: "functional"
+
+# CDN and library configuration
+library:
+  cdn_url: "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.umd.js"
+  fallback_url: "/js/cookieconsent.umd.js"
+  css_url: "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.css"
+  fallback_css: "/css/cookieconsent.css"
+
+# GUI Options
+gui:
+  consent_modal:
+    layout: "box"
+    position: "bottom right"
+    transition: "slide"
+    swap_buttons: false
+  preferences_modal:
+    layout: "box"
+    position: "right"
+    transition: "slide"
+    flip_buttons: false
+    equal_weight_buttons: true
+
+# Advanced settings
+advanced:
+  disable_page_interaction: false
+  hide_from_bots: true
+  lazy_html_generation: true
+  use_local_storage: true
+  auto_clear_cookies: true
+  page_scripts: true
