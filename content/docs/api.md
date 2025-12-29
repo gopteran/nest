@@ -372,30 +372,42 @@ const resource = await client.resources.create(projectId, {
 });
 ```
 
-### Python
+### Go
 
 ```bash
-pip install gopteran-sdk
+go get github.com/gopteran/sdk-go
 ```
 
-```python
-from gopteran import GopteranClient
+```go
+package main
 
-client = GopteranClient(
-    api_url='https://api.gopteran.dev',
-    token='your-jwt-token'
+import (
+	"github.com/gopteran/sdk-go"
 )
 
-# List projects
-projects = client.projects.list()
+func main() {
+	client := sdk.NewClient(
+		"https://api.gopteran.dev",
+		"your-jwt-token",
+	)
 
-# Create a resource
-resource = client.resources.create(
-    project_id=project_id,
-    type='server',
-    name='web-server-01',
-    config={'size': 'medium'}
-)
+	// List projects
+	projects, err := client.Projects.List()
+	if err != nil {
+		panic(err)
+	}
+
+	// Create a resource
+	resource, err := client.Resources.Create(
+		projectID,
+		&sdk.ResourceRequest{
+			Type: "server",
+			Name: "web-server-01",
+			Config: map[string]interface{}{"size": "medium"},
+		},
+	)
+	_ = resource
+}
 ```
 
 ### CLI (Remora)

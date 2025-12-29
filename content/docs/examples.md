@@ -103,8 +103,8 @@ Deploy multiple services with service discovery and load balancing.
 **Services:**
 
 - API Gateway (Nginx)
-- User Service (Node.js)
-- Product Service (Python)
+- User Service (Go)
+- Product Service (Go)
 - Database (PostgreSQL)
 - Cache (Redis)
 
@@ -129,7 +129,7 @@ export default {
     },
     {
       name: 'user-service',
-      type: 'nodejs',
+      type: 'go',
       replicas: 3,
       config: {
         port: 3000,
@@ -138,11 +138,11 @@ export default {
     },
     {
       name: 'product-service',
-      type: 'python',
+      type: 'go',
       replicas: 2,
       config: {
         port: 8000,
-        framework: 'fastapi',
+        framework: 'gin',
       },
     },
   ],
