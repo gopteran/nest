@@ -1,22 +1,22 @@
 {
-    "name": "Gopteran - Nest",
-    "short_name": "Gopteran",
-    "description": "Official documentation for the Gopteran project - infrastructure management tools designed for flight and precision",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#2563eb",
-    "background_color": "#f3f4f6",
-    "display": "standalone",
-    "start_url": "/",
-    "scope": "/"
+  "name": "Gopteran - Nest",
+  "short_name": "Gopteran",
+  "description": "Official documentation for the Gopteran project - infrastructure management tools designed for flight and precision",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2563eb",
+  "background_color": "#f3f4f6",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
 }

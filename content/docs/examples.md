@@ -1,9 +1,9 @@
 ---
-title: "Examples"
+title: 'Examples'
 draft: false
-summary: "Real-world examples and tutorials for using the Gopteran ecosystem"
-tags: ["examples", "tutorials", "guides", "use-cases"]
-categories: ["Documentation"]
+summary: 'Real-world examples and tutorials for using the Gopteran ecosystem'
+tags: ['examples', 'tutorials', 'guides', 'use-cases']
+categories: ['Documentation']
 weight: 15
 ---
 
@@ -18,6 +18,7 @@ Learn how to use Gopteran with these practical exa and tutorials.
 Deploy a basic web application using Gopteran components.
 
 **Project Structure:**
+
 ```
 my-web-app/
 ├── docker-compose.yml
@@ -30,6 +31,7 @@ my-web-app/
 ```
 
 **docker-compose.yml:**
+
 ```yaml
 version: '3.8'
 services:
@@ -37,7 +39,7 @@ services:
   carina:
     image: gopteran/carina:latest
     ports:
-      - "3001:3001"
+      - '3001:3001'
     environment:
       - DATABASE_URL=${DATABASE_URL}
       - JWT_SECRET=${JWT_SECRET}
@@ -48,7 +50,7 @@ services:
   aerie:
     image: gopteran/aerie:latest
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - API_URL=http://carina:3001
     depends_on:
@@ -58,7 +60,7 @@ services:
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - '8080:8080'
     environment:
       - NODE_ENV=production
 
@@ -77,6 +79,7 @@ volumes:
 ```
 
 **Usage:**
+
 ```bash
 # Clone and setup
 git clone https://github.com/gopteran/examples.git
@@ -98,6 +101,7 @@ open http://localhost:3000
 Deploy multiple services with service discovery and load balancing.
 
 **Services:**
+
 - API Gateway (Nginx)
 - User Service (Node.js)
 - Product Service (Python)
@@ -105,11 +109,12 @@ Deploy multiple services with service discovery and load balancing.
 - Cache (Redis)
 
 **gopteran.config.js:**
+
 ```javascript
 export default {
   project: {
     name: 'microservices-demo',
-    environment: 'production'
+    environment: 'production',
   },
 
   services: [
@@ -119,8 +124,8 @@ export default {
       config: {
         upstream: ['user-service', 'product-service'],
         ssl: true,
-        domain: 'api.example.com'
-      }
+        domain: 'api.example.com',
+      },
     },
     {
       name: 'user-service',
@@ -128,8 +133,8 @@ export default {
       replicas: 3,
       config: {
         port: 3000,
-        healthCheck: '/health'
-      }
+        healthCheck: '/health',
+      },
     },
     {
       name: 'product-service',
@@ -137,9 +142,9 @@ export default {
       replicas: 2,
       config: {
         port: 8000,
-        framework: 'fastapi'
-      }
-    }
+        framework: 'fastapi',
+      },
+    },
   ],
 
   databases: [
@@ -149,22 +154,23 @@ export default {
       config: {
         version: '15',
         storage: '100GB',
-        backup: true
-      }
-    }
+        backup: true,
+      },
+    },
   ],
 
   cache: {
     type: 'redis',
     config: {
       memory: '2GB',
-      persistence: true
-    }
-  }
-}
+      persistence: true,
+    },
+  },
+};
 ```
 
 **Deployment:**
+
 ```bash
 # Using Remora CLI
 remora project create microservices-demo
@@ -182,6 +188,7 @@ remora scale user-service --replicas 5
 Integrate Gopteran with your CI/CD pipeline for automated deployments.
 
 **GitHub Actions Workflow (.github/workflows/deploy.yml):**
+
 ```yaml
 name: Deploy to Gopteran
 
@@ -245,11 +252,12 @@ jobs:
 Deploy applications across multiple regions for high availability.
 
 **Configuration:**
+
 ```javascript
 export default {
   project: {
     name: 'global-app',
-    regions: ['us-east-1', 'eu-west-1', 'ap-southeast-1']
+    regions: ['us-east-1', 'eu-west-1', 'ap-southeast-1'],
   },
 
   services: [
@@ -261,10 +269,10 @@ export default {
         regions: {
           'us-east-1': { replicas: 3, primary: true },
           'eu-west-1': { replicas: 2 },
-          'ap-southeast-1': { replicas: 2 }
-        }
-      }
-    }
+          'ap-southeast-1': { replicas: 2 },
+        },
+      },
+    },
   ],
 
   loadBalancer: {
@@ -272,8 +280,8 @@ export default {
     routing: 'geo-proximity',
     healthCheck: {
       path: '/health',
-      interval: 30
-    }
+      interval: 30,
+    },
   },
 
   database: {
@@ -281,10 +289,10 @@ export default {
     replication: {
       primary: 'us-east-1',
       replicas: ['eu-west-1', 'ap-southeast-1'],
-      syncMode: 'async'
-    }
-  }
-}
+      syncMode: 'async',
+    },
+  },
+};
 ```
 
 ### 5. Auto-Scaling Configuration
@@ -292,6 +300,7 @@ export default {
 Configure automatic scaling based on metrics.
 
 **Scaling Rules:**
+
 ```javascript
 export default {
   services: [
@@ -301,16 +310,16 @@ export default {
         min: 2,
         max: 20,
         target: {
-          cpu: 70,        // Scale when CPU > 70%
-          memory: 80,     // Scale when memory > 80%
-          requests: 1000  // Scale when requests/min > 1000
+          cpu: 70, // Scale when CPU > 70%
+          memory: 80, // Scale when memory > 80%
+          requests: 1000, // Scale when requests/min > 1000
         },
         cooldown: {
-          scaleUp: 300,   // Wait 5 min before scaling up again
-          scaleDown: 600  // Wait 10 min before scaling down
-        }
-      }
-    }
+          scaleUp: 300, // Wait 5 min before scaling up again
+          scaleDown: 600, // Wait 10 min before scaling down
+        },
+      },
+    },
   ],
 
   monitoring: {
@@ -320,17 +329,17 @@ export default {
         name: 'high-cpu',
         condition: 'cpu > 90',
         duration: '5m',
-        action: 'scale-up'
+        action: 'scale-up',
       },
       {
         name: 'high-error-rate',
         condition: 'error_rate > 5',
         duration: '2m',
-        action: 'alert'
-      }
-    ]
-  }
-}
+        action: 'alert',
+      },
+    ],
+  },
+};
 ```
 
 ### 6. Database Migration Example
@@ -338,17 +347,18 @@ export default {
 Handle database migrations in your deployment pipeline.
 
 **Migration Script:**
+
 ```javascript
 // migrations/001_initial_schema.js
 export async function up(db) {
-  await db.schema.createTable('users', (table) => {
+  await db.schema.createTable('users', table => {
     table.uuid('id').primary();
     table.string('email').unique().notNullable();
     table.string('name').notNullable();
     table.timestamp('created_at').defaultTo(db.fn.now());
   });
 
-  await db.schema.createTable('projects', (table) => {
+  await db.schema.createTable('projects', table => {
     table.uuid('id').primary();
     table.string('name').notNullable();
     table.text('description');
@@ -364,6 +374,7 @@ export async function down(db) {
 ```
 
 **Deployment with Migrations:**
+
 ```bash
 # Run migrations before deployment
 remora migrate --up
@@ -382,6 +393,7 @@ remora rollback --with-migrations
 Set up comprehensive monitoring with Prometheus and Grafana.
 
 **Monitoring Configuration:**
+
 ```yaml
 # monitoring/docker-compose.yml
 version: '3.8'
@@ -389,14 +401,14 @@ services:
   prometheus:
     image: prom/prometheus
     ports:
-      - "9090:9090"
+      - '9090:9090'
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
     image: grafana/grafana
     ports:
-      - "3001:3000"
+      - '3001:3000'
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
@@ -405,7 +417,7 @@ services:
   alertmanager:
     image: prom/alertmanager
     ports:
-      - "9093:9093"
+      - '9093:9093'
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
 
@@ -414,6 +426,7 @@ volumes:
 ```
 
 **Prometheus Configuration:**
+
 ```yaml
 # prometheus.yml
 global:
@@ -435,6 +448,7 @@ scrape_configs:
 Implement automated backups and disaster recovery.
 
 **Backup Configuration:**
+
 ```javascript
 export default {
   backup: {
@@ -446,109 +460,28 @@ export default {
         name: 'main-db',
         type: 'postgresql',
         compression: true,
-        encryption: true
-      }
+        encryption: true,
+      },
     ],
 
     storage: {
       type: 's3',
       bucket: 'my-app-backups',
-      region: 'us-east-1'
-    }
+      region: 'us-east-1',
+    },
   },
 
   disaster_recovery: {
-    rto: '4h',  // Recovery Time Objective
-    rpo: '1h',  // Recovery Point Objective
+    rto: '4h', // Recovery Time Objective
+    rpo: '1h', // Recovery Point Objective
 
     strategy: 'multi-region',
     failover: {
       automatic: true,
-      health_check_failures: 3
-    }
-  }
-}
-```
-
-## Testing Examples
-
-### 9. Load Testing
-
-Test your application's performance under load.
-
-**Load Test Script:**
-```javascript
-// tests/load-test.js
-import http from 'k6/http';
-import { check, sleep } from 'k6';
-
-export let options = {
-  stages: [
-    { duration: '2m', target: 100 },  // Ramp up
-    { duration: '5m', target: 100 },  // Stay at 100 users
-    { duration: '2m', target: 200 },  // Ramp up to 200
-    { duration: '5m', target: 200 },  // Stay at 200
-    { duration: '2m', target: 0 },    // Ramp down
-  ],
+      health_check_failures: 3,
+    },
+  },
 };
-
-export default function() {
-  let response = http.get('https://api.example.com/health');
-
-  check(response, {
-    'status is 200': (r) => r.status === 200,
-    'response time < 500ms': (r) => r.timings.duration < 500,
-  });
-
-  sleep(1);
-}
-```
-
-**Run Load Test:**
-```bash
-# Install k6
-npm install -g k6
-
-# Run test
-k6 run tests/load-test.js
-
-# Run with Gopteran monitoring
-remora test load --script tests/load-test.js --monitor
-```
-
-### 10. End-to-End Testing
-
-Automated E2E testing with Playwright.
-
-**E2E Test:**
-```javascript
-// tests/e2e/app.spec.js
-import { test, expect } from '@playwright/test';
-
-test.describe('Application Flow', () => {
-  test('user can create and manage project', async ({ page }) => {
-    // Login
-    await page.goto('/login');
-    await page.fill('[data-testid=email]', 'test@example.com');
-    await page.fill('[data-testid=password]', 'password');
-    await page.click('[data-testid=login-button]');
-
-    // Create project
-    await page.click('[data-testid=new-project]');
-    await page.fill('[data-testid=project-name]', 'Test Project');
-    await page.click('[data-testid=create-project]');
-
-    // Verify project created
-    await expect(page.locator('[data-testid=project-list]')).toContainText('Test Project');
-
-    // Deploy project
-    await page.click('[data-testid=deploy-button]');
-    await page.waitForSelector('[data-testid=deployment-success]');
-
-    // Verify deployment
-    await expect(page.locator('[data-testid=status]')).toContainText('Running');
-  });
-});
 ```
 
 ## Community Examples
@@ -558,6 +491,7 @@ test.describe('Application Flow', () => {
 Extend Avis with custom commands.
 
 **Custom Bot Command:**
+
 ```javascript
 // bot-extensions/deploy-command.js
 import { SlashCommandBuilder } from 'discord.js';
@@ -567,12 +501,11 @@ export const data = new SlashCommandBuilder()
   .setName('deploy')
   .setDescription('Deploy a project')
   .addStringOption(option =>
-    option.setName('project')
-      .setDescription('Project name')
-      .setRequired(true)
+    option.setName('project').setDescription('Project name').setRequired(true)
   )
   .addStringOption(option =>
-    option.setName('environment')
+    option
+      .setName('environment')
       .setDescription('Target environment')
       .setRequired(false)
       .addChoices(
@@ -589,32 +522,36 @@ export async function execute(interaction) {
 
   try {
     const client = new GopteranClient({
-      token: process.env.GOPTERAN_TOKEN
+      token: process.env.GOPTERAN_TOKEN,
     });
 
     const deployment = await client.deployments.create(project, {
       environment,
-      source: 'discord'
+      source: 'discord',
     });
 
     await interaction.editReply({
-      embeds: [{
-        title: '🚀 Deployment Started',
-        description: `Deploying ${project} to ${environment}`,
-        color: 0x00ff00,
-        fields: [
-          { name: 'Deployment ID', value: deployment.id },
-          { name: 'Status', value: deployment.status }
-        ]
-      }]
+      embeds: [
+        {
+          title: '🚀 Deployment Started',
+          description: `Deploying ${project} to ${environment}`,
+          color: 0x00ff00,
+          fields: [
+            { name: 'Deployment ID', value: deployment.id },
+            { name: 'Status', value: deployment.status },
+          ],
+        },
+      ],
     });
   } catch (error) {
     await interaction.editReply({
-      embeds: [{
-        title: '❌ Deployment Failed',
-        description: error.message,
-        color: 0xff0000
-      }]
+      embeds: [
+        {
+          title: '❌ Deployment Failed',
+          description: error.message,
+          color: 0xff0000,
+        },
+      ],
     });
   }
 }

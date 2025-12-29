@@ -1,8 +1,8 @@
 ---
-title: "Search"
+title: 'Search'
 draft: false
-layout: "search"
-summary: "Search the Gopteran documentation"
+layout: 'search'
+summary: 'Search the Gopteran documentation'
 ---
 
 # Search Documentation

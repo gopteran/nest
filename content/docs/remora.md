@@ -1,52 +1,67 @@
 ---
-title: "Remora"
+title: 'Remora'
 draft: false
-summary: "Remora is the powerful CLI agent and daemon for the Gopteran project"
-tags: ["cli", "agent", "daemon", "orchestration", "automation"]
-categories: ["Components"]
-github_repo: "https://github.com/gopteran/remora"
+summary: 'Remora is the powerful CLI agent and daemon for the Gopteran project'
+tags: ['cli', 'agent', 'daemon', 'orchestration', 'automation']
+categories: ['Components']
+github_repo: 'https://github.com/gopteran/remora'
 ---
 
 ## Overview
 
-Remora is the CLI agent for the Gopteran project — the lightweight, server-side companion designed to handle core operations, orchestration, and communication with the control panel.
+Remora is the CLI agent for the Gopteran project — the lightweight, server-side
+companion designed to handle core operations, orchestration, and communication
+with the control panel.
 
-It acts as the operational "claw" deep inside the infrastructure, ensuring that commands issued from the frontend or API backend are reliably executed on the server where the services live.
+It acts as the operational "claw" deep inside the infrastructure, ensuring that
+commands issued from the frontend or API backend are reliably executed on the
+server where the services live.
 
 ## Why the name "Remora"?
 
-The name "Remora" was chosen deliberately to capture the essence of this tool's role and architecture:
+The name "Remora" was chosen deliberately to capture the essence of this tool's
+role and architecture:
 
-- **Biological inspiration:**
-  The remora is a fish known for attaching itself to larger marine animals like sharks or turtles in a symbiotic relationship. It hitches a ride, benefits from the host's movement, and sometimes provides cleaning services — all without burdening the host.
+- **Biological inspiration:** The remora is a fish known for attaching itself to
+  larger marine animals like sharks or turtles in a symbiotic relationship. It
+  hitches a ride, benefits from the host's movement, and sometimes provides
+  cleaning services — all without burdening the host.
 
-- **Architectural analogy:**
-  Similarly, the Remora CLI agent is designed to "attach" to the host server, running close to the core services without interfering with their stability. It's a helper process that stays out of the way but is indispensable for smooth operation.
+- **Architectural analogy:** Similarly, the Remora CLI agent is designed to
+  "attach" to the host server, running close to the core services without
+  interfering with their stability. It's a helper process that stays out of the
+  way but is indispensable for smooth operation.
 
-- **Minimal footprint and dependency:**
-  Just like the remora fish does not overly tax its host, the Remora agent is lightweight, efficient, and purpose-built to maintain system integrity and security without overcomplication.
+- **Minimal footprint and dependency:** Just like the remora fish does not
+  overly tax its host, the Remora agent is lightweight, efficient, and
+  purpose-built to maintain system integrity and security without
+  overcomplication.
 
 ## Key Features
 
 ### Command Line Interface
+
 - **Interactive Commands**: Rich CLI with autocomplete and help system
 - **Batch Operations**: Execute multiple commands in sequence
 - **Configuration Management**: Manage settings via CLI or config files
 - **Plugin System**: Extend functionality with custom plugins
 
 ### Daemon Mode
+
 - **Background Service**: Run as a system service for continuous operation
 - **Auto-restart**: Automatic recovery from failures
 - **Health Monitoring**: Built-in health checks and status reporting
 - **Log Management**: Structured logging with rotation and retention
 
 ### Security & Authentication
+
 - **Token-based Auth**: Secure authentication with JWT tokens
 - **Role-based Access**: Fine-grained permissions and access control
 - **Encrypted Communication**: TLS encryption for all network traffic
 - **Audit Logging**: Complete audit trail of all operations
 
 ### Integration Capabilities
+
 - **API Integration**: Direct integration with Carina backend
 - **WebSocket Support**: Real-time communication and updates
 - **Docker Integration**: Native Docker container management
@@ -362,19 +377,19 @@ export default {
       description: 'Say hello',
       handler: async (args, context) => {
         console.log(`Hello, ${args.name || 'World'}!`);
-      }
-    }
+      },
+    },
   },
 
   hooks: {
-    'before:deploy': async (context) => {
+    'before:deploy': async context => {
       console.log('Running pre-deployment checks...');
     },
 
-    'after:deploy': async (context) => {
+    'after:deploy': async context => {
       console.log('Deployment completed successfully!');
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -456,6 +471,7 @@ remora k8s port-forward service/web-app 8080:80
 ### Common Issues
 
 **Authentication Errors**
+
 ```bash
 # Check token validity
 remora auth status
@@ -468,6 +484,7 @@ remora auth logout && remora auth login
 ```
 
 **Connection Issues**
+
 ```bash
 # Test API connectivity
 remora ping
@@ -480,6 +497,7 @@ remora --debug deployments list
 ```
 
 **Daemon Issues**
+
 ```bash
 # Check daemon logs
 remora daemon logs --tail 100
@@ -533,18 +551,21 @@ remora deployments create --concurrent --environments staging,production
 ## Security Best Practices
 
 ### Token Management
+
 - Use short-lived tokens with automatic refresh
 - Store tokens securely using system keychain
 - Rotate tokens regularly
 - Use environment-specific tokens
 
 ### Network Security
+
 - Always use HTTPS/TLS for API communication
 - Validate SSL certificates
 - Use VPN or private networks when possible
 - Implement IP whitelisting
 
 ### Access Control
+
 - Follow principle of least privilege
 - Use role-based access control
 - Audit access logs regularly
@@ -552,9 +573,13 @@ remora deployments create --concurrent --environments staging,production
 
 ## Design Philosophy
 
-Remora embodies the principle of symbiosis — it enhances the system's functionality without compromising the stability or performance of the host. This approach is key in environments where uptime, security, and reliability are paramount.
+Remora embodies the principle of symbiosis — it enhances the system's
+functionality without compromising the stability or performance of the host.
+This approach is key in environments where uptime, security, and reliability are
+paramount.
 
 Key principles:
+
 - **Lightweight**: Minimal resource consumption
 - **Reliable**: Robust error handling and recovery
 - **Secure**: Security-first design and implementation
@@ -562,4 +587,6 @@ Key principles:
 
 ---
 
-This naming and design philosophy ensures that Remora is not just a tool, but a conceptual pillar in the Gopteran ecosystem — a trusted ally "in the trenches," working seamlessly beneath the surface.
+This naming and design philosophy ensures that Remora is not just a tool, but a
+conceptual pillar in the Gopteran ecosystem — a trusted ally "in the trenches,"
+working seamlessly beneath the surface.

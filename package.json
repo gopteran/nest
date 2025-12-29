@@ -28,6 +28,7 @@
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
+    "@hugomods/prettier-config": "^0.2.0",
     "prettier": "^3.7.4"
   }
 }

@@ -1,32 +1,43 @@
 ---
-title: "Getting Started"
+title: 'Getting Started'
 date: 2024-01-15
 draft: false
-summary: "Quick start guide to get up and running with the Gopteran ecosystem"
-tags: ["getting-started", "setup", "installation", "quickstart"]
-categories: ["Documentation"]
+summary: 'Quick start guide to get up and running with the Gopteran ecosystem'
+tags: ['getting-started', 'setup', 'installation', 'quickstart']
+categories: ['Documentation']
 weight: 1
 ---
 
 ## Welcome to Gopteran
 
-Gopteran is a comprehensive infrastructure management ecosystem designed for flight and precision. This guide will help you get started with the core components and understand how they work together.
+Gopteran is a comprehensive infrastructure management ecosystem designed for
+flight and precision. This guide will help you get started with the core
+components and understand how they work together.
 
 ## Overview of Components
 
 The Gopteran ecosystem consists of six main components:
 
 ### Core Infrastructure
-- **[Carina](/docs/carina)** - Backend core providing authentication, API orchestration, and resource management
-- **[Aerie](/docs/aerie)** - Fullstack control panel combining frontend and backend management
+
+- **[Carina](/docs/carina)** - Backend core providing authentication, API
+  orchestration, and resource management
+- **[Aerie](/docs/aerie)** - Fullstack control panel combining frontend and
+  backend management
 
 ### User Interfaces
-- **[Ventus](/docs/ventus)** - Frontend framework built with SvelteKit for infrastructure management
-- **[Remora](/docs/remora)** - CLI agent/daemon for lightweight server-side operations
+
+- **[Ventus](/docs/ventus)** - Frontend framework built with SvelteKit for
+  infrastructure management
+- **[Remora](/docs/remora)** - CLI agent/daemon for lightweight server-side
+  operations
 
 ### Community & Documentation
-- **[Avis](/docs/avis)** - Discord bot for community communication and automation
-- **[Nest](/docs/nest)** - Documentation hub (this site) for centralized knowledge
+
+- **[Avis](/docs/avis)** - Discord bot for community communication and
+  automation
+- **[Nest](/docs/nest)** - Documentation hub (this site) for centralized
+  knowledge
 
 ## Quick Start
 
@@ -80,10 +91,13 @@ npm install -g @gopteran/remora
 
 ### First Steps
 
-1. **Access the Control Panel**: Navigate to `http://localhost:3000` to access Aerie
-2. **Create Your First Project**: Use the setup wizard to configure your infrastructure
+1. **Access the Control Panel**: Navigate to `http://localhost:3000` to access
+   Aerie
+2. **Create Your First Project**: Use the setup wizard to configure your
+   infrastructure
 3. **Explore the CLI**: Run `remora --help` to see available commands
-4. **Join the Community**: Connect with us on [Discord](https://discord.gg/gopteran)
+4. **Join the Community**: Connect with us on
+   [Discord](https://discord.gg/gopteran)
 
 ## Configuration
 
@@ -116,22 +130,22 @@ export default {
   // Server configuration
   server: {
     port: process.env.API_PORT || 3001,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
 
   // Database settings
   database: {
     url: process.env.DATABASE_URL,
-    ssl: process.env.NODE_ENV === 'production'
+    ssl: process.env.NODE_ENV === 'production',
   },
 
   // Authentication
   auth: {
     jwtSecret: process.env.JWT_SECRET,
     sessionSecret: process.env.SESSION_SECRET,
-    tokenExpiry: '7d'
-  }
-}
+    tokenExpiry: '7d',
+  },
+};
 ```
 
 ## Architecture Overview

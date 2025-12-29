@@ -1,15 +1,16 @@
 ---
-title: "Troubleshooting"
+title: 'Troubleshooting'
 draft: false
-summary: "Common issues and solutions for the Gopteran ecosystem"
-tags: ["troubleshooting", "debugging", "issues", "solutions"]
-categories: ["Documentation"]
+summary: 'Common issues and solutions for the Gopteran ecosystem'
+tags: ['troubleshooting', 'debugging', 'issues', 'solutions']
+categories: ['Documentation']
 weight: 20
 ---
 
 # Troubleshooting Guide
 
-This guide covers common issues you might encounter when using the Gopteran ecosystem and their solutions.
+This guide covers common issues you might encounter when using the Gopteran
+ecosystem and their solutions.
 
 ## General Issues
 
@@ -18,6 +19,7 @@ This guide covers common issues you might encounter when using the Gopteran ecos
 #### Issue: "Invalid token" or "Authentication failed"
 
 **Symptoms:**
+
 - API requests return 401 Unauthorized
 - CLI commands fail with authentication errors
 - Control panel shows login errors
@@ -25,6 +27,7 @@ This guide covers common issues you might encounter when using the Gopteran ecos
 **Solutions:**
 
 1. **Check token expiry:**
+
 ```bash
 # Check current authentication status
 remora auth status
@@ -38,6 +41,7 @@ remora auth login
 ```
 
 2. **Verify API URL:**
+
 ```bash
 # Check current configuration
 remora config show
@@ -47,6 +51,7 @@ remora config set api.url https://api.gopteran.dev
 ```
 
 3. **Clear cached credentials:**
+
 ```bash
 # Clear all cached auth data
 remora auth clear-cache
@@ -58,6 +63,7 @@ remora auth login
 #### Issue: "Permission denied" or "Insufficient privileges"
 
 **Symptoms:**
+
 - Operations fail with 403 Forbidden
 - Some features are not accessible
 - Role-based restrictions
@@ -65,6 +71,7 @@ remora auth login
 **Solutions:**
 
 1. **Check user permissions:**
+
 ```bash
 # View current user info
 remora users me
@@ -74,6 +81,7 @@ remora projects permissions
 ```
 
 2. **Contact administrator:**
+
 - Request appropriate role assignment
 - Verify project membership
 - Check organization access
@@ -83,6 +91,7 @@ remora projects permissions
 #### Issue: "Connection refused" or "Network timeout"
 
 **Symptoms:**
+
 - Cannot connect to API
 - Timeouts during operations
 - Intermittent connectivity
@@ -90,6 +99,7 @@ remora projects permissions
 **Solutions:**
 
 1. **Check network connectivity:**
+
 ```bash
 # Test basic connectivity
 ping api.gopteran.dev
@@ -99,11 +109,13 @@ curl -I https://api.gopteran.dev/health
 ```
 
 2. **Verify firewall settings:**
+
 - Ensure ports 443 (HTTPS) and 80 (HTTP) are open
 - Check corporate firewall rules
 - Verify proxy settings
 
 3. **Check service status:**
+
 - Visit [status.gopteran.dev](https://status.gopteran.dev)
 - Check our [Discord](https://discord.gg/gopteran) for announcements
 - Monitor [GitHub issues](https://github.com/gopteran)
@@ -115,6 +127,7 @@ curl -I https://api.gopteran.dev/health
 #### Issue: Control panel won't load or shows blank page
 
 **Symptoms:**
+
 - White screen or loading spinner
 - JavaScript errors in browser console
 - 404 errors for assets
@@ -122,17 +135,20 @@ curl -I https://api.gopteran.dev/health
 **Solutions:**
 
 1. **Clear browser cache:**
+
 ```bash
 # Hard refresh (Ctrl+F5 or Cmd+Shift+R)
 # Or clear browser cache manually
 ```
 
 2. **Check browser compatibility:**
+
 - Use modern browser (Chrome 90+, Firefox 88+, Safari 14+)
 - Enable JavaScript
 - Disable ad blockers temporarily
 
 3. **Verify deployment:**
+
 ```bash
 # Check if services are running
 docker ps
@@ -143,6 +159,7 @@ systemctl status aerie
 #### Issue: Real-time updates not working
 
 **Symptoms:**
+
 - Status doesn't update automatically
 - Need to refresh page to see changes
 - WebSocket connection errors
@@ -150,12 +167,14 @@ systemctl status aerie
 **Solutions:**
 
 1. **Check WebSocket connection:**
+
 ```javascript
 // Open browser console and check for WebSocket errors
 // Look for "WebSocket connection failed" messages
 ```
 
 2. **Verify network configuration:**
+
 - Ensure WebSocket traffic is allowed
 - Check proxy settings for WebSocket support
 - Verify SSL/TLS configuration
@@ -165,6 +184,7 @@ systemctl status aerie
 #### Issue: API server won't start
 
 **Symptoms:**
+
 - Server crashes on startup
 - Port binding errors
 - Database connection failures
@@ -172,6 +192,7 @@ systemctl status aerie
 **Solutions:**
 
 1. **Check port availability:**
+
 ```bash
 # Check if port is in use
 netstat -tulpn | grep :3001
@@ -183,6 +204,7 @@ kill -9 <PID>
 ```
 
 2. **Verify database connection:**
+
 ```bash
 # Test database connectivity
 psql $DATABASE_URL -c "SELECT 1;"
@@ -192,6 +214,7 @@ systemctl status postgresql
 ```
 
 3. **Review environment variables:**
+
 ```bash
 # Check required environment variables
 echo $DATABASE_URL
@@ -205,6 +228,7 @@ cat .env
 #### Issue: High memory usage or performance issues
 
 **Symptoms:**
+
 - Slow API responses
 - High CPU or memory usage
 - Timeout errors
@@ -212,6 +236,7 @@ cat .env
 **Solutions:**
 
 1. **Monitor resource usage:**
+
 ```bash
 # Check system resources
 htop
@@ -223,6 +248,7 @@ docker logs carina
 ```
 
 2. **Optimize database queries:**
+
 ```bash
 # Check slow queries
 tail -f /var/log/postgresql/postgresql.log | grep "slow query"
@@ -232,6 +258,7 @@ EXPLAIN ANALYZE SELECT ...
 ```
 
 3. **Scale resources:**
+
 ```bash
 # Increase container resources
 docker update --memory 2g --cpus 2 carina
@@ -245,6 +272,7 @@ docker update --memory 2g --cpus 2 carina
 #### Issue: Build failures or compilation errors
 
 **Symptoms:**
+
 - TypeScript compilation errors
 - Vite build failures
 - Missing dependencies
@@ -252,12 +280,14 @@ docker update --memory 2g --cpus 2 carina
 **Solutions:**
 
 1. **Clear node modules and reinstall:**
+
 ```bash
 rm -rf node_modules pnpm-lock.yaml
 pnpm install
 ```
 
 2. **Check Node.js version:**
+
 ```bash
 # Ensure Node.js 18+ is installed
 node --version
@@ -267,6 +297,7 @@ nvm use 18
 ```
 
 3. **Fix TypeScript errors:**
+
 ```bash
 # Run type checking
 pnpm run check
@@ -278,6 +309,7 @@ pnpm run lint --fix
 #### Issue: Styling or CSS issues
 
 **Symptoms:**
+
 - Broken layouts
 - Missing styles
 - Tailwind classes not working
@@ -285,6 +317,7 @@ pnpm run lint --fix
 **Solutions:**
 
 1. **Rebuild CSS:**
+
 ```bash
 # Rebuild Tailwind CSS
 pnpm run build:css
@@ -294,6 +327,7 @@ pnpm run dev:css
 ```
 
 2. **Check Tailwind configuration:**
+
 ```bash
 # Verify tailwind.config.js exists and is correct
 cat tailwind.config.js
@@ -307,6 +341,7 @@ grep -r "your-class" src/
 #### Issue: Command not found or installation issues
 
 **Symptoms:**
+
 - `remora: command not found`
 - Permission errors during installation
 - Version conflicts
@@ -314,6 +349,7 @@ grep -r "your-class" src/
 **Solutions:**
 
 1. **Verify installation:**
+
 ```bash
 # Check if installed globally
 npm list -g @gopteran/remora
@@ -324,6 +360,7 @@ npm install -g @gopteran/remora
 ```
 
 2. **Check PATH:**
+
 ```bash
 # Verify npm global bin is in PATH
 echo $PATH
@@ -334,6 +371,7 @@ export PATH="$(npm config get prefix)/bin:$PATH"
 ```
 
 3. **Use npx as alternative:**
+
 ```bash
 # Run without global installation
 npx @gopteran/remora --version
@@ -342,6 +380,7 @@ npx @gopteran/remora --version
 #### Issue: Daemon won't start or crashes
 
 **Symptoms:**
+
 - Daemon fails to start
 - Process exits unexpectedly
 - Port binding errors
@@ -349,6 +388,7 @@ npx @gopteran/remora --version
 **Solutions:**
 
 1. **Check daemon logs:**
+
 ```bash
 # View daemon logs
 remora daemon logs --tail 100
@@ -358,6 +398,7 @@ journalctl -u remora -f
 ```
 
 2. **Verify configuration:**
+
 ```bash
 # Check daemon configuration
 remora config show daemon
@@ -367,6 +408,7 @@ remora daemon validate
 ```
 
 3. **Check permissions:**
+
 ```bash
 # Ensure proper permissions for daemon user
 sudo chown -R remora:remora /var/lib/remora
@@ -378,6 +420,7 @@ sudo chmod 755 /var/lib/remora
 #### Issue: Bot not responding to commands
 
 **Symptoms:**
+
 - Slash commands don't work
 - Bot appears offline
 - No response to mentions
@@ -385,6 +428,7 @@ sudo chmod 755 /var/lib/remora
 **Solutions:**
 
 1. **Check bot status:**
+
 ```bash
 # Verify bot is running
 docker ps | grep avis
@@ -393,11 +437,13 @@ systemctl status avis
 ```
 
 2. **Verify Discord permissions:**
+
 - Check bot has necessary permissions in Discord server
 - Ensure bot role is above other roles it needs to manage
 - Verify slash commands are registered
 
 3. **Check bot token:**
+
 ```bash
 # Verify token is correct and not expired
 echo $DISCORD_BOT_TOKEN
@@ -412,6 +458,7 @@ curl -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
 ### Database Performance
 
 1. **Index optimization:**
+
 ```sql
 -- Check for missing indexes
 SELECT schemaname, tablename, attname, n_distinct, correlation
@@ -424,6 +471,7 @@ CREATE INDEX CONCURRENTLY idx_projects_user_id ON projects(user_id);
 ```
 
 2. **Query optimization:**
+
 ```sql
 -- Use EXPLAIN ANALYZE to identify slow queries
 EXPLAIN ANALYZE SELECT * FROM projects WHERE user_id = $1;
@@ -434,6 +482,7 @@ EXPLAIN ANALYZE SELECT * FROM projects WHERE user_id = $1;
 ### Application Performance
 
 1. **Enable caching:**
+
 ```bash
 # Configure Redis caching
 export REDIS_URL=redis://localhost:6379
@@ -441,6 +490,7 @@ export CACHE_TTL=300
 ```
 
 2. **Optimize bundle size:**
+
 ```bash
 # Analyze bundle size
 pnpm run build:analyze
@@ -540,6 +590,7 @@ docker logs carina --tail 50
 ### Regular Maintenance
 
 1. **Keep components updated:**
+
 ```bash
 # Update CLI
 npm update -g @gopteran/remora
@@ -550,6 +601,7 @@ npm update -g @gopteran/remora
 ```
 
 2. **Monitor disk space:**
+
 ```bash
 # Check disk usage
 df -h
@@ -560,6 +612,7 @@ docker system prune -a
 ```
 
 3. **Backup important data:**
+
 ```bash
 # Backup database
 pg_dump $DATABASE_URL > backup.sql
@@ -571,6 +624,7 @@ tar -czf config-backup.tar.gz ~/.gopteran/
 ### Security Best Practices
 
 1. **Rotate tokens regularly:**
+
 ```bash
 # Generate new API tokens
 remora auth rotate-token
@@ -579,12 +633,14 @@ remora auth rotate-token
 ```
 
 2. **Monitor access logs:**
+
 ```bash
 # Check for suspicious activity
 grep "401\|403" /var/log/nginx/access.log
 ```
 
 3. **Keep dependencies updated:**
+
 ```bash
 # Check for security updates
 npm audit
@@ -597,4 +653,5 @@ pnpm update
 
 ---
 
-*If you can't find a solution to your problem in this guide, don't hesitate to reach out to our community or support team. We're here to help!*
+_If you can't find a solution to your problem in this guide, don't hesitate to
+reach out to our community or support team. We're here to help!_

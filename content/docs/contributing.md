@@ -1,55 +1,71 @@
 ---
-title: "Contributing"
+title: 'Contributing'
 draft: false
-summary: "How to contribute to the Gopteran project - code, documentation, and community"
-tags: ["contributing", "development", "community", "open-source"]
-categories: ["Documentation"]
+summary:
+  'How to contribute to the Gopteran project - code, documentation, and
+  community'
+tags: ['contributing', 'development', 'community', 'open-source']
+categories: ['Documentation']
 weight: 25
 ---
 
 # Contributing to Gopteran
 
-We're thrilled that you're interested in contributing to Gopteran! This guide will help you get started with contributing to our ecosystem of infrastructure management tools.
+We're thrilled that you're interested in contributing to Gopteran! This guide
+will help you get started with contributing to our ecosystem of infrastructure
+management tools.
 
 ## Ways to Contribute
 
 ### 🐛 Report Bugs
+
 Help us improve by reporting bugs you encounter:
+
 - Use GitHub Issues in the relevant repository
 - Provide detailed reproduction steps
 - Include system information and logs
 - Check if the issue already exists
 
 ### 💡 Suggest Features
+
 Share your ideas for new features:
+
 - Open a GitHub Discussion or Issue
 - Describe the use case and benefits
 - Consider implementation complexity
 - Engage with community feedback
 
 ### 📝 Improve Documentation
+
 Help make our docs better:
+
 - Fix typos and grammar
 - Add missing information
 - Create tutorials and examples
 - Translate content
 
 ### 💻 Contribute Code
+
 Submit code improvements:
+
 - Bug fixes
 - New features
 - Performance optimizations
 - Test coverage improvements
 
 ### 🎨 Design and UX
+
 Enhance user experience:
+
 - UI/UX improvements
 - Accessibility enhancements
 - Visual design updates
 - User research insights
 
 ### 🤝 Community Support
+
 Help other users:
+
 - Answer questions in Discord
 - Review pull requests
 - Mentor new contributors
@@ -62,8 +78,10 @@ Help other users:
 Each component has its own repository and contribution guidelines:
 
 - **[Aerie](https://github.com/gopteran/aerie)** - Control panel (Full-stack)
-- **[Carina](https://github.com/gopteran/carina)** - Backend API (Node.js/TypeScript)
-- **[Ventus](https://github.com/gopteran/ventus)** - Frontend framework (SvelteKit)
+- **[Carina](https://github.com/gopteran/carina)** - Backend API
+  (Node.js/TypeScript)
+- **[Ventus](https://github.com/gopteran/ventus)** - Frontend framework
+  (SvelteKit)
 - **[Remora](https://github.com/gopteran/remora)** - CLI agent (Node.js)
 - **[Avis](https://github.com/gopteran/avis)** - Discord bot (Discord.js)
 - **[Nest](https://github.com/gopteran/nest)** - Documentation (Hugo)
@@ -71,12 +89,14 @@ Each component has its own repository and contribution guidelines:
 ### 2. Set Up Development Environment
 
 #### Prerequisites
+
 - **Node.js** 18+ and **pnpm**
 - **Git** for version control
 - **Docker** (optional, for full stack development)
 - **PostgreSQL** (for backend development)
 
 #### Fork and Clone
+
 ```bash
 # Fork the repository on GitHub, then clone your fork
 git clone https://github.com/YOUR_USERNAME/COMPONENT_NAME.git
@@ -87,6 +107,7 @@ git remote add upstream https://github.com/gopteran/COMPONENT_NAME.git
 ```
 
 #### Install Dependencies
+
 ```bash
 # Install project dependencies
 pnpm install
@@ -99,6 +120,7 @@ cp .env.example .env
 ### 3. Development Workflow
 
 #### Create a Branch
+
 ```bash
 # Create and switch to a new branch
 git checkout -b feature/your-feature-name
@@ -107,12 +129,14 @@ git checkout -b fix/issue-description
 ```
 
 #### Make Changes
+
 - Follow the existing code style
 - Write tests for new functionality
 - Update documentation as needed
 - Commit changes with clear messages
 
 #### Test Your Changes
+
 ```bash
 # Run tests
 pnpm test
@@ -128,6 +152,7 @@ pnpm dev
 ```
 
 #### Submit Pull Request
+
 ```bash
 # Push your branch
 git push origin feature/your-feature-name
@@ -161,6 +186,7 @@ git push origin feature/your-feature-name
 ### Language-Specific Standards
 
 #### TypeScript/JavaScript
+
 ```typescript
 // Use TypeScript for type safety
 interface ProjectConfig {
@@ -184,6 +210,7 @@ async function createProject(config: ProjectConfig): Promise<Project> {
 ```
 
 #### CSS/Styling
+
 ```css
 /* Use Tailwind CSS classes when possible */
 .btn-primary {
@@ -210,6 +237,7 @@ type(scope): description
 ```
 
 **Types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -219,6 +247,7 @@ type(scope): description
 - `chore`: Maintenance tasks
 
 **Examples:**
+
 ```
 feat(api): add project creation endpoint
 
@@ -242,12 +271,14 @@ Fixes #456
 ### Before Submitting
 
 1. **Sync with upstream:**
+
 ```bash
 git fetch upstream
 git rebase upstream/main
 ```
 
 2. **Run quality checks:**
+
 ```bash
 pnpm lint
 pnpm test
@@ -255,6 +286,7 @@ pnpm build
 ```
 
 3. **Update documentation:**
+
 - Update README if needed
 - Add/update API documentation
 - Include examples for new features
@@ -265,20 +297,24 @@ When creating a pull request, include:
 
 ```markdown
 ## Description
+
 Brief description of changes and motivation.
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Tests pass locally
 - [ ] Added tests for new functionality
 - [ ] Manual testing completed
 
 ## Checklist
+
 - [ ] Code follows project style guidelines
 - [ ] Self-review completed
 - [ ] Documentation updated
@@ -304,36 +340,42 @@ Brief description of changes and motivation.
 ## Component-Specific Guidelines
 
 ### Aerie (Control Panel)
+
 - Follow full-stack best practices
 - Ensure responsive design
 - Test both frontend and backend changes
 - Update integration tests
 
 ### Carina (Backend API)
+
 - Follow REST API conventions
 - Add comprehensive error handling
 - Update OpenAPI documentation
 - Include database migrations if needed
 
 ### Ventus (Frontend)
+
 - Follow SvelteKit conventions
 - Ensure accessibility compliance
 - Test across different browsers
 - Optimize for performance
 
 ### Remora (CLI)
+
 - Follow CLI best practices
 - Ensure cross-platform compatibility
 - Add help text for new commands
 - Update shell completions
 
 ### Avis (Discord Bot)
+
 - Follow Discord.js best practices
 - Test commands in development server
 - Update command documentation
 - Handle rate limits properly
 
 ### Nest (Documentation)
+
 - Follow Hugo conventions
 - Use proper markdown formatting
 - Include code examples
@@ -377,7 +419,7 @@ We value all contributions and recognize contributors through:
 
 ### Development Tools
 
-- **IDE Extensions**: ESLint, Prettier, TypeScript
+- **IDE Extensions**: Prettier, TypeScript
 - **Browser Extensions**: Vue/React DevTools, Redux DevTools
 - **CLI Tools**: GitHub CLI, Docker, Postman/Insomnia
 
@@ -392,23 +434,28 @@ We value all contributions and recognize contributors through:
 
 ### Q: How do I get started as a first-time contributor?
 
-A: Start with documentation improvements or small bug fixes. Look for issues labeled "good first issue" or "help wanted". Join our Discord for guidance!
+A: Start with documentation improvements or small bug fixes. Look for issues
+labeled "good first issue" or "help wanted". Join our Discord for guidance!
 
 ### Q: Can I work on multiple components?
 
-A: Absolutely! Many contributors work across multiple repositories. Just make sure to follow each component's specific guidelines.
+A: Absolutely! Many contributors work across multiple repositories. Just make
+sure to follow each component's specific guidelines.
 
 ### Q: How long does the review process take?
 
-A: We aim to provide initial feedback within 48 hours. Complex changes may take longer to review thoroughly.
+A: We aim to provide initial feedback within 48 hours. Complex changes may take
+longer to review thoroughly.
 
 ### Q: What if my PR is rejected?
 
-A: Don't worry! We'll provide feedback on why and how to improve. Rejection often leads to better solutions through collaboration.
+A: Don't worry! We'll provide feedback on why and how to improve. Rejection
+often leads to better solutions through collaboration.
 
 ### Q: Can I contribute if I'm not a developer?
 
-A: Yes! We need help with documentation, design, testing, community support, and more. Every contribution is valuable.
+A: Yes! We need help with documentation, design, testing, community support, and
+more. Every contribution is valuable.
 
 ## Getting Help
 
@@ -421,8 +468,11 @@ If you need help with contributing:
 
 ## Thank You!
 
-Thank you for considering contributing to Gopteran! Your contributions help make infrastructure management better for everyone. We look forward to working with you! 🚀
+Thank you for considering contributing to Gopteran! Your contributions help make
+infrastructure management better for everyone. We look forward to working with
+you! 🚀
 
 ---
 
-*"In an ecosystem defined by flight and precision, every contribution helps us soar higher together."*
+_"In an ecosystem defined by flight and precision, every contribution helps us
+soar higher together."_

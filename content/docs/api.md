@@ -1,15 +1,17 @@
 ---
-title: "API Reference"
+title: 'API Reference'
 draft: false
-summary: "Complete API reference for the Gopteran ecosystem"
-tags: ["api", "reference", "endpoints", "authentication"]
-categories: ["Documentation"]
+summary: 'Complete API reference for the Gopteran ecosystem'
+tags: ['api', 'reference', 'endpoints', 'authentication']
+categories: ['Documentation']
 weight: 10
 ---
 
 ## API Overview
 
-The Gopteran API provides a comprehensive REST interface for managing infrastructure, authentication, and resources. All APIs are served through the Carina backent.
+The Gopteran API provides a comprehensive REST interface for managing
+infrastructure, authentication, and resources. All APIs are served through the
+Carina backent.
 
 ## Base URL
 
@@ -35,6 +37,7 @@ Content-Type: application/json
 ```
 
 **Response:**
+
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -60,9 +63,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ### Authentication
 
 #### POST /auth/login
+
 Authenticate user and receive JWT token.
 
 **Request Body:**
+
 ```json
 {
   "email": "string",
@@ -71,9 +76,11 @@ Authenticate user and receive JWT token.
 ```
 
 #### POST /auth/register
+
 Register a new user account.
 
 **Request Body:**
+
 ```json
 {
   "name": "string",
@@ -83,17 +90,21 @@ Register a new user account.
 ```
 
 #### POST /auth/refresh
+
 Refresh an existing JWT token.
 
 #### POST /auth/logout
+
 Invalidate the current session.
 
 ### Users
 
 #### GET /users/me
+
 Get current user profile.
 
 **Response:**
+
 ```json
 {
   "id": "user-123",
@@ -106,23 +117,28 @@ Get current user profile.
 ```
 
 #### PUT /users/me
+
 Update current user profile.
 
 #### DELETE /users/me
+
 Delete current user account.
 
 ### Projects
 
 #### GET /projects
+
 List all projects for the authenticated user.
 
 **Query Parameters:**
+
 - `page` (number): Page number (default: 1)
 - `limit` (number): Items per page (default: 20)
 - `search` (string): Search term
 - `status` (string): Filter by status
 
 **Response:**
+
 ```json
 {
   "projects": [
@@ -145,9 +161,11 @@ List all projects for the authenticated user.
 ```
 
 #### POST /projects
+
 Create a new project.
 
 **Request Body:**
+
 ```json
 {
   "name": "string",
@@ -160,23 +178,29 @@ Create a new project.
 ```
 
 #### GET /projects/:id
+
 Get project details by ID.
 
 #### PUT /projects/:id
+
 Update project settings.
 
 #### DELETE /projects/:id
+
 Delete a project.
 
 ### Resources
 
 #### GET /projects/:projectId/resources
+
 List resources for a project.
 
 #### POST /projects/:projectId/resources
+
 Create a new resource.
 
 **Request Body:**
+
 ```json
 {
   "type": "server",
@@ -190,23 +214,29 @@ Create a new resource.
 ```
 
 #### GET /resources/:id
+
 Get resource details.
 
 #### PUT /resources/:id
+
 Update resource configuration.
 
 #### DELETE /resources/:id
+
 Delete a resource.
 
 ### Deployments
 
 #### GET /projects/:projectId/deployments
+
 List deployments for a project.
 
 #### POST /projects/:projectId/deployments
+
 Create a new deployment.
 
 **Request Body:**
+
 ```json
 {
   "name": "v1.2.0",
@@ -219,9 +249,11 @@ Create a new deployment.
 ```
 
 #### GET /deployments/:id
+
 Get deployment details.
 
 #### POST /deployments/:id/rollback
+
 Rollback to a previous deployment.
 
 ## WebSocket Events
@@ -234,16 +266,19 @@ Real-time updates are available via WebSocket connection.
 const ws = new WebSocket('wss://api.gopteran.dev/ws');
 ws.onopen = () => {
   // Send authentication
-  ws.send(JSON.stringify({
-    type: 'auth',
-    token: 'your-jwt-token'
-  }));
+  ws.send(
+    JSON.stringify({
+      type: 'auth',
+      token: 'your-jwt-token',
+    })
+  );
 };
 ```
 
 ### Event Types
 
 #### Resource Status Updates
+
 ```json
 {
   "type": "resource.status",
@@ -256,6 +291,7 @@ ws.onopen = () => {
 ```
 
 #### Deployment Progress
+
 ```json
 {
   "type": "deployment.progress",
@@ -322,7 +358,7 @@ import { GopteranClient } from '@gopteran/sdk';
 
 const client = new GopteranClient({
   apiUrl: 'https://api.gopteran.dev',
-  token: 'your-jwt-token'
+  token: 'your-jwt-token',
 });
 
 // List projects
@@ -332,7 +368,7 @@ const projects = await client.projects.list();
 const resource = await client.resources.create(projectId, {
   type: 'server',
   name: 'web-server-01',
-  config: { size: 'medium' }
+  config: { size: 'medium' },
 });
 ```
 
@@ -386,8 +422,8 @@ const auth = await fetch('/auth/login', {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
     email: 'user@example.com',
-    password: 'password'
-  })
+    password: 'password',
+  }),
 });
 const { token } = await auth.json();
 
@@ -395,13 +431,13 @@ const { token } = await auth.json();
 const project = await fetch('/projects', {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
   },
   body: JSON.stringify({
     name: 'My Web App',
-    description: 'Production web application'
-  })
+    description: 'Production web application',
+  }),
 });
 const { id: projectId } = await project.json();
 
@@ -409,30 +445,30 @@ const { id: projectId } = await project.json();
 const server = await fetch(`/projects/${projectId}/resources`, {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
   },
   body: JSON.stringify({
     type: 'server',
     name: 'web-server',
     config: {
       size: 'medium',
-      region: 'us-east-1'
-    }
-  })
+      region: 'us-east-1',
+    },
+  }),
 });
 
 // 4. Deploy
 const deployment = await fetch(`/projects/${projectId}/deployments`, {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
   },
   body: JSON.stringify({
     name: 'v1.0.0',
-    environment: 'production'
-  })
+    environment: 'production',
+  }),
 });
 ```
 

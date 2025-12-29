@@ -10,3 +10,6 @@ LICENSE
 .npmrc
 .gitkeep
 *.woff*
+# Hugo template files
+layouts/**/*.json
+layouts/**/*.html
